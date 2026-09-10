@@ -1,182 +1,244 @@
-from collections import defaultdict
+from pathlib import Path
 
 import pandas as pd
 
-from src.data.load import iter_data
+from src.data.conversations import build_conversations
 
 
-TOP_BRANDS = {
-    "AmazonHelp",
-    "AppleSupport",
-    "Uber_Support",
-    "SpotifyCares",
-    "Delta",
-}
+DATA_FILE = Path("data/raw/twcs.csv")
+
+CHUNK_SIZE = 100_000
 
 
-def analyze_conversation_depth(
-    chunksize: int = 100_000,
-) -> pd.DataFrame:
+def load_brand_data(brand_name: str) -> pd.DataFrame:
     """
-    Analyze conversation depth for the strongest brand candidates.
+    Load tweets relevant to a single brand.
 
-    A conversation is approximated by following the
-    in_response_to_tweet_id relationship.
-
-    The analysis focuses on conversations containing at least
-    one inbound customer tweet and one outbound brand reply.
+    We keep:
+    - brand tweets
+    - customer tweets directly replying to brand tweets
+    - customer tweets that have a direct brand response
     """
 
-    print("Loading tweets for candidate brands...")
+    # ---------------------------------------------------------
+    # Pass 1: identify brand tweet IDs
+    # ---------------------------------------------------------
 
-    candidate_tweets = {}
+    brand_tweet_ids = set()
 
-    # First pass: collect relevant tweets.
+    print(f"\nFinding tweets for {brand_name}...")
+
     for chunk_number, chunk in enumerate(
-        iter_data(
-            chunksize=chunksize,
+        pd.read_csv(
+            DATA_FILE,
             usecols=[
                 "tweet_id",
                 "author_id",
                 "inbound",
-                "text",
-                "in_response_to_tweet_id",
             ],
+            chunksize=CHUNK_SIZE,
         ),
         start=1,
     ):
-        relevant = chunk[
-            chunk["author_id"].isin(TOP_BRANDS)
-            | chunk["inbound"]
-        ]
+        mask = (
+            ~chunk["inbound"]
+            & chunk["author_id"].eq(brand_name)
+        )
 
-        for row in relevant.itertuples(index=False):
-            candidate_tweets[str(row.tweet_id)] = {
-                "author_id": row.author_id,
-                "inbound": bool(row.inbound),
-                "text": str(row.text),
-                "parent_id": (
-                    None
-                    if pd.isna(row.in_response_to_tweet_id)
-                    else str(int(row.in_response_to_tweet_id))
-                ),
-            }
+        brand_tweet_ids.update(
+            chunk.loc[mask, "tweet_id"]
+            .astype(int)
+            .tolist()
+        )
 
-        if chunk_number % 5 == 0:
-            print(
-                f"Processed chunk {chunk_number}..."
-            )
+        print(
+            f"Pass 1 - chunk {chunk_number}"
+        )
 
     print(
-        f"\nCollected {len(candidate_tweets):,} relevant tweets."
+        f"Found {len(brand_tweet_ids):,} "
+        f"brand tweets."
     )
 
-    # Build parent -> children relationships.
-    children = defaultdict(list)
+    # ---------------------------------------------------------
+    # Pass 2: collect brand + directly connected tweets
+    # ---------------------------------------------------------
 
-    for tweet_id, tweet in candidate_tweets.items():
-        parent_id = tweet["parent_id"]
+    relevant_chunks = []
 
-        if parent_id in candidate_tweets:
-            children[parent_id].append(tweet_id)
-
-    # Find conversations by starting from tweets without
-    # a parent inside our relevant subset.
-    conversation_lengths = defaultdict(list)
-
-    visited = set()
-
-    for tweet_id, tweet in candidate_tweets.items():
-
-        if tweet_id in visited:
-            continue
-
-        # Only start from inbound customer tweets.
-        if not tweet["inbound"]:
-            continue
-
-        parent_id = tweet["parent_id"]
-
-        if parent_id in candidate_tweets:
-            continue
-
-        # Traverse the conversation.
-        stack = [tweet_id]
-        conversation = []
-
-        while stack:
-            current = stack.pop()
-
-            if current in visited:
-                continue
-
-            visited.add(current)
-            conversation.append(current)
-
-            stack.extend(
-                children.get(current, [])
-            )
-
-        if len(conversation) < 2:
-            continue
-
-        # Determine the brand(s) participating in the conversation.
-        brands = {
-            candidate_tweets[t]["author_id"]
-            for t in conversation
-            if not candidate_tweets[t]["inbound"]
-            and candidate_tweets[t]["author_id"] in TOP_BRANDS
-        }
-
-        for brand in brands:
-            conversation_lengths[brand].append(
-                len(conversation)
-            )
-
-    rows = []
-
-    for brand in TOP_BRANDS:
-        lengths = conversation_lengths[brand]
-
-        if not lengths:
-            continue
-
-        series = pd.Series(lengths)
-
-        rows.append(
-            {
-                "brand": brand,
-                "conversations": len(lengths),
-                "avg_turns": round(series.mean(), 2),
-                "median_turns": round(series.median(), 2),
-                "max_turns": int(series.max()),
-                "2_plus_turns": int((series >= 2).sum()),
-                "4_plus_turns": int((series >= 4).sum()),
-                "6_plus_turns": int((series >= 6).sum()),
-                "10_plus_turns": int((series >= 10).sum()),
-            }
+    for chunk_number, chunk in enumerate(
+        pd.read_csv(
+            DATA_FILE,
+            usecols=[
+                "tweet_id",
+                "author_id",
+                "inbound",
+                "created_at",
+                "text",
+                "response_tweet_id",
+                "in_response_to_tweet_id",
+            ],
+            chunksize=CHUNK_SIZE,
+        ),
+        start=1,
+    ):
+        # Brand tweets
+        brand_mask = (
+            ~chunk["inbound"]
+            & chunk["author_id"].eq(brand_name)
         )
 
-    result = (
-        pd.DataFrame(rows)
-        .sort_values(
-            "conversations",
-            ascending=False,
+        # Customer -> brand
+        parent_is_brand = (
+            chunk["in_response_to_tweet_id"]
+            .isin(brand_tweet_ids)
         )
-        .reset_index(drop=True)
+
+        # Customer tweet has a brand response
+        has_brand_response = chunk[
+            "response_tweet_id"
+        ].fillna("").apply(
+            lambda value: any(
+                int(response_id.strip())
+                in brand_tweet_ids
+                for response_id in str(value).split(",")
+                if response_id.strip().isdigit()
+            )
+        )
+
+        relevant_mask = (
+            brand_mask
+            | parent_is_brand
+            | has_brand_response
+        )
+
+        relevant = chunk[relevant_mask]
+
+        if not relevant.empty:
+            relevant_chunks.append(relevant)
+
+        print(
+            f"Pass 2 - chunk {chunk_number}"
+        )
+
+        if not relevant_chunks:
+            return pd.DataFrame()
+
+    result = pd.concat(
+        relevant_chunks,
+        ignore_index=True,
     )
+
+    # A tweet can be discovered through more than one
+    # relationship, so deduplicate by tweet_id.
+    result = result.drop_duplicates(
+        subset=["tweet_id"]
+    ).reset_index(drop=True)
 
     return result
 
 
-def main():
-    result = analyze_conversation_depth()
+def analyze_brand(brand_name: str):
+    """Calculate conversation-level statistics for a brand."""
 
-    print("\nConversation depth comparison")
-    print("============================")
+    df = load_brand_data(brand_name)
+
+    if df.empty:
+        return {
+            "brand": brand_name,
+            "tweets": 0,
+            "conversations": 0,
+        }
 
     print(
-        result.to_string(index=False)
+        f"\nBuilding conversations for "
+        f"{brand_name}..."
+    )
+
+    conversations = build_conversations(
+        df,
+        brand_name,
+    )
+
+    if not conversations:
+        return {
+            "brand": brand_name,
+            "tweets": len(df),
+            "conversations": 0,
+        }
+
+    turn_counts = pd.Series(
+        [
+            conversation["turn_count"]
+            for conversation in conversations
+        ]
+    )
+
+    return {
+        "brand": brand_name,
+        "tweets": len(df),
+        "conversations": len(conversations),
+        "avg_turns": round(
+            turn_counts.mean(),
+            2,
+        ),
+        "median_turns": float(
+            turn_counts.median()
+        ),
+        "max_turns": int(
+            turn_counts.max()
+        ),
+        "conversations_3plus": int(
+            (turn_counts >= 3).sum()
+        ),
+        "conversations_6plus": int(
+            (turn_counts >= 6).sum()
+        ),
+    }
+
+
+def main():
+    brands = [
+        "AmazonHelp",
+        "AppleSupport",
+        "Uber_Support",
+    ]
+
+    results = []
+
+    for brand in brands:
+        result = analyze_brand(brand)
+        results.append(result)
+
+    results_df = pd.DataFrame(results)
+
+    print("\n" + "=" * 80)
+    print("CONVERSATION-LEVEL BRAND COMPARISON")
+    print("=" * 80)
+
+    print(
+        results_df.to_string(
+            index=False
+        )
+    )
+
+    output_file = Path(
+        "data/processed/"
+        "brand_conversation_statistics.csv"
+    )
+
+    output_file.parent.mkdir(
+        parents=True,
+        exist_ok=True,
+    )
+
+    results_df.to_csv(
+        output_file,
+        index=False,
+    )
+
+    print(
+        f"\nSaved results to: {output_file}"
     )
 
 
