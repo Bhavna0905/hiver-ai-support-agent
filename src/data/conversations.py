@@ -194,10 +194,11 @@ def build_conversations(df: pd.DataFrame, brand_name: str):
     df = df.copy()
 
     df["created_at"] = pd.to_datetime(
-        df["created_at"],
-        errors="coerce",
-        utc=True,
-    )
+    df["created_at"],
+    format="%a %b %d %H:%M:%S %z %Y",
+    errors="coerce",
+    utc=True,
+)
 
     tweet_map, children = build_reply_maps(df)
 

@@ -1,6 +1,10 @@
 .venv/
 venv/
 env/
+__pycache__/
+*.py[cod]
 data/raw/*
 data/processed/*
 data/golden/*
+!data/golden/.gitkeep
+!data/golden/golden_dataset.csv
