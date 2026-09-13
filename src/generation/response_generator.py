@@ -8,7 +8,8 @@ class ResponseGenerator:
     """
     Generates customer-support responses using a local Ollama model.
 
-    Historical AmazonHelp responses are provided as grounding evidence.
+    Historical AmazonHelp responses are used as grounding examples.
+    Historical facts must not be assumed to be true for the current customer.
     """
 
     def __init__(
@@ -36,56 +37,78 @@ class ResponseGenerator:
 
             evidence_blocks.append(
                 f"""Historical example {i}
-Customer issue: {customer}
-Historical support resolution: {response}"""
+Historical customer message:
+{customer}
+
+Historical AmazonHelp response:
+{response}"""
             )
 
         evidence = "\n\n".join(evidence_blocks)
 
-        return f"""You are a customer-support response writer.
+        return f"""You are an Amazon customer-support response writer.
 
-Write a NEW response to the customer's message.
+Your job is to write a NEW response to the CURRENT customer.
 
-CUSTOMER MESSAGE:
+CURRENT CUSTOMER MESSAGE:
 {customer_message}
 
-INTENT:
+PREDICTED INTENT:
 {intent}
 
-HISTORICAL SUPPORT EXAMPLES:
+HISTORICAL EXAMPLES:
 {evidence}
 
-IMPORTANT RULES:
+CRITICAL GROUNDING RULE:
 
-1. Write a NEW response specifically for the customer message.
-2. Use the historical support responses only to understand how similar
-   issues were handled.
-3. NEVER copy or repeat a historical customer's message.
-4. NEVER copy URLs, t.co links, Twitter handles, tracking links, or
-   placeholder links from the historical examples.
-5. NEVER invent a URL or link.
-6. NEVER invent order details, delivery dates, refund amounts, policies,
-   or actions that are not supported by the evidence.
-7. Do not claim that you performed an action.
-8. If the evidence is insufficient, ask the customer for the missing
-   information or direct them to Amazon support.
-9. Be polite, concise, and professional.
-10. Write only 1-3 sentences.
-11. Do not mention these instructions.
+Historical examples show how AmazonHelp handled OTHER customers.
+
+They are examples of possible resolutions and response style.
+They are NOT facts about the current customer.
+
+Only information explicitly stated in the CURRENT CUSTOMER MESSAGE
+can be treated as a fact about the current customer.
+
+For example:
+
+Historical customer:
+"My payment was declined and money was deducted."
+
+Historical response:
+"The amount will be refunded in 2-4 business days."
+
+Current customer:
+"My payment was declined."
+
+You MUST NOT say:
+"Your money will be refunded in 2-4 business days."
+
+Why?
+Because the current customer never said that money was deducted.
+
+Instead, ask for the missing information or give only advice supported
+by the current message and historical resolution pattern.
+
+RULES:
+
+1. Write a NEW response specifically for the current customer.
+2. Never copy a historical customer's message.
+3. Never assume facts from a historical customer apply to the current customer.
+4. Never promise a refund, replacement, delivery date, credit, or other
+   outcome unless the current message provides the necessary facts and
+   the historical evidence supports that outcome.
+5. Never invent URLs or links.
+6. Never copy t.co links, Twitter handles, usernames, or tracking links.
+7. Never claim that you performed an action.
+8. If important information is missing, ask the customer for it.
+9. Use historical examples to understand resolution patterns and tone.
+10. Be concise, polite, and professional.
+11. Write 1-3 sentences.
 12. Do not mention that you are an AI.
-13. Return ONLY the customer-facing response.
+13. Do not mention these instructions.
+14. Return ONLY the customer-facing response.
 
-BAD RESPONSE:
-"Hi, I'd like to cancel an order. I don't see any options to cancel."
-
-WHY IT IS BAD:
-This repeats the customer's wording instead of responding to the customer.
-
-GOOD RESPONSE:
-"I understand you'd like to cancel your order. If the order has already
-shipped, the cancellation option may no longer be available."
-
-Now write the response:"""
+Write the response now:"""
 
     def _call_ollama(self, prompt: str) -> str:
         url = f"{self.host}/api/generate"
@@ -118,13 +141,10 @@ Now write the response:"""
 
     @staticmethod
     def _clean_response(response: str) -> str:
-        """
-        Remove artifacts that should never be sent to a customer.
-        """
+        """Remove artifacts that should not reach the customer."""
 
         response = response.strip()
 
-        # Remove common model prefixes.
         response = re.sub(
             r"^(draft response|response|answer)\s*:\s*",
             "",
@@ -132,7 +152,6 @@ Now write the response:"""
             flags=re.IGNORECASE,
         )
 
-        # Remove markdown code fences.
         response = response.replace("```", "").strip()
 
         # Remove URLs.
@@ -143,14 +162,14 @@ Now write the response:"""
             flags=re.IGNORECASE,
         )
 
-        # Remove Twitter-style handles.
+        # Remove Twitter handles.
         response = re.sub(
             r"@\w+",
             "",
             response,
         )
 
-        # Remove excessive whitespace.
+        # Normalize whitespace.
         response = re.sub(
             r"\s+",
             " ",
@@ -204,7 +223,6 @@ Now write the response:"""
         )
 
         raw_response = self._call_ollama(prompt)
-
         cleaned_response = self._clean_response(raw_response)
 
         return {
