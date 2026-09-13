@@ -1,12 +1,26 @@
-from typing import Any
+
+from dataclasses import dataclass
+from typing import List, Optional
+@dataclass
+class EscalationDecision:
+    escalate: bool
+    reason: str
+
+    def __getitem__(self, key):
+        if key == "escalate":
+            return self.escalate
+        if key == "reason":
+            return self.reason
+        raise KeyError(key)
+
+
+
 
 
 class EscalationPolicy:
     """
-    Rule-based policy for deciding whether a customer request
-    should be handled automatically or escalated to a human.
-
-    The policy intentionally favors safety over aggressive automation.
+    Decide whether a customer request should be handled automatically
+    or escalated to a human agent.
     """
 
     def __init__(
@@ -17,54 +31,7 @@ class EscalationPolicy:
         self.confidence_threshold = confidence_threshold
         self.retrieval_threshold = retrieval_threshold
 
-    def decide(
-        self,
-        customer_message: str,
-        intent: str,
-        confidence: float,
-        retrieved_examples: list[dict[str, Any]],
-    ) -> dict[str, Any]:
-
-        message = customer_message.lower()
-
-        # ---------------------------------------------------------
-        # Rule 1: Very low classifier confidence
-        # ---------------------------------------------------------
-        if confidence < self.confidence_threshold:
-            return {
-                "escalate": True,
-                "reason": (
-                    f"Low intent confidence ({confidence:.2f}) "
-                    f"below threshold ({self.confidence_threshold:.2f})."
-                ),
-            }
-
-        # ---------------------------------------------------------
-        # Rule 2: No useful historical evidence
-        # ---------------------------------------------------------
-        if not retrieved_examples:
-            return {
-                "escalate": True,
-                "reason": "No historical resolution evidence was retrieved.",
-            }
-
-        top_similarity = float(
-            retrieved_examples[0].get("similarity", 0.0)
-        )
-
-        if top_similarity < self.retrieval_threshold:
-            return {
-                "escalate": True,
-                "reason": (
-                    f"Retrieved evidence is weak "
-                    f"(top similarity {top_similarity:.2f})."
-                ),
-            }
-
-        # ---------------------------------------------------------
-        # Rule 3: Sensitive / potentially high-risk requests
-        # ---------------------------------------------------------
-        high_risk_phrases = [
+        self.high_risk_phrases: List[str] = [
             "fraud",
             "scam",
             "hacked",
@@ -79,47 +46,108 @@ class EscalationPolicy:
             "police",
         ]
 
-        for phrase in high_risk_phrases:
-            if phrase in message:
-                return {
-                    "escalate": True,
-                    "reason": (
-                        f"Potentially high-risk request detected "
-                        f"('{phrase}')."
-                    ),
-                }
+    def decide(
+        self,
+        customer_message: str,
+        intent: str,
+        confidence: float,
+        retrieved_examples: Optional[list] = None,
+        top_similarity: Optional[float] = None,
+    ) -> EscalationDecision:
+        """
+        Decide whether to escalate.
+
+        Supports both:
+        - retrieved_examples: list of retrieval results
+        - top_similarity: precomputed similarity score
+
+        retrieved_examples is kept for compatibility with the existing
+        tests and agent code.
+        """
+
+        message = customer_message.lower()
+
+        # Derive retrieval similarity when only retrieved examples
+        # were provided.
+        if top_similarity is None:
+            if retrieved_examples:
+                first = retrieved_examples[0]
+
+                if isinstance(first, dict):
+                    top_similarity = float(
+                        first.get("similarity", 0.0)
+                    )
+                else:
+                    top_similarity = 0.0
+            else:
+                top_similarity = 0.0
 
         # ---------------------------------------------------------
-        # Rule 4: Account access problems
+        # 1. High-risk/security issues always go to a human.
+        # ---------------------------------------------------------
+        for phrase in self.high_risk_phrases:
+            if phrase in message:
+                return EscalationDecision(
+                    escalate=True,
+                    reason=(
+                        f"High-risk issue detected: '{phrase}'. "
+                        "Human review required."
+                    ),
+                )
+
+        # ---------------------------------------------------------
+        # 2. Account-access problems are sensitive.
         # ---------------------------------------------------------
         if intent == "account_access":
-            return {
-                "escalate": True,
-                "reason": (
-                    "Account-access issues can involve account security "
-                    "and should be reviewed by a human."
-                ),
-            }
+            return EscalationDecision(
+                escalate=True,
+                reason="Account-access issue requires human review.",
+            )
 
         # ---------------------------------------------------------
-        # Rule 5: Other / unclear requests
+        # 3. Unsupported/catch-all intent is not safe to automate.
         # ---------------------------------------------------------
         if intent == "other":
-            return {
-                "escalate": True,
-                "reason": (
-                    "Request does not match a supported automated "
-                    "support intent."
+            return EscalationDecision(
+                escalate=True,
+                reason=(
+                    "Intent could not be safely mapped to a "
+                    "supported workflow."
                 ),
-            }
+            )
 
         # ---------------------------------------------------------
-        # Otherwise: safe enough to auto-handle
+        # 4. Low classifier confidence.
         # ---------------------------------------------------------
-        return {
-            "escalate": False,
-            "reason": (
-                "Intent confidence and historical evidence are strong "
-                "enough for automated handling."
+        if confidence < self.confidence_threshold:
+            return EscalationDecision(
+                escalate=True,
+                reason=(
+                    f"Low intent confidence ({confidence:.2f}) "
+                    f"below threshold ({self.confidence_threshold:.2f})."
+                ),
+            )
+
+        # ---------------------------------------------------------
+        # 5. Weak historical evidence.
+        # ---------------------------------------------------------
+        if top_similarity < self.retrieval_threshold:
+            return EscalationDecision(
+                escalate=True,
+                reason=(
+                    f"Historical evidence is weak "
+                    f"(similarity {top_similarity:.2f} below "
+                    f"threshold {self.retrieval_threshold:.2f})."
+                ),
+            )
+
+        # ---------------------------------------------------------
+        # 6. Strong enough evidence for automated handling.
+        # ---------------------------------------------------------
+        return EscalationDecision(
+            escalate=False,
+            reason=(
+                "Intent confidence and historical evidence are "
+                "strong enough for automated handling."
             ),
-        }
+        )
