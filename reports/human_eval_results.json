@@ -1,0 +1,450 @@
+{
+  "dataset": {
+    "path": "E:\\hiver-ai-support-agent\\data\\golden\\golden_20.csv",
+    "examples": 20,
+    "human_reviewed": true,
+    "annotators": 1
+  },
+  "intent": {
+    "accuracy": 0.4,
+    "macro_f1": 0.22307692307692306,
+    "weighted_f1": 0.37,
+    "classification_report": {
+      "account_access": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "amazon_pay": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3.0
+      },
+      "delivery_problem": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "digital_content": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "order_management": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "payment_billing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "prime_membership": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3.0
+      },
+      "product_information": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "product_issue": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "returns_refunds": {
+        "precision": 0.5,
+        "recall": 0.5,
+        "f1-score": 0.5,
+        "support": 2.0
+      },
+      "support_followup": {
+        "precision": 0.25,
+        "recall": 1.0,
+        "f1-score": 0.4,
+        "support": 1.0
+      },
+      "technical_issue": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "accuracy": 0.4,
+      "macro avg": {
+        "precision": 0.21153846153846154,
+        "recall": 0.2692307692307692,
+        "f1-score": 0.22307692307692306,
+        "support": 20.0
+      },
+      "weighted avg": {
+        "precision": 0.3625,
+        "recall": 0.4,
+        "f1-score": 0.37,
+        "support": 20.0
+      }
+    },
+    "confusion_matrix": [
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    ],
+    "confusion_labels": [
+      "account_access",
+      "amazon_pay",
+      "delivery_problem",
+      "digital_content",
+      "order_management",
+      "other",
+      "payment_billing",
+      "prime_membership",
+      "product_information",
+      "product_issue",
+      "returns_refunds",
+      "support_followup",
+      "technical_issue"
+    ]
+  },
+  "escalation": {
+    "accuracy": 0.3,
+    "precision": 0.3,
+    "recall": 1.0,
+    "f1": 0.46153846153846156,
+    "false_auto_handle_rate": 0.0,
+    "false_escalation_rate": 0.7,
+    "predicted_escalations": 20,
+    "actual_escalations": 6
+  },
+  "examples": [
+    {
+      "tweet_id": 1601855,
+      "gold_intent": "delivery_problem",
+      "predicted_intent": "digital_content",
+      "confidence": 0.3044687735947471
+    },
+    {
+      "tweet_id": 2525446,
+      "gold_intent": "support_followup",
+      "predicted_intent": "support_followup",
+      "confidence": 0.9759798634812076
+    },
+    {
+      "tweet_id": 348231,
+      "gold_intent": "amazon_pay",
+      "predicted_intent": "amazon_pay",
+      "confidence": 0.9819227096653866
+    },
+    {
+      "tweet_id": 1528663,
+      "gold_intent": "delivery_problem",
+      "predicted_intent": "order_management",
+      "confidence": 0.1906795417770435
+    },
+    {
+      "tweet_id": 1522564,
+      "gold_intent": "account_access",
+      "predicted_intent": "digital_content",
+      "confidence": 0.3385578845794617
+    },
+    {
+      "tweet_id": 1160647,
+      "gold_intent": "returns_refunds",
+      "predicted_intent": "payment_billing",
+      "confidence": 0.31812960417087066
+    },
+    {
+      "tweet_id": 2435220,
+      "gold_intent": "technical_issue",
+      "predicted_intent": "digital_content",
+      "confidence": 0.27774468734531915
+    },
+    {
+      "tweet_id": 199877,
+      "gold_intent": "prime_membership",
+      "predicted_intent": "prime_membership",
+      "confidence": 0.42986336609771997
+    },
+    {
+      "tweet_id": 1307640,
+      "gold_intent": "amazon_pay",
+      "predicted_intent": "amazon_pay",
+      "confidence": 0.9389228470243997
+    },
+    {
+      "tweet_id": 1559838,
+      "gold_intent": "product_information",
+      "predicted_intent": "support_followup",
+      "confidence": 0.41622663078411015
+    },
+    {
+      "tweet_id": 229813,
+      "gold_intent": "prime_membership",
+      "predicted_intent": "prime_membership",
+      "confidence": 0.6602278595652433
+    },
+    {
+      "tweet_id": 2352289,
+      "gold_intent": "order_management",
+      "predicted_intent": "support_followup",
+      "confidence": 0.20630316979475422
+    },
+    {
+      "tweet_id": 2773091,
+      "gold_intent": "other",
+      "predicted_intent": "product_issue",
+      "confidence": 0.25247338374609823
+    },
+    {
+      "tweet_id": 939607,
+      "gold_intent": "order_management",
+      "predicted_intent": "digital_content",
+      "confidence": 0.3128456296265219
+    },
+    {
+      "tweet_id": 2398302,
+      "gold_intent": "returns_refunds",
+      "predicted_intent": "returns_refunds",
+      "confidence": 0.2886613392423408
+    },
+    {
+      "tweet_id": 1446392,
+      "gold_intent": "prime_membership",
+      "predicted_intent": "prime_membership",
+      "confidence": 0.9839343695978231
+    },
+    {
+      "tweet_id": 323766,
+      "gold_intent": "amazon_pay",
+      "predicted_intent": "amazon_pay",
+      "confidence": 0.6761581492049623
+    },
+    {
+      "tweet_id": 2703110,
+      "gold_intent": "other",
+      "predicted_intent": "support_followup",
+      "confidence": 0.9568779638074149
+    },
+    {
+      "tweet_id": 2954528,
+      "gold_intent": "product_issue",
+      "predicted_intent": "returns_refunds",
+      "confidence": 0.944330991538469
+    },
+    {
+      "tweet_id": 683736,
+      "gold_intent": "payment_billing",
+      "predicted_intent": "product_information",
+      "confidence": 0.5762275918595594
+    }
+  ]
+}
