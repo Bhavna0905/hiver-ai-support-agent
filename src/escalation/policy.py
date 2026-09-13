@@ -1,6 +1,7 @@
-
 from dataclasses import dataclass
 from typing import List, Optional
+
+
 @dataclass
 class EscalationDecision:
     escalate: bool
@@ -12,9 +13,6 @@ class EscalationDecision:
         if key == "reason":
             return self.reason
         raise KeyError(key)
-
-
-
 
 
 class EscalationPolicy:
@@ -31,6 +29,7 @@ class EscalationPolicy:
         self.confidence_threshold = confidence_threshold
         self.retrieval_threshold = retrieval_threshold
 
+        # High-risk situations that should always receive human review.
         self.high_risk_phrases: List[str] = [
             "fraud",
             "scam",
@@ -44,6 +43,57 @@ class EscalationPolicy:
             "legal action",
             "lawsuit",
             "police",
+        ]
+
+        # Signals that the customer has already tried to get help
+        # and the issue remains unresolved.
+        self.previous_support_phrases: List[str] = [
+            "already talked to customer service",
+            "already contacted customer service",
+            "already contacted support",
+            "already talked to support",
+            "contacted customer service",
+            "contacted support",
+            "called customer service",
+            "called support",
+            "sent mail to cs",
+            "emailed customer service",
+            "emailed support",
+            "still not working",
+            "still doesn't work",
+            "still does not work",
+            "still haven't received",
+            "still have not received",
+            "we are stuck",
+            "we're stuck",
+            "multiple times",
+            "twice",
+            "three times",
+        ]
+
+        # Signals that the customer repeatedly failed to complete
+        # an action, such as placing an order.
+        self.repeated_attempt_phrases: List[str] = [
+            "2 attempts",
+            "2 attempt",
+            "two attempts",
+            "3 attempts",
+            "3 attempt",
+            "three attempts",
+            "multiple attempts",
+            "multiple tries",
+            "failed attempts",
+            "failed attempt",
+        ]
+
+        # Narrow signals for unresolved financial issues.
+        self.unresolved_financial_phrases: List[str] = [
+            "amazon pay cashback",
+            "cashback since",
+            "cashback for",
+            "cashback not received",
+            "cashback hasn't arrived",
+            "cashback has not arrived",
         ]
 
     def decide(
@@ -105,7 +155,49 @@ class EscalationPolicy:
             )
 
         # ---------------------------------------------------------
-        # 3. Unsupported/catch-all intent is not safe to automate.
+        # 3. Previous unsuccessful support attempts.
+        # ---------------------------------------------------------
+        for phrase in self.previous_support_phrases:
+            if phrase in message:
+                return EscalationDecision(
+                    escalate=True,
+                    reason=(
+                        f"Customer indicates previous unsuccessful "
+                        f"support interaction: '{phrase}'. "
+                        "Human follow-up is appropriate."
+                    ),
+                )
+
+        # ---------------------------------------------------------
+        # 4. Repeated failed attempts indicate that self-service
+        #    handling has already failed.
+        # ---------------------------------------------------------
+        for phrase in self.repeated_attempt_phrases:
+            if phrase in message:
+                return EscalationDecision(
+                    escalate=True,
+                    reason=(
+                        f"Customer reports repeated failed attempts: "
+                        f"'{phrase}'. Human follow-up is appropriate."
+                    ),
+                )
+
+        # ---------------------------------------------------------
+        # 5. Unresolved financial issues can require human review,
+        #    especially when the customer reports missing cashback.
+        # ---------------------------------------------------------
+        for phrase in self.unresolved_financial_phrases:
+            if phrase in message:
+                return EscalationDecision(
+                    escalate=True,
+                    reason=(
+                        f"Unresolved financial issue detected: "
+                        f"'{phrase}'. Human review is appropriate."
+                    ),
+                )
+
+        # ---------------------------------------------------------
+        # 6. Unsupported/catch-all intent is not safe to automate.
         # ---------------------------------------------------------
         if intent == "other":
             return EscalationDecision(
@@ -117,32 +209,40 @@ class EscalationPolicy:
             )
 
         # ---------------------------------------------------------
-        # 4. Low classifier confidence.
+        # 7. Low confidence + weak evidence.
+        #
+        # Low confidence alone is not sufficient. This avoids
+        # escalating straightforward requests simply because the
+        # classifier is uncertain.
         # ---------------------------------------------------------
-        if confidence < self.confidence_threshold:
+        if (
+            confidence < self.confidence_threshold
+            and top_similarity < self.retrieval_threshold
+        ):
             return EscalationDecision(
                 escalate=True,
                 reason=(
-                    f"Low intent confidence ({confidence:.2f}) "
-                    f"below threshold ({self.confidence_threshold:.2f})."
+                    f"Low classifier confidence ({confidence:.2f}) "
+                    f"and weak historical evidence "
+                    f"(similarity {top_similarity:.2f})."
                 ),
             )
 
         # ---------------------------------------------------------
-        # 5. Weak historical evidence.
+        # 8. Weak historical evidence.
         # ---------------------------------------------------------
         if top_similarity < self.retrieval_threshold:
             return EscalationDecision(
                 escalate=True,
                 reason=(
-                    f"Historical evidence is weak "
+                    "Historical evidence is weak "
                     f"(similarity {top_similarity:.2f} below "
                     f"threshold {self.retrieval_threshold:.2f})."
                 ),
             )
 
         # ---------------------------------------------------------
-        # 6. Strong enough evidence for automated handling.
+        # 9. Strong enough evidence for automated handling.
         # ---------------------------------------------------------
         return EscalationDecision(
             escalate=False,

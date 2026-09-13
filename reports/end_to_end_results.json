@@ -1,0 +1,855 @@
+{
+  "dataset": {
+    "examples": 20,
+    "human_reviewed": true,
+    "annotators": 1
+  },
+  "intent": {
+    "accuracy": 0.6,
+    "macro_f1": 0.4230769230769231,
+    "weighted_f1": 0.5416666666666666,
+    "classification_report": {
+      "account_access": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 1.0
+      },
+      "amazon_pay": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3.0
+      },
+      "delivery_problem": {
+        "precision": 1.0,
+        "recall": 0.5,
+        "f1-score": 0.6666666666666666,
+        "support": 2.0
+      },
+      "digital_content": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 0.0
+      },
+      "order_management": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "other": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 2.0
+      },
+      "payment_billing": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "prime_membership": {
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1-score": 1.0,
+        "support": 3.0
+      },
+      "product_information": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1-score": 0.6666666666666666,
+        "support": 1.0
+      },
+      "product_issue": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "returns_refunds": {
+        "precision": 0.5,
+        "recall": 1.0,
+        "f1-score": 0.6666666666666666,
+        "support": 2.0
+      },
+      "support_followup": {
+        "precision": 0.3333333333333333,
+        "recall": 1.0,
+        "f1-score": 0.5,
+        "support": 1.0
+      },
+      "technical_issue": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "accuracy": 0.6,
+      "macro avg": {
+        "precision": 0.41025641025641024,
+        "recall": 0.5,
+        "f1-score": 0.4230769230769231,
+        "support": 20.0
+      },
+      "weighted avg": {
+        "precision": 0.5416666666666667,
+        "recall": 0.6,
+        "f1-score": 0.5416666666666666,
+        "support": 20.0
+      }
+    }
+  },
+  "escalation": {
+    "accuracy": 0.95,
+    "precision": 1.0,
+    "recall": 0.8333333333333334,
+    "f1": 0.9090909090909091,
+    "false_auto_handle_rate": 0.05,
+    "false_escalation_rate": 0.0
+  },
+  "examples": [
+    {
+      "tweet_id": 1601855,
+      "customer_message": "Amazon Is slower than a snail #freddyfiles is late @115821 do something pleaseee https://t.co/kkSHaIdc6W",
+      "gold_intent": "delivery_problem",
+      "predicted_intent": "support_followup",
+      "confidence": 0.285016699090709,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "We apologize for the delay in receiving your Freddy Files order (). We're here to help and want to ensure your package arrives as soon as possible. Can you please provide us with your order number so we can look into this further?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1041213",
+          "customer_tweet_id": 1337980,
+          "agent_tweet_id": 1337981,
+          "customer_message": "@AmazonHelp Send following reply as asked by @115850 @AmazonHelp ..now want to see how fast you lazy people do your job https://t.co/stZvZJfAfV",
+          "historical_response": "@322918 Please be assured that you will receive an email correspondence from our team shortly. (2/2) ^MD",
+          "similarity": 0.6619665622711182
+        },
+        {
+          "conversation_id": "AmazonHelp_2679356",
+          "customer_tweet_id": 2679355,
+          "agent_tweet_id": 2679357,
+          "customer_message": "@AmazonHelp Can you give me the reason of delay,??",
+          "historical_response": "@279936 We can't gain access to your account details via Twitter. Please connect with us using this link here: https://t.co/00q4Sqj9zL and we'll have this issue checked. ^KA",
+          "similarity": 0.657723069190979
+        },
+        {
+          "conversation_id": "AmazonHelp_1661480",
+          "customer_tweet_id": 1661475,
+          "agent_tweet_id": 1661473,
+          "customer_message": "@AmazonHelp Have sent a message to seller support but suspect this will be quicker!",
+          "historical_response": "@506763 Hey Paul, you can contact here via phone and ask to be transferred to Seller support:  https://t.co/JzP7hlA23B ^AT",
+          "similarity": 0.6563131809234619
+        }
+      ]
+    },
+    {
+      "tweet_id": 2525446,
+      "customer_message": "@AmazonHelp I’ve already talked to to Customer service 3 times I just want to voice my displeasure on a public forum",
+      "gold_intent": "support_followup",
+      "predicted_intent": "support_followup",
+      "confidence": 0.9598931615392944,
+      "expected_escalation": true,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "I understand your frustration and apologize for the inconvenience you've experienced. Can you please confirm if you've shared your order details and any relevant communication with our customer service team?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_2652349",
+          "customer_tweet_id": 2652347,
+          "agent_tweet_id": 2652346,
+          "customer_message": "@AmazonHelp I hope to hear back from you and that too with someone professional and knows how to deal with irate and irritated customers and change them to satisfied customers with a better customer service experience.",
+          "historical_response": "@748032 I get your concern, please confirm if you've shared your details on the link above? ^PS",
+          "similarity": 0.8455734252929688
+        },
+        {
+          "conversation_id": "AmazonHelp_2763504",
+          "customer_tweet_id": 2763503,
+          "agent_tweet_id": 2763505,
+          "customer_message": "@AmazonHelp I fill that forum but i need to talk with customer service on call",
+          "historical_response": "@219977 I get your concern. As you've shared the details, we'll look into it and reach out to you soon. ^AP",
+          "similarity": 0.8288411498069763
+        },
+        {
+          "conversation_id": "AmazonHelp_296761",
+          "customer_tweet_id": 296760,
+          "agent_tweet_id": 296762,
+          "customer_message": "@AmazonHelp I’ve already spoken with Customer Service",
+          "historical_response": "@186693 I see! What did the agent advise with regard to this delivery? Has carrier been contacted? Have you received this delivery? ^FR",
+          "similarity": 0.8211997747421265
+        }
+      ]
+    },
+    {
+      "tweet_id": 348231,
+      "customer_message": "@115850 Unable to topup pay balance. Sent mail to cs, called. Still not working.",
+      "gold_intent": "amazon_pay",
+      "predicted_intent": "amazon_pay",
+      "confidence": 0.7607223357464127,
+      "expected_escalation": true,
+      "predicted_escalation": true,
+      "escalation_reason": "Customer indicates previous unsuccessful support interaction: 'sent mail to cs'. Human follow-up is appropriate.",
+      "response": "Sorry to hear that you're unable to top up your pay balance. Can you please tell me what error message you're seeing when you try to add funds to your account?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1579696",
+          "customer_tweet_id": 1579696,
+          "agent_tweet_id": 1579694,
+          "customer_message": "@115850 @115821 unable to add pay balance and calls not connecting to support. Says can't find your order and call disconnects. Unhappy",
+          "historical_response": "@486414 Sorry to know you were unable to reach out support, Adil. Please reach us via chat or email. We'll assist. ^SV",
+          "similarity": 0.7117354869842529
+        },
+        {
+          "conversation_id": "AmazonHelp_1917108",
+          "customer_tweet_id": 1917108,
+          "agent_tweet_id": 1917109,
+          "customer_message": "@115850 i can't able to load money in my acc. __email__",
+          "historical_response": "@571010 That's strange. May I know what error do you see? Please don’t provide your details as we consider them 1/2 ^SH",
+          "similarity": 0.6936089992523193
+        },
+        {
+          "conversation_id": "AmazonHelp_315766",
+          "customer_tweet_id": 315766,
+          "agent_tweet_id": 315765,
+          "customer_message": "@115850 Hi. Not able to load amazon pay balance. throwing an error",
+          "historical_response": "@191390 Sorry to know you're having trouble loading Amazon pay balance. Kindly connect with us here: https://t.co/R3EfhzgU8B. ^PS",
+          "similarity": 0.6897898316383362
+        }
+      ]
+    },
+    {
+      "tweet_id": 1528663,
+      "customer_message": "@AmazonHelp Nope, just \"Sorry to tell you there may be a delay in delivering your order. Please allow an additional day or two for the parcel to arrive\"",
+      "gold_intent": "delivery_problem",
+      "predicted_intent": "delivery_problem",
+      "confidence": 0.7787140401611924,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "I'm very sorry! Can you please tell me more about your order, such as the order number or the item you're expecting? This will help me better understand the situation and provide a more accurate resolution.",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1687251",
+          "customer_tweet_id": 1687241,
+          "agent_tweet_id": 1687243,
+          "customer_message": "@AmazonHelp “We’re sorry to tell you that there may be a delay in delivering your order. Please allow an additional day or two for the parcel to arrive”",
+          "historical_response": "@512398 I'm very sorry! In rare cases, delays may occur. To review our options, please reach out here: https://t.co/JzP7hlA23B ^WT",
+          "similarity": 0.9201358556747437
+        },
+        {
+          "conversation_id": "AmazonHelp_1652914",
+          "customer_tweet_id": 1652913,
+          "agent_tweet_id": 1652915,
+          "customer_message": "@AmazonHelp Yes. 'We’re sorry your parcel is late. If it hasn’t arrived by Thursday, 9 Nov, please come back for more options'",
+          "historical_response": "@504621 Hi Alistair- Who is the carrier for the delivery? Delays can happen for a number of reasons. ^NV",
+          "similarity": 0.8358387351036072
+        },
+        {
+          "conversation_id": "AmazonHelp_982633",
+          "customer_tweet_id": 982633,
+          "agent_tweet_id": 982632,
+          "customer_message": "@AmazonHelp my order was scheduled to arrive yesterday and didnt. I was not informed that the parcel was late and could take up to 20 Oct to",
+          "historical_response": "@352983 Sorry to hear this. Has any reason been given for the delay? ^KM",
+          "similarity": 0.8259737491607666
+        }
+      ]
+    },
+    {
+      "tweet_id": 1522564,
+      "customer_message": "@AmazonHelp See images of suspicious files and program sent after contacting https://t.co/6luaQYg6lU.  Was linked to a google drive account for files. https://t.co/nOx6WUUbk3",
+      "gold_intent": "account_access",
+      "predicted_intent": "account_access",
+      "confidence": 0.34011079924047344,
+      "expected_escalation": true,
+      "predicted_escalation": true,
+      "escalation_reason": "Account-access issue requires human review.",
+      "response": "I'm sorry to hear that you're experiencing suspicious activity on your account. Can you please provide me with more information about the files and program you received after contacting the provided link?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1447208",
+          "customer_tweet_id": 1447207,
+          "agent_tweet_id": 1447209,
+          "customer_message": "@AmazonHelp Already spoke to 3-4 representatives who were useless in assisting with suspicious activity on my account. Your processes are truly awful.",
+          "historical_response": "@455814 I'm sorry for the poor experience! What information were you given when you spoke with us? ^AC",
+          "similarity": 0.7053358554840088
+        },
+        {
+          "conversation_id": "AmazonHelp_1666069",
+          "customer_tweet_id": 1666069,
+          "agent_tweet_id": 1666068,
+          "customer_message": "@AmazonHelp hi, I have received a suspicious email purporting to be from Amazon - can you help please?",
+          "historical_response": "@507577 Hi! We're here to help, John! You can find tips on determining if the e-mail is legitimate here: https://t.co/gFOzDZaPYE ^AB",
+          "similarity": 0.7049242854118347
+        },
+        {
+          "conversation_id": "AmazonHelp_929200",
+          "customer_tweet_id": 929202,
+          "agent_tweet_id": 929203,
+          "customer_message": "@AmazonHelp the email it would be sending it from is the hackers https://t.co/DSgPynD0tV",
+          "historical_response": "@340464 Are you able to contact us using the phone number on the page? Keep us posted! ^NM",
+          "similarity": 0.703538715839386
+        }
+      ]
+    },
+    {
+      "tweet_id": 1160647,
+      "customer_message": "@115830 Hi got an email about a refund but it’s a diff card now than the one I paid on as it’s a new card, will that make a difference?",
+      "gold_intent": "returns_refunds",
+      "predicted_intent": "returns_refunds",
+      "confidence": 0.8258719415180733,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "We apologize for the confusion. Can you please confirm the expiration date of your new card and the original card used for payment?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_347589",
+          "customer_tweet_id": 347589,
+          "agent_tweet_id": 347588,
+          "customer_message": "@115850 got a message that my order was shipped yesterday. This morning I get a refund of the purchase amount on my card. Confused!!",
+          "historical_response": "@198774 Sorry for the confusion. Please contact us here: https://t.co/vlvfJr4nN9 and we'll be glad to help you. ^SI",
+          "similarity": 0.6882907748222351
+        },
+        {
+          "conversation_id": "AmazonHelp_360249",
+          "customer_tweet_id": 360249,
+          "agent_tweet_id": 360247,
+          "customer_message": "Refund not received but your message received me shows that refund was success on my visa card @115821",
+          "historical_response": "@201317 Could you confirm if this time frame has passed? (2/2) ^HD",
+          "similarity": 0.6594197750091553
+        },
+        {
+          "conversation_id": "AmazonHelp_2094002",
+          "customer_tweet_id": 2094002,
+          "agent_tweet_id": 2161849,
+          "customer_message": "@115821 On checking it turns out that the refund was done on a card that was charged earlier but is not active and is also removed from amazon accnt",
+          "historical_response": "@352573 Hi. We are required to process refunds to the original payment method used. Have you been in touch with your bank? ^TP",
+          "similarity": 0.656908392906189
+        }
+      ]
+    },
+    {
+      "tweet_id": 2435220,
+      "customer_message": "@AmazonHelp Did all that. I noticed that FSgo clears up when it goes to commercials.  Why do all of the apps do this? Are apps not up to date for this?",
+      "gold_intent": "technical_issue",
+      "predicted_intent": "digital_content",
+      "confidence": 0.8874795673202792,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "We apologize for the inconvenience you're experiencing with FSgo. It's interesting to note that many apps, including some on your Fire TV, seem to clear up during commercial breaks. We'll look into this further to see if there's an update or fix available. Can you please tell us more about your current Fire TV model and its software version?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1373176",
+          "customer_tweet_id": 1373171,
+          "agent_tweet_id": 1373169,
+          "customer_message": "@AmazonHelp Trust me, it’s not that... It cleared up after the first commercial break.  Every app does that.  The 2015 model didn’t do that.",
+          "historical_response": "@427424 If you're still having trouble after following troubleshooting steps, please reach out to us here: https://t.co/hApLpMlfHN ^HC",
+          "similarity": 0.6958355903625488
+        },
+        {
+          "conversation_id": "AmazonHelp_2310047",
+          "customer_tweet_id": 2310046,
+          "agent_tweet_id": 2310048,
+          "customer_message": "@AmazonHelp Just my TV...and it does it all the time, sometimes worse than others. No other apps do it.",
+          "historical_response": "@669974 Please try these troubleshooting steps and keep us updated: https://t.co/mVwLgVdtyn ^BE",
+          "similarity": 0.5811916589736938
+        },
+        {
+          "conversation_id": "AmazonHelp_595657",
+          "customer_tweet_id": 595659,
+          "agent_tweet_id": 595660,
+          "customer_message": "@AmazonHelp Any off the apps they all say the same thing when I load them up.",
+          "historical_response": "@261146 I'm sorry that you're having some issues with the apps on your Fire Tablet, Ricky. Please try these troubleshooting steps: https://t.co/F5DZXcSV1r  And let us know if you need further assistance!  ^SP",
+          "similarity": 0.5461440086364746
+        }
+      ]
+    },
+    {
+      "tweet_id": 199877,
+      "customer_message": "@AmazonHelp how can I lodge a complaint about the Amazon Prime discount for preordered games changing from 20% to 10%?",
+      "gold_intent": "prime_membership",
+      "predicted_intent": "prime_membership",
+      "confidence": 0.724811054759603,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "We understand your concern about the change in the Prime discount for preordered games. Can you please confirm if you received an order confirmation via email for your preordered games and if you see the discount on there?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_693",
+          "customer_tweet_id": 693,
+          "agent_tweet_id": 692,
+          "customer_message": "@AmazonHelp since when you stop giving 20% off videogame pre-orders (amazon prime members) im confused? why?",
+          "historical_response": "@115852 We still offer discounts on eligible physical game pre-orders. For further details on Prime benefits: https://t.co/80y2YnlQGJ ^MB",
+          "similarity": 0.7907994985580444
+        },
+        {
+          "conversation_id": "AmazonHelp_2696096",
+          "customer_tweet_id": 2696095,
+          "agent_tweet_id": 2696097,
+          "customer_message": "@AmazonHelp All i want is my 20% prime games discount on the 4 amiibo I preordered but no one seemed to know the policy.",
+          "historical_response": "@757623 I understand. Did you receive an order confirmation via e-mail? If so, do you see the discount on there? ^AL.",
+          "similarity": 0.7733294367790222
+        },
+        {
+          "conversation_id": "AmazonHelp_1303718",
+          "customer_tweet_id": 1303718,
+          "agent_tweet_id": 1303716,
+          "customer_message": "@AmazonHelp I am so angry. I preordered game, you mucked it up, delayed, so I cancelled and ordered digital and lost 15$ discount.",
+          "historical_response": "@394826 I'm sorry, pre-order discounts are only available on physical games. More information here: https://t.co/2zkljoi42F ^MB",
+          "similarity": 0.729997456073761
+        }
+      ]
+    },
+    {
+      "tweet_id": 1307640,
+      "customer_message": "Another pathetic experience from Amazon india.not received my amazon pay cashback since 2 weeks @115851 @115850",
+      "gold_intent": "amazon_pay",
+      "predicted_intent": "amazon_pay",
+      "confidence": 0.9651943011491864,
+      "expected_escalation": true,
+      "predicted_escalation": true,
+      "escalation_reason": "Unresolved financial issue detected: 'amazon pay cashback'. Human review is appropriate.",
+      "response": "We apologize for the inconvenience you're experiencing with your Amazon Pay cashback. Can you please provide more details about your order and payment history so we can assist you further?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_21432",
+          "customer_tweet_id": 21432,
+          "agent_tweet_id": 1560858,
+          "customer_message": "@115850 @115850 @AmazonHelp @115821 six month over , did not get cashback , You are doing fraud in India @135979 @146956 @135789",
+          "historical_response": "@482230 Did you report this to our customer service team here: https://t.co/vlvfJr4nN9? ^SI",
+          "similarity": 0.8417834043502808
+        },
+        {
+          "conversation_id": "AmazonHelp_486691",
+          "customer_tweet_id": 486691,
+          "agent_tweet_id": 486690,
+          "customer_message": "@115850 I haven’t received amazon pay cashback twice since September. I have also contacted customer care a number of times. Please look into the matter. Thank you.",
+          "historical_response": "@230812 I’m sorry about this experience, Vikram. I'd like to closely look into this and get this investigated further. Please share your details here: https://t.co/GIJyeYqKE0 and I'll get in touch with you. ^MK",
+          "similarity": 0.8213576078414917
+        },
+        {
+          "conversation_id": "AmazonHelp_2514451",
+          "customer_tweet_id": 2514451,
+          "agent_tweet_id": 2514449,
+          "customer_message": "@115850 i had very bad experience with the amazon.he customer care is very worst to solve problem. i didn't got my cashback yet??",
+          "historical_response": "@716429 Sorry for the trouble with the cashback. Kindly drop in your details here: https://t.co/cBreqLBv8x and we'll work on it. ^NS",
+          "similarity": 0.8126176595687866
+        }
+      ]
+    },
+    {
+      "tweet_id": 1559838,
+      "customer_message": "@AmazonHelp yes your customer won't give me a compensation for an item that the price decreased overnight.",
+      "gold_intent": "product_information",
+      "predicted_intent": "product_information",
+      "confidence": 0.7306151893656976,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "I can help you with the price change. Can you please provide me with your order number so I can look into this further?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1567495",
+          "customer_tweet_id": 1567494,
+          "agent_tweet_id": 1567496,
+          "customer_message": "@AmazonHelp Yes. The price of my item decreased by $50 less than 24 hours after I received it and Amazon doesn't want to fix it.",
+          "historical_response": "@483727 I can pass along your concerns to the proper team, Valerie! You can also reach out to us here: https://t.co/LpUsmtD7MM ^FR",
+          "similarity": 0.7111910581588745
+        },
+        {
+          "conversation_id": "AmazonHelp_684710",
+          "customer_tweet_id": 684709,
+          "agent_tweet_id": 684711,
+          "customer_message": "@AmazonHelp I purchased an item then the price dropped 35% after 4 days, i called to ask if i could get reimbursed. then i received the response above. Its one thing to just say no, the response above \"amazon wont reach out to you...\" was in poor taste.  I just feel like i got a bad deal.",
+          "historical_response": "@283429 Apologies for any upset caused. You have the option to return it and reorder the lower priced one if you wish. ^BD",
+          "similarity": 0.6856815814971924
+        },
+        {
+          "conversation_id": "AmazonHelp_792667",
+          "customer_tweet_id": 792667,
+          "agent_tweet_id": 792666,
+          "customer_message": "@AmazonHelp The price of an item I ordered has dropped, and my item has yet to ship. Can my order be updated to reflect the lower price?",
+          "historical_response": "@280047 If the item hasn't been shipped yet, Steven, you can cancel the item and reorder at the lower price. I hope this helps! ^JD",
+          "similarity": 0.682905912399292
+        }
+      ]
+    },
+    {
+      "tweet_id": 229813,
+      "customer_message": "@AmazonHelp No, none. What’s the point in paying for prime when you don’t receive your items the next day as stated?",
+      "gold_intent": "prime_membership",
+      "predicted_intent": "prime_membership",
+      "confidence": 0.8725849756143466,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "I'm sorry to hear that you're not receiving your items the next day as expected. Can you please check your order confirmation email to confirm the delivery date provided?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_555332",
+          "customer_tweet_id": 555332,
+          "agent_tweet_id": 555331,
+          "customer_message": "@AmazonHelp whats the point in me paying for prime if you don't deliver next day? Ordered an item yesterday and it's not arriving until tomorrow?",
+          "historical_response": "@249655 I'm sorry for the wait. We always aim to meet the date provided during checkout, before you select \"Place your order\" and are charged. To confirm, have we missed the delivery date provided on your order confirmation e-mail? ^MB",
+          "similarity": 0.8545340299606323
+        },
+        {
+          "conversation_id": "AmazonHelp_2318306",
+          "customer_tweet_id": 2318306,
+          "agent_tweet_id": 2318304,
+          "customer_message": "What is the point in paying prime if you're not going to deliver my items next day @115830 . Last 3 items I've ordered have all been 3-4 day deliverys now!!",
+          "historical_response": "@672053 Has a reason been provided for these delays? Have you noticed if this is happening with a particular carrier, or does it seem to be happening with all carriers? ^KM",
+          "similarity": 0.8489664793014526
+        },
+        {
+          "conversation_id": "AmazonHelp_2850593",
+          "customer_tweet_id": 2850593,
+          "agent_tweet_id": 2850591,
+          "customer_message": "@AmazonHelp why do I pay for prime when nothing is delivered the next day? Since when is Thursday the next day when ordering something at 7pm Monday?",
+          "historical_response": "@140382 I apologize for the longer than expected wait. During the busy season, there may be a little longer processing time. Please see more here: https://t.co/RXbtrZ8vfe ^CS",
+          "similarity": 0.8468165993690491
+        }
+      ]
+    },
+    {
+      "tweet_id": 2352289,
+      "customer_message": "@AmazonHelp 2 attempts to order an orthapedic chair end in abject failure. Completely useless service from Amazon",
+      "gold_intent": "order_management",
+      "predicted_intent": "product_issue",
+      "confidence": 0.46639291217590995,
+      "expected_escalation": true,
+      "predicted_escalation": true,
+      "escalation_reason": "Customer reports repeated failed attempts: '2 attempts'. Human follow-up is appropriate.",
+      "response": "I apologize for the poor experience with your orthopedic chair orders. Can you please provide me with the order numbers for the two failed attempts so I can look into this further?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_622462",
+          "customer_tweet_id": 622461,
+          "agent_tweet_id": 622463,
+          "customer_message": "@AmazonHelp Failed to deliver chairs needed for Thanksgiving on time, failed to provide the delivery driver with instructions after I spent 20 minutes on phone with you, and now won’t issue refund until next week when chairs get back to you",
+          "historical_response": "@179558 Thanks for the details, Joey! Who was the carrier for the package so we can help review further? ^TM",
+          "similarity": 0.6842025518417358
+        },
+        {
+          "conversation_id": "AmazonHelp_1776209",
+          "customer_tweet_id": 1776211,
+          "agent_tweet_id": 1776212,
+          "customer_message": "@AmazonHelp No just to rebuy it with the chair then send the one that is going to arrive tomorrow back.",
+          "historical_response": "@533755 I'm sorry for the poor experience. To claim the promotion, if still available, the items will have to be ordered together. ^AC",
+          "similarity": 0.6408487558364868
+        },
+        {
+          "conversation_id": "AmazonHelp_2170953",
+          "customer_tweet_id": 2170953,
+          "agent_tweet_id": 2170952,
+          "customer_message": "@AmazonHelp When you pay £164 for a office chair, you expect better packaging, rejected delivery",
+          "historical_response": "@636804 I am very sorry to hear this, can you please leave feedback through the following link: https://t.co/LgXXeD7XCy\nThanks ^GA",
+          "similarity": 0.6290159821510315
+        }
+      ]
+    },
+    {
+      "tweet_id": 2773091,
+      "customer_message": "First time disappointed with @115821. Email sent to vendor! 😡Figures it’s something that I needed.",
+      "gold_intent": "other",
+      "predicted_intent": "returns_refunds",
+      "confidence": 0.3976401919798041,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "I'm sorry to hear that you're disappointed with your recent purchase. Can you please provide me with your order number so I can look into this further for you?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1539916",
+          "customer_tweet_id": 1539916,
+          "agent_tweet_id": 1539914,
+          "customer_message": "@115821 thanks for disappointing a once loyal customer for the last time #disappointed",
+          "historical_response": "@477286 I'm sorry for the poor experience! We'd like to help. Without provided personal/accnt info, can you tell us what's going on?  ^AG",
+          "similarity": 0.7951705455780029
+        },
+        {
+          "conversation_id": "AmazonHelp_2161892",
+          "customer_tweet_id": 2161892,
+          "agent_tweet_id": 2161891,
+          "customer_message": "@115821 disappointed with your customer service =(",
+          "historical_response": "@634827 I'm sorry your experience with us wasn't pleasant! Without provding personal information, can you tell me what's going on? ^SY",
+          "similarity": 0.7730885744094849
+        },
+        {
+          "conversation_id": "AmazonHelp_2906656",
+          "customer_tweet_id": 2906656,
+          "agent_tweet_id": 2906655,
+          "customer_message": "@115821 WTF!  Why would you ship my purchase like this!!!  It was a gift #failed . https://t.co/jwZolTm5Pz",
+          "historical_response": "@400842 I'm sorry for the trouble with this order! When you check the product details page on the website, is there a note stating it will ship in the manufacturer's packaging? ^MW",
+          "similarity": 0.7673601508140564
+        }
+      ]
+    },
+    {
+      "tweet_id": 939607,
+      "customer_message": "Amazonで買ったやつ勝手にキャンセルされたこと誰かある？",
+      "gold_intent": "order_management",
+      "predicted_intent": "technical_issue",
+      "confidence": 0.5042115574319759,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "、アマゾンです。ご注文がキャンセルとなった場合には理由をご確認ください。ご注文番号をご提供いただけますか？",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_2074001",
+          "customer_tweet_id": 2074001,
+          "agent_tweet_id": 2074000,
+          "customer_message": "Amazonで注文してたのに何か勝手にキャンセルされてんだけど何で！？",
+          "historical_response": "@613401 リプライ失礼します、アマゾンです。ご注文がキャンセルとなった場合にはＥメールで理由をご案内しております。恐れ入りますが、ご確認ください。なお、Ｅメールと同じ内容をアカウントサービスのメッセージセンターでもご覧いただけます。ET",
+          "similarity": 0.8988759517669678
+        },
+        {
+          "conversation_id": "AmazonHelp_2819242",
+          "customer_tweet_id": 2819242,
+          "agent_tweet_id": 2819241,
+          "customer_message": "amazonでゴミ箱注文したのに勝手にキャンセルなっててんけど\n意味わからんありえん",
+          "historical_response": "@785823 ご注文がキャンセルになる場合は、理由をEメールでお知らせしております。受信ボックスをご確認下さい。見当たらない場合には、こちらのメッセージセンターをご確認下さい。 https://t.co/qUIvAtLMpi EK",
+          "similarity": 0.895628035068512
+        },
+        {
+          "conversation_id": "AmazonHelp_2385487",
+          "customer_tweet_id": 2385487,
+          "agent_tweet_id": 2385486,
+          "customer_message": "amazonの商品勝手にキャンセルなっとって今注文したんやけど注文番号こん。なして？？",
+          "historical_response": "@687526 (1/2)コンビニ払いをご利用ではありませんか。可能性として、当サイトからのメールがメーラーの受信設定によりお支払番号のお知らせメールが届かず、お支払いただけないまま、キャンセルとなっているかと思われます。ET",
+          "similarity": 0.8805819153785706
+        }
+      ]
+    },
+    {
+      "tweet_id": 2398302,
+      "customer_message": "@AmazonHelp Yes, first thing we did was contacted @115821 and we were told that since it was a third-party, we can't receive a refund. We are stuck!",
+      "gold_intent": "returns_refunds",
+      "predicted_intent": "returns_refunds",
+      "confidence": 0.6034496898417446,
+      "expected_escalation": true,
+      "predicted_escalation": true,
+      "escalation_reason": "Customer indicates previous unsuccessful support interaction: 'we are stuck'. Human follow-up is appropriate.",
+      "response": "I'd like to help you further. Can you please provide more details about the third-party seller and the specific issue you're experiencing with your order? This will help me better understand the situation and provide a more accurate resolution.",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1286374",
+          "customer_tweet_id": 1286374,
+          "agent_tweet_id": 1286375,
+          "customer_message": "@AmazonHelp before requesting a refund,\" but I had already told them I was. I was able to again request the refund thru Amazon, but now I have no idea",
+          "historical_response": "@420875 If the seller is not responding you can file an A-z Guarantee Claim.: https://t.co/4S5ALLg6t9",
+          "similarity": 0.8835965394973755
+        },
+        {
+          "conversation_id": "AmazonHelp_854447",
+          "customer_tweet_id": 854447,
+          "agent_tweet_id": 854445,
+          "customer_message": "@AmazonHelp @115850 already returned..!! The executive I called last time said that your refund will be initiated in few hours.. but it never happened..",
+          "historical_response": "@183550 I’d like to help you; please fill this form: https://t.co/beaaDm0muc and I’ll contact you soon. ^BA",
+          "similarity": 0.8671689033508301
+        },
+        {
+          "conversation_id": "AmazonHelp_1031587",
+          "customer_tweet_id": 1031581,
+          "agent_tweet_id": 1031578,
+          "customer_message": "@AmazonHelp @115850 neither they initiated refund for the same. please look into it and do the needful",
+          "historical_response": "@364093 I apologize for the inconvenience. Kindly share your details here: https://t.co/beaaDm0muc and I’ll contact you soon. ^VH",
+          "similarity": 0.8625308275222778
+        }
+      ]
+    },
+    {
+      "tweet_id": 1446392,
+      "customer_message": "@AmazonHelp What would you offer as compensation to a non-prime case? the same? if yes, so what's the point of paying prime membership fee??!",
+      "gold_intent": "prime_membership",
+      "predicted_intent": "prime_membership",
+      "confidence": 0.9511490238923006,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "We apologize for the delays in your non-Prime orders. We understand your frustration and want to assure you that we're committed to making things right. Can you please provide us with your Prime membership details so we can review your account and discuss possible compensation options with you?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1456288",
+          "customer_tweet_id": 1456283,
+          "agent_tweet_id": 1456285,
+          "customer_message": "@AmazonHelp Whats the point in paying for prime?",
+          "historical_response": "@458014 I'm really sorry about that Ryan. What kind of insight were you given when you contacted customer service last? ^AJ",
+          "similarity": 0.7583907842636108
+        },
+        {
+          "conversation_id": "AmazonHelp_1956011",
+          "customer_tweet_id": 1956013,
+          "agent_tweet_id": 1956014,
+          "customer_message": "@AmazonHelp done. now what? Whats the point in having prime membership?  How these three delays in last 30 days be compensated? @115850",
+          "historical_response": "@576781 I understand you're upset with the delay of orders. Our team has sent you an email, kindly check the same. ^AP",
+          "similarity": 0.7360472679138184
+        },
+        {
+          "conversation_id": "AmazonHelp_1453786",
+          "customer_tweet_id": 1453793,
+          "agent_tweet_id": 1453794,
+          "customer_message": "@AmazonHelp Makes me wonder why I pay for prime",
+          "historical_response": "@457380 This certainly isn't what we like to hear! Have you provided your details in the link previously given? ^HC",
+          "similarity": 0.7289281487464905
+        }
+      ]
+    },
+    {
+      "tweet_id": 323766,
+      "customer_message": "@115850 Im not able to add money to AmazonPay thr DebitCard. Im being taken to same page after filling the info.#AmazonGreatIndianFestival https://t.co/nDJn8OGBmn",
+      "gold_intent": "amazon_pay",
+      "predicted_intent": "amazon_pay",
+      "confidence": 0.978283658513001,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "We apologize for the inconvenience you're experiencing with adding money to Amazon Pay via DebitCard. Can you please tell us the exact error message you're seeing?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_2419729",
+          "customer_tweet_id": 2419729,
+          "agent_tweet_id": 2419728,
+          "customer_message": "@115850 I am not able to add money to amazon pay as it is not supporting rupay debit card please help?",
+          "historical_response": "@695143 That's unusual, we do support RuPay debit cards. Have you tried reporting this to our support team: https://t.co/vlvfJr4nN9 ? ^MP",
+          "similarity": 0.8720425367355347
+        },
+        {
+          "conversation_id": "AmazonHelp_1570306",
+          "customer_tweet_id": 1570306,
+          "agent_tweet_id": 1570304,
+          "customer_message": "@115850 @AmazonHelp Very frustrating experience. I'm not able to add money to Amazon Pay via debit card &amp; not avail the 15% off using APay",
+          "historical_response": "@182622 I'm sorry to know about that. May I know what error are you getting? ^SK",
+          "similarity": 0.8437411785125732
+        },
+        {
+          "conversation_id": "AmazonHelp_281422",
+          "customer_tweet_id": 281422,
+          "agent_tweet_id": 281421,
+          "customer_message": "@AmazonHelp I'm having trouble in adding money to Amazon pay with rupay debit card",
+          "historical_response": "@183049 We're sorry to know about the trouble. Please contact us here: https://t.co/rS49hgaADF and we’ll be glad to help you.^RS",
+          "similarity": 0.84285968542099
+        }
+      ]
+    },
+    {
+      "tweet_id": 2703110,
+      "customer_message": "I think the @115821 Customer Service Reps that I spoke with today deserve a shout out. \nSo: \nThank you Kris and Austin for the wonderful service, I really appreciate it.",
+      "gold_intent": "other",
+      "predicted_intent": "support_followup",
+      "confidence": 0.9882335381238226,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "We're glad to hear that you're appreciative of the service you received from Kris and Austin. We strive to provide excellent customer service, and it's great to know that our team members were able to meet your expectations.",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_2905099",
+          "customer_tweet_id": 2905099,
+          "agent_tweet_id": 2905098,
+          "customer_message": "Shoutout to @115821 for excellent customer service!",
+          "historical_response": "@804498 Shoutout to you for being an excellent customer! 😎 ^AP",
+          "similarity": 0.7981002330780029
+        },
+        {
+          "conversation_id": "AmazonHelp_258803",
+          "customer_tweet_id": 258803,
+          "agent_tweet_id": 258804,
+          "customer_message": "Super-impressed by the customer service from @115830 tonight. Thank you!",
+          "historical_response": "@177531 I'm glad we were able to take care of this for you! Please use the survey at the end of the email we sent you... (1/2)",
+          "similarity": 0.7923989295959473
+        },
+        {
+          "conversation_id": "AmazonHelp_373282",
+          "customer_tweet_id": 373282,
+          "agent_tweet_id": 373281,
+          "customer_message": "Shout out to @115821 for the great customer service I just received ❤️",
+          "historical_response": "@204451 Thank you for sharing the love! 💖 We all hope you have a great rest of the day! ^EP",
+          "similarity": 0.7803463935852051
+        }
+      ]
+    },
+    {
+      "tweet_id": 2954528,
+      "customer_message": "@AmazonHelp just received a Christmas gift book like this! Can I get a replacement? https://t.co/SEVkT4AwI9",
+      "gold_intent": "product_issue",
+      "predicted_intent": "returns_refunds",
+      "confidence": 0.8220725329775092,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "Sorry to hear that you received a damaged book. Can you please provide us with the order number so we can look into a replacement for you?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_1949912",
+          "customer_tweet_id": 1949911,
+          "agent_tweet_id": 1949913,
+          "customer_message": "@AmazonHelp Yeah I already requested a replacement and shipped the damaged book back thank you",
+          "historical_response": "@579208 Anytime! Let us know if you have any other questions or concerns. We're always here to help! ^AL",
+          "similarity": 0.7699077725410461
+        },
+        {
+          "conversation_id": "AmazonHelp_791056",
+          "customer_tweet_id": 791056,
+          "agent_tweet_id": 791055,
+          "customer_message": "@AmazonHelp @127390 not happy with how this book has been delivered to me, amazon is there any way you can send me a new copy https://t.co/3zZU0e52fk",
+          "historical_response": "@308630 I am sorry to see this. Have you checked replacement options here: https://t.co/BjuXE6veDS ^PK",
+          "similarity": 0.722629964351654
+        },
+        {
+          "conversation_id": "AmazonHelp_1085965",
+          "customer_tweet_id": 1085965,
+          "agent_tweet_id": 1085964,
+          "customer_message": "@AmazonHelp hi, I ordered a brand new book that has arrived in terrible condition. Would you be able to send another?",
+          "historical_response": "@283092 I'm sorry for the book's condition. We have a return process that also provides avail options here: https://t.co/RDZECOpuM7 ^HM",
+          "similarity": 0.7226060628890991
+        }
+      ]
+    },
+    {
+      "tweet_id": 683736,
+      "customer_message": "@AmazonHelp This is the one, but the price on the listing is less than what I’m being charged, the listing price seems correct when I bought, because I compared to HMV and they were £25 too https://t.co/uIBpvjfCwv",
+      "gold_intent": "payment_billing",
+      "predicted_intent": "product_information",
+      "confidence": 0.4261023520915705,
+      "expected_escalation": false,
+      "predicted_escalation": false,
+      "escalation_reason": "Intent confidence and historical evidence are strong enough for automated handling.",
+      "response": "Thank you for confirming the product is the one you're looking for. Can you please tell me more about the price difference you're seeing between the listing price and your order total?",
+      "evidence": [
+        {
+          "conversation_id": "AmazonHelp_448295",
+          "customer_tweet_id": 448294,
+          "agent_tweet_id": 448296,
+          "customer_message": "@AmazonHelp That’s the one, and yes the order is more than £30.",
+          "historical_response": "@221199 Thank you for confirming! Let's troubleshoot this together in real time. Please give us a call or chat with us here: https://t.co/JzP7hlA23B. ^BA",
+          "similarity": 0.7580598592758179
+        },
+        {
+          "conversation_id": "AmazonHelp_2290989",
+          "customer_tweet_id": 2290991,
+          "agent_tweet_id": 2290992,
+          "customer_message": "@AmazonHelp Hi, this is definitely not the authorisation one as the value is the same as the order, and not £1",
+          "historical_response": "@665438 Hey Bastien. Please get in touch - https://t.co/JzP7hlA23B we'd like to look into your concern further. Please keep us posted. ^TP",
+          "similarity": 0.6787197589874268
+        },
+        {
+          "conversation_id": "AmazonHelp_1319881",
+          "customer_tweet_id": 1319883,
+          "agent_tweet_id": 1319884,
+          "customer_message": "@AmazonHelp Thanks I have already checked there and there's nothing showing for £7.99 can you tell me what it is please?",
+          "historical_response": "@428200 We can not access your account. It could be for Prime or Music - pls check your subscriptions:  https://t.co/ZnFyzVYnUm ^TD",
+          "similarity": 0.6751216650009155
+        }
+      ]
+    }
+  ]
+}
