@@ -1,9 +1,9 @@
 {
   "examples": 200,
-  "recall_at_1": 0.42,
-  "recall_at_3": 0.565,
-  "recall_at_5": 0.635,
-  "mrr": 0.5004166666666666,
-  "examples_with_unknown_retrieved_intent": 102,
+  "recall_at_1": 0.46,
+  "recall_at_3": 0.62,
+  "recall_at_5": 0.66,
+  "mrr": 0.5370833333333334,
+  "examples_with_unknown_retrieved_intent": 107,
   "evaluation_note": "Retrieved historical customer messages are assigned a broad intent using an evaluation-only keyword lexicon. These labels are not production ground truth and should be interpreted as approximate retrieval relevance."
 }

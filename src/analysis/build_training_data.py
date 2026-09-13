@@ -8,6 +8,7 @@ GOLDEN_FILE = Path("data/golden/golden_dataset.csv")
 OUTPUT_FILE = Path("data/processed/intent_training.csv")
 
 CHUNK_SIZE = 100_000
+MAX_OTHER_EXAMPLES = 2_000
 
 
 INTENT_RULES = {
@@ -28,6 +29,7 @@ INTENT_RULES = {
         "package hasnt",
         "still waiting for my package",
     ],
+
     "order_management": [
         "cancel my order",
         "cancel order",
@@ -38,6 +40,7 @@ INTENT_RULES = {
         "change shipping address",
         "order status",
     ],
+
     "returns_refunds": [
         "return this",
         "return my",
@@ -50,6 +53,7 @@ INTENT_RULES = {
         "refund not",
         "replacement",
     ],
+
     "payment_billing": [
         "payment declined",
         "payment failed",
@@ -62,6 +66,7 @@ INTENT_RULES = {
         "billing issue",
         "payment issue",
     ],
+
     "amazon_pay": [
         "amazon pay",
         "amazonpay",
@@ -72,6 +77,7 @@ INTENT_RULES = {
         "recharge amazon pay",
         "top up amazon pay",
     ],
+
     "account_access": [
         "can't login",
         "cant login",
@@ -87,16 +93,17 @@ INTENT_RULES = {
         "suspicious login",
         "someone accessed my account",
     ],
+
     "prime_membership": [
         "prime membership",
         "prime member",
-        "prime subscription",
         "prime subscription",
         "cancel prime",
         "prime charge",
         "prime fee",
         "prime benefits",
     ],
+
     "digital_content": [
         "prime video",
         "primevideo",
@@ -110,6 +117,7 @@ INTENT_RULES = {
         "when is the movie",
         "streaming",
     ],
+
     "technical_issue": [
         "app is not working",
         "app isn't working",
@@ -128,6 +136,7 @@ INTENT_RULES = {
         "cant connect",
         "alexa app",
     ],
+
     "product_information": [
         "how much",
         "what is the price",
@@ -140,6 +149,7 @@ INTENT_RULES = {
         "when will this be available",
         "does this product",
     ],
+
     "product_issue": [
         "broken",
         "damaged",
@@ -151,6 +161,7 @@ INTENT_RULES = {
         "faulty",
         "stopped working",
     ],
+
     "support_followup": [
         "still waiting for support",
         "no response",
@@ -166,6 +177,30 @@ INTENT_RULES = {
 }
 
 
+# These are deliberately high-precision examples of messages
+# that are not asking for one of the operational support intents.
+OTHER_RULES = [
+    "thank you amazon",
+    "thanks amazon",
+    "thank you amazonhelp",
+    "thanks amazonhelp",
+    "great service",
+    "excellent service",
+    "love amazon",
+    "love amazon prime",
+    "good job amazon",
+    "well done amazon",
+    "i love amazon",
+    "please add",
+    "please bring back",
+    "feature request",
+    "can you add",
+    "you should add",
+    "suggestion for amazon",
+    "feedback for amazon",
+]
+
+
 def normalize_text(text):
     return " ".join(
         str(text)
@@ -176,10 +211,6 @@ def normalize_text(text):
 
 
 def find_matching_intents(text):
-    """
-    Return all intents whose high-precision phrases occur
-    in the message.
-    """
     normalized = normalize_text(text)
 
     matches = []
@@ -194,20 +225,33 @@ def find_matching_intents(text):
     return matches
 
 
+def is_other_message(text):
+    normalized = normalize_text(text)
+
+    return any(
+        phrase in normalized
+        for phrase in OTHER_RULES
+    )
+
+
 def label_message(text):
     """
-    Only keep messages with exactly one high-confidence
-    intent match.
+    Assign an intent only when there is exactly one
+    high-confidence operational match.
 
-    Ambiguous messages are deliberately discarded rather
-    than forcing a potentially incorrect training label.
+    Otherwise, return None. The separate OTHER_RULES
+    path handles a small set of high-confidence
+    non-operational examples.
     """
     matches = find_matching_intents(text)
 
-    if len(matches) != 1:
-        return None
+    if len(matches) == 1:
+        return matches[0]
 
-    return matches[0]
+    if len(matches) == 0 and is_other_message(text):
+        return "other"
+
+    return None
 
 
 def load_golden_ids():
@@ -240,6 +284,7 @@ def main():
 
     total_amazon_messages = 0
     total_labeled = 0
+    total_other = 0
 
     for chunk_number, chunk in enumerate(
         pd.read_csv(
@@ -254,7 +299,6 @@ def main():
         ),
         start=1,
     ):
-        # Customer messages directed to AmazonHelp.
         mask = (
             chunk["inbound"].astype(bool)
             & chunk["text"].notna()
@@ -263,9 +307,6 @@ def main():
 
         chunk = chunk[mask].copy()
 
-        # Only keep messages from conversations involving
-        # AmazonHelp. A direct response to AmazonHelp is
-        # represented by the dataset's inbound flag.
         total_amazon_messages += len(chunk)
 
         # Never allow golden examples into training.
@@ -279,26 +320,60 @@ def main():
             label_message
         )
 
+        # Keep only messages with a high-confidence label.
         chunk = chunk[
             chunk["intent"].notna()
         ].copy()
 
         if not chunk.empty:
-            training_chunks.append(
-                chunk[
-                    [
-                        "tweet_id",
-                        "text",
-                        "intent",
-                    ]
-                ]
+            other_rows = chunk[
+                chunk["intent"] == "other"
+            ]
+
+            normal_rows = chunk[
+                chunk["intent"] != "other"
+            ]
+
+            # Keep the other class controlled.
+            remaining_other = (
+                MAX_OTHER_EXAMPLES - total_other
             )
 
-            total_labeled += len(chunk)
+            if remaining_other <= 0:
+                other_rows = other_rows.iloc[0:0]
+            elif len(other_rows) > remaining_other:
+                other_rows = other_rows.sample(
+                    n=remaining_other,
+                    random_state=42,
+                )
+
+            total_other += len(other_rows)
+
+            chunk = pd.concat(
+                [
+                    normal_rows,
+                    other_rows,
+                ],
+                ignore_index=True,
+            )
+
+            if not chunk.empty:
+                training_chunks.append(
+                    chunk[
+                        [
+                            "tweet_id",
+                            "text",
+                            "intent",
+                        ]
+                    ]
+                )
+
+                total_labeled += len(chunk)
 
         print(
             f"Processed chunk {chunk_number}: "
-            f"{total_labeled:,} labeled examples"
+            f"{total_labeled:,} labeled examples "
+            f"({total_other:,} other)"
         )
 
     if not training_chunks:
@@ -311,7 +386,6 @@ def main():
         ignore_index=True,
     )
 
-    # Remove duplicate messages.
     training_df = training_df.drop_duplicates(
         subset=["text"]
     ).reset_index(drop=True)
@@ -328,14 +402,17 @@ def main():
 
     print("\nTraining dataset")
     print("=" * 60)
+
     print(
         f"AmazonHelp customer messages inspected: "
         f"{total_amazon_messages:,}"
     )
+
     print(
         f"High-confidence labeled examples: "
         f"{len(training_df):,}"
     )
+
     print(
         f"Output: {OUTPUT_FILE}"
     )

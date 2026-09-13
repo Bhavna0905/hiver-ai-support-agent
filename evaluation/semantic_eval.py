@@ -13,7 +13,7 @@ from sklearn.metrics import (
 
 ROOT = Path(__file__).resolve().parents[1]
 
-GOLDEN_PATH = ROOT / "data" / "golden" / "golden_20.csv"
+GOLDEN_PATH = ROOT / "data" / "golden" / "golden_dataset.csv"
 MODEL_PATH = ROOT / "data" / "processed" / "intent_classifier_minilm.joblib"
 
 

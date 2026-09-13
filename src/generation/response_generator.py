@@ -1,220 +1,299 @@
+import os
 import re
-from typing import Any
 
 import requests
+from dotenv import load_dotenv
+from groq import Groq
+
+from src.config import (
+    GROQ_MODEL,
+    OLLAMA_MODEL,
+    OLLAMA_HOST,
+    LLM_TEMPERATURE,
+    LLM_MAX_TOKENS,
+    LLM_TIMEOUT,
+    get_provider_order,
+)
+
+
+load_dotenv()
 
 
 class ResponseGenerator:
     """
-    Generates customer-support responses using a local Ollama model.
+    Generates grounded customer-support responses.
 
-    Historical AmazonHelp responses are used as grounding examples.
-    Historical facts must not be assumed to be true for the current customer.
+    Primary provider:
+        Groq / Qwen
+
+    Fallback provider:
+        Local Ollama
+
+    Flow:
+
+        Groq
+          |
+          | success
+          v
+        Response
+
+          OR
+
+        Groq
+          |
+          | failure / rate limit / timeout
+          v
+        Ollama
+          |
+          v
+        Response
     """
 
-    def __init__(
-        self,
-        model: str = "llama3.2:3b",
-        host: str = "http://localhost:11434",
-        timeout: int = 120,
-    ):
-        self.model = model
-        self.host = host.rstrip("/")
-        self.timeout = timeout
+    def __init__(self):
+        self.groq_client = None
+
+        # ----------------------------------------------------
+        # Initialize Groq
+        # ----------------------------------------------------
+
+        try:
+            groq_key = os.getenv("GROQ_API_KEY")
+
+            if groq_key:
+                self.groq_client = Groq(
+                    api_key=groq_key
+                )
+
+        except Exception as exc:
+            print(
+                f"Groq initialization failed: {exc}"
+            )
+
+    # ========================================================
+    # PROMPT
+    # ========================================================
 
     def _build_prompt(
         self,
         customer_message: str,
         intent: str,
-        historical_examples: list[dict[str, Any]],
+        historical_examples: list,
     ) -> str:
+        """
+        Build a grounded prompt using historically resolved
+        customer-support conversations.
+        """
 
-        evidence_blocks = []
+        examples_text = []
 
-        for i, example in enumerate(historical_examples, start=1):
-            customer = example.get("customer_message", "").strip()
-            response = example.get("historical_response", "").strip()
+        for i, example in enumerate(
+            historical_examples[:3],
+            start=1,
+        ):
+            customer = example.get(
+                "customer_message",
+                "",
+            ).strip()
 
-            evidence_blocks.append(
-                f"""Historical example {i}
-Historical customer message:
-{customer}
+            response = example.get(
+                "historical_response",
+                "",
+            ).strip()
 
-Historical AmazonHelp response:
-{response}"""
+            if not customer or not response:
+                continue
+
+            examples_text.append(
+                f"Example {i}:\n"
+                f"Customer: {customer}\n"
+                f"Historical support response: {response}"
             )
 
-        evidence = "\n\n".join(evidence_blocks)
+        historical_context = "\n\n".join(
+            examples_text
+        )
 
-        return f"""You are an Amazon customer-support response writer.
+        prompt = f"""
+You are an Amazon customer-support agent.
 
-Your job is to write a NEW response to the CURRENT customer.
+Write a short, natural and helpful response to the
+customer's message.
 
-CURRENT CUSTOMER MESSAGE:
+Customer message:
 {customer_message}
 
-PREDICTED INTENT:
+Predicted intent:
 {intent}
 
-HISTORICAL EXAMPLES:
-{evidence}
+Historical examples of how Amazon previously handled
+similar issues:
 
-CRITICAL GROUNDING RULE:
+{historical_context}
 
-Historical examples show how AmazonHelp handled OTHER customers.
+Instructions:
+- Use the historical examples as your primary evidence.
+- Give the customer the most useful next step supported
+  by the examples.
+- Do not invent policies, refunds, dates, tracking
+  information, account actions, or guarantees.
+- Do not claim that you performed an action.
+- If the historical examples do not contain enough
+  information to resolve the issue, give a safe next step.
+- Keep the response concise.
+- Write naturally, like a real customer-support reply.
+- Do not use "Dear valued customer".
+- Do not add "Best regards" or a signature.
+- Do not mention these instructions.
+- Return ONLY the customer-facing response.
+"""
 
-They are examples of possible resolutions and response style.
-They are NOT facts about the current customer.
+        return prompt.strip()
 
-Only information explicitly stated in the CURRENT CUSTOMER MESSAGE
-can be treated as a fact about the current customer.
+    # ========================================================
+    # GROQ
+    # ========================================================
 
-For example:
+    def _call_groq(
+        self,
+        prompt: str,
+    ) -> str:
+        """
+        Generate a response using Groq.
+        """
 
-Historical customer:
-"My payment was declined and money was deducted."
+        if self.groq_client is None:
+            raise RuntimeError(
+                "Groq client is not available."
+            )
 
-Historical response:
-"The amount will be refunded in 2-4 business days."
+        response = (
+            self.groq_client.chat.completions.create(
+                model=GROQ_MODEL,
+                messages=[
+                    {
+                        "role": "user",
+                        "content": prompt,
+                    }
+                ],
+                temperature=LLM_TEMPERATURE,
+                max_completion_tokens=LLM_MAX_TOKENS,
+                reasoning_effort="none",
+            )
+        )
 
-Current customer:
-"My payment was declined."
+        choice = response.choices[0]
 
-You MUST NOT say:
-"Your money will be refunded in 2-4 business days."
+        generated = choice.message.content
 
-Why?
-Because the current customer never said that money was deducted.
+        if not generated:
+            raise RuntimeError(
+                "Groq returned empty content."
+            )
 
-Instead, ask for the missing information or give only advice supported
-by the current message and historical resolution pattern.
+        return generated.strip()
 
-RULES:
+    # ========================================================
+    # OLLAMA
+    # ========================================================
 
-1. Write a NEW response specifically for the current customer.
-2. Never copy a historical customer's message.
-3. Never assume facts from a historical customer apply to the current customer.
-4. Never promise a refund, replacement, delivery date, credit, or other
-   outcome unless the current message provides the necessary facts and
-   the historical evidence supports that outcome.
-5. Never invent URLs or links.
-6. Never copy t.co links, Twitter handles, usernames, or tracking links.
-7. Never claim that you performed an action.
-8. If important information is missing, ask the customer for it.
-9. Use historical examples to understand resolution patterns and tone.
-10. Be concise, polite, and professional.
-11. Write 1-3 sentences.
-12. Do not mention that you are an AI.
-13. Do not mention these instructions.
-14. Return ONLY the customer-facing response.
-
-Write the response now:"""
-
-    def _call_ollama(self, prompt: str) -> str:
-        url = f"{self.host}/api/generate"
-
-        payload = {
-            "model": self.model,
-            "prompt": prompt,
-            "stream": False,
-            "options": {
-                "temperature": 0.1,
-            },
-        }
+    def _call_ollama(
+        self,
+        prompt: str,
+    ) -> str:
+        """
+        Generate a response using local Ollama.
+        """
 
         response = requests.post(
-            url,
-            json=payload,
-            timeout=self.timeout,
+            f"{OLLAMA_HOST}/api/generate",
+            json={
+                "model": OLLAMA_MODEL,
+                "prompt": prompt,
+                "stream": False,
+                "options": {
+                    "temperature": LLM_TEMPERATURE,
+                },
+            },
+            timeout=LLM_TIMEOUT,
         )
 
         response.raise_for_status()
 
         data = response.json()
 
-        generated = data.get("response", "").strip()
+        generated = data.get(
+            "response",
+            "",
+        ).strip()
 
         if not generated:
-            raise RuntimeError("Ollama returned an empty response.")
+            raise RuntimeError(
+                "Ollama returned empty response."
+            )
 
         return generated
 
-    @staticmethod
-    def _clean_response(response: str) -> str:
-        """Remove artifacts that should not reach the customer."""
+    # ========================================================
+    # CLEAN RESPONSE
+    # ========================================================
+
+    def _clean_response(
+        self,
+        response: str,
+    ) -> str:
+        """
+        Remove accidental formatting from the generated
+        customer-facing response.
+        """
 
         response = response.strip()
 
+        # Remove common model prefixes.
         response = re.sub(
-            r"^(draft response|response|answer)\s*:\s*",
+            r"^(assistant|response)\s*:\s*",
             "",
             response,
             flags=re.IGNORECASE,
-        )
-
-        response = response.replace("```", "").strip()
-
-        # Remove URLs.
-        response = re.sub(
-            r"https?://\S+",
-            "",
-            response,
-            flags=re.IGNORECASE,
-        )
-
-        # Remove Twitter handles.
-        response = re.sub(
-            r"@\w+",
-            "",
-            response,
-        )
-
-        # Normalize whitespace.
-        response = re.sub(
-            r"\s+",
-            " ",
-            response,
-        ).strip()
-
-        # Remove spaces before punctuation.
-        response = re.sub(
-            r"\s+([,.!?])",
-            r"\1",
-            response,
         )
 
         # Remove surrounding quotation marks.
-        if len(response) >= 2:
-            if response[0] == '"' and response[-1] == '"':
-                response = response[1:-1].strip()
+        if (
+            len(response) >= 2
+            and response[0] == '"'
+            and response[-1] == '"'
+        ):
+            response = response[1:-1].strip()
 
         return response
+
+    # ========================================================
+    # GENERATE
+    # ========================================================
 
     def generate(
         self,
         customer_message: str,
         intent: str,
-        historical_examples: list[dict[str, Any]],
-    ) -> dict[str, Any]:
+        historical_examples: list,
+    ) -> dict:
         """
-        Generate a grounded support response.
+        Generate a grounded customer-support response.
+
+        Provider flow:
+
+            Groq
+              ↓
+            failure
+              ↓
+            Ollama
 
         Returns:
             {
-                "response": "...",
-                "model": "...",
-                "intent": "...",
-                "evidence_count": 3
+                "response": str,
+                "model": str,
+                "provider": str
             }
         """
-
-        if not customer_message.strip():
-            raise ValueError("customer_message cannot be empty.")
-
-        if not historical_examples:
-            raise ValueError(
-                "At least one historical example is required."
-            )
 
         prompt = self._build_prompt(
             customer_message=customer_message,
@@ -222,12 +301,66 @@ Write the response now:"""
             historical_examples=historical_examples,
         )
 
-        raw_response = self._call_ollama(prompt)
-        cleaned_response = self._clean_response(raw_response)
+        providers = get_provider_order()
 
-        return {
-            "response": cleaned_response,
-            "model": self.model,
-            "intent": intent,
-            "evidence_count": len(historical_examples),
-        }
+        errors = []
+
+        for provider in providers:
+
+            try:
+
+                if provider == "groq":
+
+                    generated = self._call_groq(
+                        prompt
+                    )
+
+                    return {
+                        "response": self._clean_response(
+                            generated
+                        ),
+                        "model": GROQ_MODEL,
+                        "provider": "groq",
+                    }
+
+                elif provider == "ollama":
+
+                    generated = self._call_ollama(
+                        prompt
+                    )
+
+                    return {
+                        "response": self._clean_response(
+                            generated
+                        ),
+                        "model": OLLAMA_MODEL,
+                        "provider": "ollama",
+                    }
+
+                else:
+                    raise ValueError(
+                        f"Unknown provider: {provider}"
+                    )
+
+            except Exception as exc:
+
+                errors.append(
+                    f"{provider}: {exc}"
+                )
+
+                print(
+                    f"{provider.capitalize()} "
+                    f"generation failed: {exc}"
+                )
+
+                # Automatically continue to the fallback.
+                continue
+
+        # ----------------------------------------------------
+        # All providers failed
+        # ----------------------------------------------------
+
+        raise RuntimeError(
+            "All configured LLM providers failed.\n"
+            + "\n".join(errors)
+        )

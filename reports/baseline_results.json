@@ -2,66 +2,66 @@
   "dataset": {
     "rows": 200,
     "intent_distribution": {
-      "delivery_problem": 29,
-      "order_management": 24,
-      "returns_refunds": 19,
+      "delivery_problem": 30,
+      "order_management": 20,
+      "returns_refunds": 17,
       "technical_issue": 17,
-      "payment_billing": 15,
-      "account_access": 15,
       "prime_membership": 15,
-      "digital_content": 15,
-      "product_issue": 12,
-      "support_followup": 11,
-      "other": 10,
-      "product_information": 9,
-      "amazon_pay": 9
+      "account_access": 15,
+      "product_issue": 14,
+      "other": 13,
+      "payment_billing": 13,
+      "amazon_pay": 13,
+      "digital_content": 12,
+      "product_information": 11,
+      "support_followup": 10
     },
     "escalation_distribution": {
-      "False": 179,
-      "True": 21
+      "False": 164,
+      "True": 36
     }
   },
   "intent": {
     "trivial_majority": {
-      "accuracy": 0.145,
-      "macro_f1": 0.0195,
-      "weighted_f1": 0.0367,
+      "accuracy": 0.15,
+      "macro_f1": 0.0201,
+      "weighted_f1": 0.0391,
       "per_class": {
         "delivery_problem": {
-          "precision": 0.145,
+          "precision": 0.15,
           "recall": 1.0,
-          "f1-score": 0.25327510917030566,
-          "support": 29.0
+          "f1-score": 0.2608695652173913,
+          "support": 30.0
         },
         "order_management": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 24.0
+          "support": 20.0
         },
         "returns_refunds": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 19.0
+          "support": 17.0
         },
         "product_issue": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 12.0
+          "support": 14.0
         },
         "payment_billing": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 15.0
+          "support": 13.0
         },
         "amazon_pay": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 9.0
+          "support": 13.0
         },
         "account_access": {
           "precision": 0.0,
@@ -79,13 +79,13 @@
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 15.0
+          "support": 12.0
         },
         "product_information": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 9.0
+          "support": 11.0
         },
         "technical_issue": {
           "precision": 0.0,
@@ -97,123 +97,123 @@
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 11.0
+          "support": 10.0
         },
         "other": {
           "precision": 0.0,
           "recall": 0.0,
           "f1-score": 0.0,
-          "support": 10.0
+          "support": 13.0
         },
-        "accuracy": 0.145,
+        "accuracy": 0.15,
         "macro avg": {
-          "precision": 0.011153846153846153,
+          "precision": 0.011538461538461537,
           "recall": 0.07692307692307693,
-          "f1-score": 0.019482700705408126,
+          "f1-score": 0.020066889632107024,
           "support": 200.0
         },
         "weighted avg": {
-          "precision": 0.021025000000000002,
-          "recall": 0.145,
-          "f1-score": 0.036724890829694316,
+          "precision": 0.0225,
+          "recall": 0.15,
+          "f1-score": 0.0391304347826087,
           "support": 200.0
         }
       }
     },
     "tfidf_logistic_regression": {
-      "accuracy": 0.395,
-      "macro_f1": 0.378,
-      "weighted_f1": 0.3871,
+      "accuracy": 0.385,
+      "macro_f1": 0.3661,
+      "weighted_f1": 0.3753,
       "per_class": {
         "delivery_problem": {
-          "precision": 0.4411764705882353,
-          "recall": 0.5172413793103449,
-          "f1-score": 0.47619047619047616,
-          "support": 29.0
+          "precision": 0.4375,
+          "recall": 0.4666666666666667,
+          "f1-score": 0.45161290322580644,
+          "support": 30.0
         },
         "order_management": {
-          "precision": 0.36363636363636365,
-          "recall": 0.3333333333333333,
-          "f1-score": 0.34782608695652173,
-          "support": 24.0
+          "precision": 0.24,
+          "recall": 0.3,
+          "f1-score": 0.26666666666666666,
+          "support": 20.0
         },
         "returns_refunds": {
           "precision": 0.4444444444444444,
-          "recall": 0.42105263157894735,
-          "f1-score": 0.43243243243243246,
-          "support": 19.0
+          "recall": 0.47058823529411764,
+          "f1-score": 0.45714285714285713,
+          "support": 17.0
         },
         "product_issue": {
-          "precision": 0.1,
-          "recall": 0.08333333333333333,
-          "f1-score": 0.09090909090909091,
-          "support": 12.0
+          "precision": 0.35714285714285715,
+          "recall": 0.35714285714285715,
+          "f1-score": 0.35714285714285715,
+          "support": 14.0
         },
         "payment_billing": {
-          "precision": 0.23076923076923078,
-          "recall": 0.2,
-          "f1-score": 0.21428571428571427,
-          "support": 15.0
+          "precision": 0.2222222222222222,
+          "recall": 0.15384615384615385,
+          "f1-score": 0.18181818181818182,
+          "support": 13.0
         },
         "amazon_pay": {
-          "precision": 0.5,
-          "recall": 0.6666666666666666,
-          "f1-score": 0.5714285714285714,
-          "support": 9.0
+          "precision": 0.6,
+          "recall": 0.6923076923076923,
+          "f1-score": 0.6428571428571429,
+          "support": 13.0
         },
         "account_access": {
-          "precision": 0.3076923076923077,
-          "recall": 0.26666666666666666,
-          "f1-score": 0.2857142857142857,
+          "precision": 0.35294117647058826,
+          "recall": 0.4,
+          "f1-score": 0.375,
           "support": 15.0
         },
         "prime_membership": {
-          "precision": 0.6190476190476191,
-          "recall": 0.8666666666666667,
-          "f1-score": 0.7222222222222222,
+          "precision": 0.5789473684210527,
+          "recall": 0.7333333333333333,
+          "f1-score": 0.6470588235294118,
           "support": 15.0
         },
         "digital_content": {
-          "precision": 0.75,
-          "recall": 0.4,
-          "f1-score": 0.5217391304347826,
-          "support": 15.0
+          "precision": 0.5,
+          "recall": 0.4166666666666667,
+          "f1-score": 0.45454545454545453,
+          "support": 12.0
         },
         "product_information": {
-          "precision": 0.4,
-          "recall": 0.4444444444444444,
-          "f1-score": 0.42105263157894735,
-          "support": 9.0
+          "precision": 0.5,
+          "recall": 0.09090909090909091,
+          "f1-score": 0.15384615384615385,
+          "support": 11.0
         },
         "technical_issue": {
-          "precision": 0.3157894736842105,
-          "recall": 0.35294117647058826,
-          "f1-score": 0.3333333333333333,
+          "precision": 0.23529411764705882,
+          "recall": 0.23529411764705882,
+          "f1-score": 0.23529411764705882,
           "support": 17.0
         },
         "support_followup": {
-          "precision": 0.2,
-          "recall": 0.2727272727272727,
-          "f1-score": 0.23076923076923078,
-          "support": 11.0
-        },
-        "other": {
-          "precision": 0.4,
-          "recall": 0.2,
-          "f1-score": 0.26666666666666666,
+          "precision": 0.21428571428571427,
+          "recall": 0.3,
+          "f1-score": 0.25,
           "support": 10.0
         },
-        "accuracy": 0.395,
+        "other": {
+          "precision": 0.375,
+          "recall": 0.23076923076923078,
+          "f1-score": 0.2857142857142857,
+          "support": 13.0
+        },
+        "accuracy": 0.385,
         "macro avg": {
-          "precision": 0.39019660845095483,
-          "recall": 0.3865441208614049,
-          "f1-score": 0.37804383637863653,
+          "precision": 0.3890598385103029,
+          "recall": 0.37288646496791295,
+          "f1-score": 0.36605380339506743,
           "support": 200.0
         },
         "weighted avg": {
-          "precision": 0.3972344661702247,
-          "recall": 0.395,
-          "f1-score": 0.3871401059616163,
+          "precision": 0.38832814880338096,
+          "recall": 0.385,
+          "f1-score": 0.37532974718197676,
           "support": 200.0
         }
       }
@@ -221,20 +221,20 @@
   },
   "escalation": {
     "trivial_always_no": {
-      "accuracy": 0.895,
+      "accuracy": 0.82,
       "precision": 0.0,
       "recall": 0.0,
       "f1": 0.0,
-      "false_auto_handle_rate": 0.105,
+      "false_auto_handle_rate": 0.18,
       "false_escalation_rate": 0.0
     },
     "tfidf_logistic_regression": {
-      "accuracy": 0.89,
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1": 0.0,
-      "false_auto_handle_rate": 0.105,
-      "false_escalation_rate": 0.005
+      "accuracy": 0.81,
+      "precision": 0.375,
+      "recall": 0.0833,
+      "f1": 0.1364,
+      "false_auto_handle_rate": 0.165,
+      "false_escalation_rate": 0.025
     }
   }
 }

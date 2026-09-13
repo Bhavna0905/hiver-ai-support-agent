@@ -1,10 +1,10 @@
-import csv
+import argparse
 from pathlib import Path
 
+import pandas as pd
 
-INPUT_PATH = Path("data/golden/golden_20_candidates.csv")
-OUTPUT_PATH = Path("data/golden/golden_20.csv")
 
+GOLDEN_FILE = Path("data/golden/golden_dataset.csv")
 
 INTENTS = [
     "delivery_problem",
@@ -23,14 +23,24 @@ INTENTS = [
 ]
 
 
-def ask_intent():
-    print("\nSelect intent:")
+def is_blank(value):
+    return str(value).strip() == "" or str(value).lower() == "nan"
 
-    for number, intent in enumerate(INTENTS, start=1):
-        print(f"{number:2}. {intent}")
 
+def display(value):
+    if is_blank(value):
+        return "(none)"
+    return str(value)
+
+
+def get_intent():
     while True:
-        choice = input("\nEnter choice: ").strip()
+        print("\nChoose final HUMAN intent:\n")
+
+        for i, intent in enumerate(INTENTS, start=1):
+            print(f"{i:2}. {intent}")
+
+        choice = input("\nYour choice: ").strip()
 
         try:
             number = int(choice)
@@ -44,163 +54,219 @@ def ask_intent():
         print("Invalid choice. Enter a number from 1 to 13.")
 
 
-def ask_escalation():
+def get_escalation():
     while True:
-        answer = input(
-            "\nShould this escalate to a human? [Y/N]: "
-        ).strip().lower()
+        print("\nShould this conversation be escalated?")
+        print("  y = Yes")
+        print("  n = No")
 
-        if answer in {"y", "yes"}:
+        choice = input("\nYour choice: ").strip().lower()
+
+        if choice in {"y", "yes"}:
             return True
 
-        if answer in {"n", "no"}:
+        if choice in {"n", "no"}:
             return False
 
-        print("Please enter Y or N.")
+        print("Invalid choice. Enter y or n.")
 
 
-def main():
-    if not INPUT_PATH.exists():
-        raise FileNotFoundError(
-            f"Input file not found: {INPUT_PATH}"
-        )
+def get_note():
+    print("\nOptional annotation note.")
+    print("Press Enter to leave blank.")
 
-    with INPUT_PATH.open(
-        "r",
-        encoding="utf-8",
-        newline="",
-    ) as file:
-        candidates = list(csv.DictReader(file))
+    return input("Note: ").strip()
 
-    if len(candidates) != 20:
-        raise ValueError(
-            f"Expected 20 candidates, found {len(candidates)}."
-        )
 
+def annotate_row(df, index):
+    row = df.iloc[index]
+
+    print("\n")
     print("=" * 70)
     print("HUMAN GOLDEN SET ANNOTATION")
     print("=" * 70)
-    print(f"Examples: {len(candidates)}")
-    print(f"Input:    {INPUT_PATH}")
-    print(f"Output:   {OUTPUT_PATH}")
-    print()
-    print("You will manually label every example.")
-    print("No LLM predictions are used.")
-    print()
-    print("Progress is saved after every example.")
-    print("Press Ctrl+C to stop safely.")
-    print()
 
-    # ---------------------------------------------------------
-    # Resume support
-    # ---------------------------------------------------------
-    completed = {}
+    print(f"\nExample {index + 1} / {len(df)}")
 
-    if OUTPUT_PATH.exists():
-        with OUTPUT_PATH.open(
-            "r",
-            encoding="utf-8",
-            newline="",
-        ) as file:
-            for row in csv.DictReader(file):
-                tweet_id = row.get("tweet_id")
+    print("\nTweet ID:")
+    print(display(row["tweet_id"]))
 
-                if tweet_id:
-                    completed[tweet_id] = row
+    print("\nCustomer message:")
+    print("-" * 70)
+    print(display(row["customer_message"]))
+    print("-" * 70)
 
+    print("\nExisting information")
+    print(f"Candidate intent: {display(row['candidate_intent'])}")
+
+    print("\nAI suggestion")
+    print(f"Intent:     {display(row['ai_intent'])}")
+    print(f"Confidence: {display(row['ai_confidence'])}")
+    print(f"Escalation: {display(row['ai_escalation'])}")
+    print(f"Reason:     {display(row['ai_reason'])}")
+
+    print("\nIMPORTANT:")
+    print("The AI label is ONLY a suggestion.")
+    print("Your decision becomes the ground truth.")
+
+    gold_intent = get_intent()
+    escalation = get_escalation()
+    note = get_note()
+
+    df.at[index, "gold_intent"] = gold_intent
+    df.at[index, "expected_escalation"] = (
+        "true" if escalation else "false"
+    )
+    df.at[index, "annotation_notes"] = note
+    df.at[index, "annotation_status"] = "human_reviewed"
+
+    return df
+
+
+def find_next_unreviewed(df):
+    for index, row in df.iterrows():
+        status = str(row["annotation_status"]).strip().lower()
+
+        if status != "human_reviewed":
+            return index
+
+    return None
+
+
+def summarize(df):
+    reviewed_mask = (
+        df["annotation_status"]
+        .fillna("")
+        .astype(str)
+        .str.strip()
+        .str.lower()
+        .eq("human_reviewed")
+    )
+
+    reviewed = reviewed_mask.sum()
+
+    print("\n")
+    print("=" * 70)
+    print("ANNOTATION PROGRESS")
+    print("=" * 70)
+
+    print(f"Human reviewed: {reviewed}/{len(df)}")
+    print(f"Remaining: {len(df) - reviewed}")
+
+    print("\nStatus distribution:")
+    print(
+        df["annotation_status"]
+        .fillna("")
+        .replace("", "unset")
+        .value_counts()
+        .to_string()
+    )
+
+    if reviewed > 0:
+        reviewed_df = df[reviewed_mask]
+
+        print("\nHuman-reviewed intent distribution:")
         print(
-            f"Found {len(completed)} previously annotated examples."
+            reviewed_df["gold_intent"]
+            .value_counts()
+            .to_string()
         )
-        print("Those examples will be skipped.")
-        print()
 
-    output_fields = [
-        "tweet_id",
-        "customer_message",
-        "candidate_intent",
+        print("\nHuman-reviewed escalation distribution:")
+        print(
+            reviewed_df["expected_escalation"]
+            .value_counts()
+            .to_string()
+        )
+
+
+def parse_args():
+    parser = argparse.ArgumentParser(
+        description="Human annotation workflow for the Hiver golden set."
+    )
+
+    parser.add_argument(
+        "--golden-file",
+        type=Path,
+        default=GOLDEN_FILE,
+        help="Path to golden dataset CSV.",
+    )
+
+    parser.add_argument(
+        "--limit",
+        type=int,
+        default=None,
+        help="Maximum number of examples to annotate in this run.",
+    )
+
+    return parser.parse_args()
+
+
+def main():
+    args = parse_args()
+
+    if not args.golden_file.exists():
+        raise FileNotFoundError(
+            f"Could not find golden dataset: {args.golden_file}"
+        )
+
+    df = pd.read_csv(args.golden_file)
+
+    required_columns = [
+        "ai_intent",
+        "ai_escalation",
+        "ai_confidence",
+        "ai_reason",
+        "annotation_status",
         "gold_intent",
         "expected_escalation",
-        "annotation_note",
+        "annotation_notes",
     ]
 
-    # ---------------------------------------------------------
-    # Annotate each example
-    # ---------------------------------------------------------
-    for index, candidate in enumerate(candidates, start=1):
+    for column in required_columns:
+        if column not in df.columns:
+            df[column] = ""
 
-        tweet_id = candidate["tweet_id"]
+    df[required_columns] = (
+        df[required_columns]
+        .fillna("")
+        .astype(str)
+    )
 
-        if tweet_id in completed:
-            continue
+    annotated_this_run = 0
 
-        print("\n" + "=" * 70)
-        print(f"Example {index}/{len(candidates)}")
-        print("=" * 70)
+    while True:
+        index = find_next_unreviewed(df)
 
-        print("\nCustomer message:")
-        print("-" * 70)
-        print(candidate["customer_message"])
-        print("-" * 70)
+        if index is None:
+            print("\nAll examples have been human-reviewed.")
+            break
 
-        print(
-            f"\nCandidate intent from sampling: "
-            f"{candidate['candidate_intent']}"
+        if (
+            args.limit is not None
+            and annotated_this_run >= args.limit
+        ):
+            break
+
+        try:
+            df = annotate_row(df, index)
+
+        except KeyboardInterrupt:
+            print("\n\nAnnotation interrupted.")
+            print("Progress has been saved.")
+            break
+
+        # Save after every human annotation.
+        df.to_csv(
+            args.golden_file,
+            index=False,
         )
 
-        # Human chooses intent.
-        gold_intent = ask_intent()
+        annotated_this_run += 1
 
-        # Human chooses escalation.
-        expected_escalation = ask_escalation()
+        print("\nSaved successfully.")
 
-        annotation_note = input(
-            "\nOptional annotation note "
-            "(press Enter to skip): "
-        ).strip()
-
-        if not annotation_note:
-            annotation_note = "Manually reviewed by human annotator."
-
-        result = {
-            "tweet_id": tweet_id,
-            "customer_message": candidate["customer_message"],
-            "candidate_intent": candidate["candidate_intent"],
-            "gold_intent": gold_intent,
-            "expected_escalation": str(expected_escalation),
-            "annotation_note": annotation_note,
-        }
-
-        completed[tweet_id] = result
-
-        # -----------------------------------------------------
-        # Save immediately after every annotation
-        # -----------------------------------------------------
-        with OUTPUT_PATH.open(
-            "w",
-            encoding="utf-8",
-            newline="",
-        ) as file:
-            writer = csv.DictWriter(
-                file,
-                fieldnames=output_fields,
-            )
-
-            writer.writeheader()
-
-            for row in completed.values():
-                writer.writerow(row)
-
-        print(
-            f"\nSaved progress: "
-            f"{len(completed)}/{len(candidates)} completed."
-        )
-
-    print("\n" + "=" * 70)
-    print("ANNOTATION COMPLETE")
-    print("=" * 70)
-    print(f"Total examples: {len(candidates)}")
-    print(f"Human-reviewed: {len(completed)}")
-    print(f"Saved to: {OUTPUT_PATH}")
+    summarize(df)
 
 
 if __name__ == "__main__":

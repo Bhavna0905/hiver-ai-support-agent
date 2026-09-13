@@ -1,0 +1,2808 @@
+{
+  "model": "llama3.2:3b",
+  "examples_evaluated": 200,
+  "successful_judgments": 200,
+  "failed_judgments": 0,
+  "results": [
+    {
+      "tweet_id": 2317870,
+      "customer_message": "@AmazonHelp Hi itâs not my account itâs my mums account. Yes she received the email however it is asking for billing information to be faxed for the card that was used. It was not her card that was used it was my partners card. How do we resolve this?",
+      "response": "@Customer I’m sorry for the confusion. Since the card used was not the account holder’s, please reply directly to the email from our specialist team to clarify that the billing information belongs to your partner. This will help them verify the payment method and resolve the issue. ^KA",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but misses a minor part of the resolution. It provides a useful next step but does not directly address the customer's request to clarify the billing information. The response is safe and clear, but could be improved with more specific guidance."
+      }
+    },
+    {
+      "tweet_id": 1454261,
+      "customer_message": "@AmazonHelp It's providing a USPS tracking but when I pull that up it says the package hasn't even left Illinois https://t.co/7DNxY0CaqE",
+      "response": "@Customer I'm sorry to hear your package is still in Illinois! If it doesn't arrive by the expected delivery date, please reach out to us by phone at this link here: https://t.co/hApLpMlfHN ^VS",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 2,
+        "relevance": 3,
+        "safety": 5,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks specific details about the issue and provides a generic next step. It is safe and clear in style, but could benefit from more relevant and actionable information."
+      }
+    },
+    {
+      "tweet_id": 2352289,
+      "customer_message": "@AmazonHelp 2 attempts to order an orthapedic chair end in abject failure. Completely useless service from Amazon",
+      "response": "I'm sorry to hear about the trouble with your order. Could you please share the order number so we can look into what went wrong? ^TM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step by asking for the order number, but misses addressing the customer's actual problem. The response is safe and clear, but could benefit from a more detailed explanation of what will be done to resolve the issue."
+      }
+    },
+    {
+      "tweet_id": 1730755,
+      "customer_message": "@115850 price fr ths prdct is 999 oly &amp; u r showing 1390 rs just to show 541 rs off. Cheating people, shame on u premium brand.#Unexpected https://t.co/FGCOnzJRGf",
+      "response": "@115850 I understand your concern. Please note that the prices offered are at the sellers' discretion. I have forwarded your comment as feedback for internal review. ^SI",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the customer's concern about the price discrepancy and the fact that the product is not available at the advertised price. The response is safe and provides a useful next step, but it could be more relevant and actionable."
+      }
+    },
+    {
+      "tweet_id": 2687484,
+      "customer_message": "@116090 you  have now missed deliver commitments twice in two days. Been waiting on hold 26 minutes to speak to a manager not good at all. I paid for next day shipping and I am a PRIME member! https://t.co/90OGlt2sD7",
+      "response": "@116090 I'm sorry we let you down. We'd like to look into why your parcel hasn't been dispatched. Please reach out to us, when you have a moment: https://t.co/qy3J24VGxb ^AM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it lacks a clear acknowledgment of the customer's frustration and missed delivery commitments. The resolution correctness is reasonable, but the response could benefit from a more actionable next step. The relevance is mostly relevant, but the response could address the customer's specific issue of missed delivery commitments. The safety is safe, and the style is clear and concise."
+      }
+    },
+    {
+      "tweet_id": 1434941,
+      "customer_message": "@AmazonHelp Itâs only giving me the option to email ð©",
+      "response": "@Customer Sorry about that! Please try using this link to reach us by chat: https://t.co/2n73phHPtG ^JJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and retrieved evidence, but it misses a minor part of the resolution by not addressing the customer's actual request for a non-email option. The response is safe, clear, and concise, but could be improved with a more direct and actionable next step."
+      }
+    },
+    {
+      "tweet_id": 2398302,
+      "customer_message": "@AmazonHelp Yes, first thing we did was contacted @115821 and we were told that since it was a third-party, we can't receive a refund. We are stuck!",
+      "response": "@115821 I’m sorry to hear you’re stuck. Since the seller is unresponsive, you can file an A-to-z Guarantee Claim here: https://t.co/4S5ALLg6t9",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is safe and clear, but could benefit from more progress on resolving the customer's issue."
+      }
+    },
+    {
+      "tweet_id": 1955739,
+      "customer_message": "@AmazonHelp This is already been reported and apparently been investigated but most importantly, this is Diwali and we were expecting it on time.",
+      "response": "@Customer I’m sorry to hear that your order is delayed during Diwali. Since this has already been reported, we will look into it further and get back to you at the earliest. Please share your order ID so we can assist you better. ^HN",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It is relevant to the customer's issue and safe, but could benefit from a more concise and professional tone."
+      }
+    },
+    {
+      "tweet_id": 2176660,
+      "customer_message": "@AmazonHelp Thank you :) appreciate it",
+      "response": "You're welcome! Please let us know if you have any other questions! ^BH",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 259360,
+      "customer_message": "So much for my 2 day @115821 guaranteed shipping!ð ugh, ordered it last week, was supposed to show up on Sun/Mon and here we are a week l8r https://t.co/MOWuwyZH2c",
+      "response": "I'm sorry for the delay! Two-day shipping refers to transit time, in business days, after the order ships out. Have we missed the original delivery date given in your confirmation e-mail?",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and concise manner."
+      }
+    },
+    {
+      "tweet_id": 1326952,
+      "customer_message": "Been on hold with @115821 customer service for 45 mins for $ they never refunded me...because THIS IS HOW I WANT TO SPEND MY SATURDAY.",
+      "response": "I'm so sorry to hear you've been on hold for 45 minutes and are still waiting on your refund. That is certainly not the experience we want you to have. Please share your order details here: https://t.co/GIJyeYqKE0 and we'll take the necessary actions to make things right.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but not directly addressing the customer's actual request. The style is good but with a minor awkwardness."
+      }
+    },
+    {
+      "tweet_id": 422520,
+      "customer_message": "@AmazonHelp @115850 You are redirecting me to support, but unfortunately it doesn't help much. I'm getting boilerplate response saying, you'll need to wait for 48 hours. And now after 48 hours, I'm told to wait till EoD again :(",
+      "response": "@115850 We understand the frustration with the delays. Please keep an eye on your email here: https://t.co/8DAc10S7ww for updates from our team. ^HA",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from more specific details or a clearer explanation of the next steps."
+      }
+    },
+    {
+      "tweet_id": 109956,
+      "customer_message": "Hey @115850 @AmazonHelp either stop creeping me out with your ads everywhere or I'm uninstalling the app!",
+      "response": "@115850 We're sorry to hear that. Please share your details in the secure link provided earlier and we'll look into the issue. ^RD",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 5,
+        "style": 3,
+        "overall": 2,
+        "reason": "The response is not grounded in the customer message, as it assumes the customer has already received a secure link and is asking to share details. The response also misses the customer's actual concern about the ads. The style is somewhat awkward and repetitive."
+      }
+    },
+    {
+      "tweet_id": 1221890,
+      "customer_message": "@AmazonHelp hey Amazon! My housemate bought a product from you guys and it's faulty! What does she need to do to get it replaced??",
+      "response": "@Customer Sorry to hear about the faulty item! To help get this resolved, please let us know if the product was sold and fulfilled by Amazon or a third-party seller. You can find this information in your order details. ^WM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from a more direct and actionable approach."
+      }
+    },
+    {
+      "tweet_id": 2508092,
+      "customer_message": "@115821 hi! Have an issue. Have been trying to call customer service but line keeps getting disconnected. What should I do?",
+      "response": "@115821 I'm sorry to hear you're having trouble connecting by phone. Please try reaching us via email or chat instead, and we'll be happy to assist you there.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses addressing the customer's specific issue of phone disconnections. The response is safe and clear, but could benefit from more direct relevance to the customer's problem."
+      }
+    },
+    {
+      "tweet_id": 1258948,
+      "customer_message": "@AmazonHelp In realtÃ  sÃ¬, la cosa peggiore Ã¨ che inserendo il codice di spedizione sul sito delle poste, mi appare che il prodotto non Ã¨ disponibile.",
+      "response": "@Customer Ciao, mi dispiace per l'inconveniente riscontrato con il tracciamento. Per poterti assistere al meglio, ci potresti fornire maggiori dettagli sull'ordine e sull'errore specifico che visualizzi? ^MP",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "La risposta è in parte supportata dalla customer message e dalla retrieved evidence, ma presenta alcune minori assunzioni. La risposta è utile, ma potrebbe essere più specifica e diretta. La sicurezza è garantita, ma potrebbe essere utile fornire maggiori dettagli sull'ordine e sull'errore specifico."
+      }
+    },
+    {
+      "tweet_id": 1615590,
+      "customer_message": "@115850  refund is issued on24th Oct, it's been 10days still awaiting for refund. Such an amazing service kudos.",
+      "response": "I'm sorry to hear about the delay with your refund. To help you resolve this, please share your details here: https://t.co/GIJyeYqKE0",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is related to the issue but misses an important part of what the customer asked. The response is safe and clear, but could be improved with more specific details."
+      }
+    },
+    {
+      "tweet_id": 1005649,
+      "customer_message": "@115850 getting 404 on hitting help link, video: https://t.co/W2svfKSNWX",
+      "response": "@115850 Sorry to hear that. Please contact us here: https://t.co/JzP7hlA23B so an agent can look into this with you. ^JJ",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 5,
+        "style": 3,
+        "overall": 2,
+        "reason": "The response is not grounded in the customer message or historical evidence. It provides a generic next step without addressing the specific issue of the 404 error on the help link. The response is safe but lacks relevance and progress in resolving the issue."
+      }
+    },
+    {
+      "tweet_id": 2311419,
+      "customer_message": "@AmazonHelp A few episodes are missing from the list. It also happened in my PC. So both my android phone and PC have same issue. https://t.co/IVrp2ZL52x",
+      "response": "@Customer Sorry for the trouble with the missing episodes on both your phone and PC. Since this is happening across multiple devices, please reach out to us here: https://t.co/SyWG353BaA so we can look into further options with you. ^HC",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it lacks specificity and provides a generic next step. It is safe and clear in style, but could benefit from more detailed information and a more actionable resolution."
+      }
+    },
+    {
+      "tweet_id": 816336,
+      "customer_message": "@AmazonHelp There is no option for refund - I do not want a replacement.",
+      "response": "@Customer I'm sorry to hear that. We only accept replacement as of now. You may refer to the return policy here: https://t.co/S4eX6UOjIb",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from a more detailed explanation or alternative solutions."
+      }
+    },
+    {
+      "tweet_id": 1223616,
+      "customer_message": "@AmazonHelp Then tell ur account spl team to contact with me. Cause my mobile numbers are blocked by amazon so I can't call them.",
+      "response": "@Customer We're sorry for the trouble! Since you can't call, please fill out this form: https://t.co/beaaDm0muc and our team will contact you soon. ^MN",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a direct call to action. It provides a useful next step but misses an important part of resolving the issue. The response is safe and clear, but could benefit from a more personalized approach."
+      }
+    },
+    {
+      "tweet_id": 2463895,
+      "customer_message": "@AmazonHelp kindly change the delivery date as soon as possible.",
+      "response": "I’m sorry to hear about the delivery date change. To help you with this, could you please let us know which website you purchased through (e.g., Amazon.com, .de, or .co.uk)?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It is relevant and safe, but could benefit from a more direct and actionable next step."
+      }
+    },
+    {
+      "tweet_id": 1715669,
+      "customer_message": "Please add some more Jackie Chan movies @119625\nð¯",
+      "response": "@119625 We keep adding new content frequently, so stay tuned to the Prime Video website. I'll forward your feedback internally. ^MS",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details and actionable next steps. It is safe and relevant but could benefit from more clarity and concision."
+      }
+    },
+    {
+      "tweet_id": 606068,
+      "customer_message": "@AmazonHelp Amazon.in. I know the list of accepted payments. I used a Visa and credit (Master) cards to pay. It doesn't seem to accept! What should I do?",
+      "response": "@Customer Apologies for the inconvenience. Please reach out to our support team directly for assistance with your payment issue. You can do so by clicking the link below, following the prompts, and choosing phone: https://t.co/JzP7hlA23B",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is safe and clear, but could benefit from a more direct address of the customer's issue."
+      }
+    },
+    {
+      "tweet_id": 51608,
+      "customer_message": "@AmazonHelp I'm not sure where it is. I'm still waiting for it so i can return it because I don't need it anymore",
+      "response": "@Customer I understand the frustration of waiting for an item you no longer need. Since we don't have access to your account via Twitter, please reach out to us by phone or chat here so we can look into the delivery status and assist with your return: https://t.co/qy3J24VGxb ^AC",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the customer's request to look into the item's location. The response provides a useful next step, but it's not directly addressing the customer's concern. The tone is clear and professional, but the response could benefit from a more personalized approach."
+      }
+    },
+    {
+      "tweet_id": 754132,
+      "customer_message": "Returned my order to their drop-off site at UIC and within hours I was refunded my rewards points. Crazy efficiency, @115821!",
+      "response": "Glad to hear the return went smoothly and your points were refunded so quickly! Is there anything else we can help you with today?",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 2,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses a concrete resolution by asking if there's anything else to help with. The tone is friendly and inquiring, but it could be more directly helpful."
+      }
+    },
+    {
+      "tweet_id": 233769,
+      "customer_message": "When you buy stuff off @115830 and it turns up broken. Then it actually costs money to send it back. I am spending Â£20 to have nothing ð",
+      "response": "I'm really sorry to hear that you're out of pocket for a broken item. To help you with the return costs, was the item sold by Amazon or by a third-party seller?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses a minor part of the resolution by not addressing the return costs directly. The response is safe, clear, and concise, but could benefit from a more detailed explanation of the return process."
+      }
+    },
+    {
+      "tweet_id": 926670,
+      "customer_message": "Amazon can't deliver the product nor they can't refund it. @115850 #GreatIndianSale #AmazonGreatIndianFestival #AmazonLoot #FraudSale https://t.co/Ln6S0IskN7",
+      "response": "@115850 I'm sorry to hear about the trouble with your order and refund. To help resolve this, please fill in your details here: https://t.co/GIJyeYqKE0 and our team will look into it for you.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The style is good but has a minor awkwardness."
+      }
+    },
+    {
+      "tweet_id": 1612030,
+      "customer_message": "@115825 Hey, kÃ¶nntet ihr weitere Staffeln von der Serie \"Big Time Rush\" in euer Prime-Programm aufnehmen? :) WÃ¤re Super!",
+      "response": "@115825 Danke für dein Feedback! Leider können wir keine direkten Zusagen zu neuen Inhalten im Prime-Programm machen, da die Auswahl regelmäßig von den Rechteinhabern abhängt. Wir leiten deine Anregung aber gerne an das zuständige Team weiter. 😊",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "Die Antwort ist gut auf die Anregung des Kunden eingegangen, aber es fehlt eine konkrete Lösung oder ein klarer Weg, wie das zuständige Team weitergeleitet werden kann."
+      }
+    },
+    {
+      "tweet_id": 937293,
+      "customer_message": "Product not delivered even after local place for 6 days. Pathetic service of @115850 .4 times complaint, no results .I am a prime member.",
+      "response": "I’m sorry to hear about the delay with your Prime delivery. Please report this issue to our support team here: https://t.co/vlvfJr4nN9",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step but misses a minor part of the resolution. The response is relevant to the issue but not directly addressing the customer's problem. The style is clear and concise, but the response could benefit from more specific details."
+      }
+    },
+    {
+      "tweet_id": 980224,
+      "customer_message": "I paid for overnight shipping so I could play breath of the wild tonight but it never came.. wheres my package pls... @115821",
+      "response": "@115821 I'm so sorry your package hasn't arrived yet! To help us look into this, could you please check the current tracking status here: https://t.co/Y5jpI9gRhE ^LL",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is relevant to the issue, but misses a minor part of the resolution. The response is safe and has good style."
+      }
+    },
+    {
+      "tweet_id": 1161689,
+      "customer_message": "@AmazonHelp we made FOUR orders via prime yesterday (Saturday) and these are the shipping estimates. What exactly are we paying Prime for? https://t.co/asjXxodj7N",
+      "response": "I'm sorry to hear the shipping estimates on your recent orders are disappointing! To help us look into this, could you please confirm who the carrier is for these deliveries? You can find that information here: https://t.co/Y5jpI9gRhE. ^SD",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses addressing the customer's actual request or problem. The response is safe and clear, but could benefit from a more direct and actionable next step."
+      }
+    },
+    {
+      "tweet_id": 2832873,
+      "customer_message": "@AmazonHelp I'm going in circles! this just brings me back to the 'return' option, and only lets me get a refund, not a replacement!",
+      "response": "@Customer I'm sorry to hear you're stuck in a loop! We may not be able to replace an item if it's out of stock or sold by a seller. I apologize! ^AB",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it misses a crucial part of the resolution by not addressing the customer's request for a replacement. The response is safe, clear, and professional, but could benefit from a more actionable next step."
+      }
+    },
+    {
+      "tweet_id": 1555488,
+      "customer_message": "@AmazonHelp In the month of July my mobile screen got damaged while traveling to office and then I logged the complaint at your customer service,",
+      "response": "@Customer I’m sorry to hear about the damage to your mobile screen. Since you have already logged a complaint, please reach us by phone through our Contact Us page: https://t.co/hApLpMlfHN. There will be options to select the order, issue, & issue details, before the contact options appear at the bottom. This will ensure you're routed to the team best suited to help. ^MV",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but not directly addressing the customer's problem. The tone is good, but the response could be more concise and natural."
+      }
+    },
+    {
+      "tweet_id": 1961173,
+      "customer_message": "O Kindle Ã© ridÃ­culo de leve e bonito, dÃ¡ atÃ© gosto de ler\nTe amo @117086",
+      "response": "Olá! Que bom saber que você está gostando do seu Kindle. Se precisar de ajuda com a compra de livros ou outros conteúdos digitais, estamos à disposição.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "A resposta está bem fundamentada, mas não fornece uma solução concreta ou uma próxima ação significativa. É relevante e segura, mas poderia ser mais específica e útil."
+      }
+    },
+    {
+      "tweet_id": 331950,
+      "customer_message": "@115850 - why it takes hours to reflect the added money as pay balance. You say it takes only 15 mins but in my case  it take hours?xplain",
+      "response": "I understand the frustration with the delay. While the standard processing time is 15 minutes, it can sometimes take longer as it requires approval from your bank. Please allow a bit more time for the transaction to complete. If it still hasn't reflected after a reasonable period, please report the issue to our support team for further assistance.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a reasonable next step and is relevant to the issue, but could benefit from a more concrete resolution or additional information to support the claim."
+      }
+    },
+    {
+      "tweet_id": 518783,
+      "customer_message": "Thanks for ruining the Christmas wine tour @115817 and @115821 whatâs the point of paying extra for prime?? #fail https://t.co/BMERYomNAb",
+      "response": "@115817 I'm sorry we missed our mark. Did you receive a notice explaining why the delivery date changed? ^CO",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 1044270,
+      "customer_message": "@115825 Hey ihr Guten, gibt es eigentlich schon ein Datum fÃ¼r das Release der dritten Staffel von Mr. Robot auf Prime?",
+      "response": "@115825 Aktuell gibt es noch keinen festen Termin dafür. Neue Folgen erscheinen in der Originalversion in der Regel einen Tag nach der US-Ausstrahlung. Gruß ^MH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it misses the specific release date for the third season of Mr. Robot on Prime. The response provides a useful next step and is safe, but it could be more relevant and concrete in its resolution."
+      }
+    },
+    {
+      "tweet_id": 2880519,
+      "customer_message": "@AmazonHelp In item page its showing COD eligible for Red Mi 4 16GB, but on checkout page its showing POD not available. IS THIS A JOKE OR WHAT?!! After waiting one week this is the result. Shame of u Amazon.in ð¡ https://t.co/dS9nlYGf1o",
+      "response": "We apologize for the frustration caused by the payment method discrepancy. We are unable to verify specific order details or availability over Twitter. Please share your order details using the secure link provided in our previous messages so our team can investigate the issue and assist you further.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step and is relevant to the issue, but misses a minor part of the resolution. The response is safe and has good style, but could benefit from more concrete progress."
+      }
+    },
+    {
+      "tweet_id": 661484,
+      "customer_message": "@AmazonHelp i can't control my hue lights and tp link switches via Alexa app on fire 8. It just allows me the option to edit my groups and devices. Am i missing something?",
+      "response": "@Customer I'm sorry you're having trouble controlling your Hue lights and TP-Link switches! To help troubleshoot, could you please let us know if you are seeing any specific error messages when trying to control the devices? ^AC",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the error messages or next steps. It provides a reasonable next step but misses a minor part of the resolution. The response is clear and concise but could be improved with more specific troubleshooting steps."
+      }
+    },
+    {
+      "tweet_id": 2808979,
+      "customer_message": "@AmazonHelp Definitely not helpful when this is how i chose the wrong product in the first place. Thank you for taking the time, though. I'm gonna try and google it.",
+      "response": "@Customer We appreciate your patience. If you are still unable to find the right product or need further assistance, please let us know how it goes! ^RL",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 2,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It is relevant to the issue but misses an important part of what the customer asked. The response is safe and has good style, but could benefit from a more detailed next step."
+      }
+    },
+    {
+      "tweet_id": 2834176,
+      "customer_message": "Les problÃ¨mes de livraison dâ @120533 sont dÃ©cidÃ©ment rÃ©currents. Rien Ã  voir avec ce que câÃ©tait avant. Ras le bol!",
+      "response": "Bonjour, je suis désolée pour ces problèmes de livraison récurrents. Je vous invite à contacter notre SAV via ce lien : https://t.co/hgIrz98cdI afin qu'ils puissent vérifier la situation de votre commande.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "La réponse est bien fondée sur le message du client et les exemples historiques, mais manque de spécificité et de concision dans la résolution. La suggestion de contacter le SAV est pertinente, mais pourrait être améliorée avec plus de détails."
+      }
+    },
+    {
+      "tweet_id": 2358896,
+      "customer_message": "So Iâm looking at my order from Amazon and Iâm mad at myself because I order the wrong case for my phone.ð I have a iPhone 6s and I got a iPhone 6 Plus.ðð so ya ya me.",
+      "response": "I'm sorry to hear about the mix-up! You can view refund or replacement options for your order here: https://t.co/QWDWOxot5y",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a clear next step or resolution. It provides a useful link, but the tone is somewhat casual and lacks empathy. The response is safe and clear, but could benefit from a more personalized approach."
+      }
+    },
+    {
+      "tweet_id": 1506305,
+      "customer_message": "I would really like the option to pick who delivers my @115821 shipments. Weekend deliveries from independent drivers are great in theory, except they routinely flake and donât show up. Promised delivery dates are almost always missed, so why offer it?",
+      "response": "I’m so sorry to hear that your recent delivery experience has been frustrating. To help us look into this further, could you please share the status and carrier details for your order?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step but misses addressing the customer's main concern about the reliability of same-day delivery. The response is safe and clear, but could benefit from a more direct and actionable next step."
+      }
+    },
+    {
+      "tweet_id": 2424483,
+      "customer_message": "@AmazonHelp money came out my account for amazon prime but iâm not an amazon prime user?",
+      "response": "I'm sorry for the unexpected charge! Please reach out to us here: https://t.co/JzP7hlA23B and we'll take a closer look! ^JO",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is safe and has good style, but could benefit from more specific guidance."
+      }
+    },
+    {
+      "tweet_id": 277225,
+      "customer_message": "@AmazonHelp @115821 how much longer do I need to wait? It's been more than a week now....",
+      "response": "@115821 I understand your concern. You should have received an email correspondence from our team. Please check. ^BA",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant but somewhat generic. The style is good, but with a minor awkwardness."
+      }
+    },
+    {
+      "tweet_id": 2303928,
+      "customer_message": "@115851 @115821 @AmazonHelp The lack of help I have encountered to find my package is unacceptable.  From customer sevice to logistic has been 4 days of BS",
+      "response": "I am so sorry to hear about the frustration you've experienced over the last few days. To help us investigate further, could you please let us know who the carrier is? You can check the carrier details here: https://t.co/Y5jpI9gRhE ^BA",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the customer's actual request by not addressing the lack of help they've encountered. The response provides a useful next step, but it's not entirely clear how it will help resolve the issue. The tone is clear and concise, and the response is safe and professional."
+      }
+    },
+    {
+      "tweet_id": 337390,
+      "customer_message": "hair is dead, got a cold, and my amazon delivery didn't arrived today",
+      "response": "I'm so sorry to hear you're feeling under the weather and that your package didn't arrive. Please let us look into this here: https://t.co/JzP7hlA23B",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a clear next step or resolution. It is relevant to the customer's issue and safe, but could benefit from more concise language and a clearer call-to-action."
+      }
+    },
+    {
+      "tweet_id": 1843552,
+      "customer_message": "Well I just bought this on Amazon video and it won't play. Says I own it but nothing. Wonderful. â watching... https://t.co/bGr4NYAORM",
+      "response": "Sorry to hear that! Could you please share a screenshot of the error message? We'd like to take a look to help troubleshoot. ^HD",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it lacks a concrete resolution or actionable next step. The response is safe and relevant, but could benefit from more detailed troubleshooting steps or a clear explanation of the next course of action."
+      }
+    },
+    {
+      "tweet_id": 1116988,
+      "customer_message": "WHY DOES AMAZON ALWAYS CAUSE PROBLEMS FOR ME LIKE THIS IS THE 4th EFFING TIME THEY CHARGED ME FOR SUBSCRIPTIONS THAT I DIDNT SIGN UP FOR ð¤ð¤",
+      "response": "I’m so sorry to hear about these unexpected charges. I understand how frustrating it is to be billed for subscriptions you didn’t sign up for. Could you please provide the specific amounts and any descriptors shown on the charges? This will help us look into the issue further for you.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it could provide a more concrete resolution by offering a specific next step or a clear explanation of the process for investigating the issue. The tone is clear and professional, and the request for information is relevant and safe."
+      }
+    },
+    {
+      "tweet_id": 297966,
+      "customer_message": "So here's a great design.. My @115830 account was hacked and so I went to contact Amazon. Turns out you can't unless you log in! ððð£",
+      "response": "@115830 I'm so sorry to hear your account was compromised! Since you can't log in, please use this link to contact our team directly so we can help secure your account: https://t.co/jzvkhdlrK5 ^MJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the customer's frustration and disappointment with the previous experience. The resolution provided is reasonable but does not address the customer's concerns about being locked out of their account. The response is safe and clear, but could benefit from a more empathetic tone."
+      }
+    },
+    {
+      "tweet_id": 789065,
+      "customer_message": "@AmazonHelp @115850 @115851  very bad service, not at all 'Customer- centric Company', doing good job in disappointing customers.",
+      "response": "@115850 I'm sorry to hear you've had a bad experience. Could you please provide more details about the issue so we can look into it for you? ^AB",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the issue. It provides a useful next step but misses a minor part of the resolution. The response is relevant and safe, but could benefit from more concrete information to meaningfully advance the issue."
+      }
+    },
+    {
+      "tweet_id": 1374564,
+      "customer_message": "@115821 Second release day delivery fail in three months for @115821 Pre-orderers are suckers again. #amazonprime #amazon #brutalservice",
+      "response": "@115821 I'm sorry to hear about the delivery issues with your pre-orders. We'd like to take a closer look at this to help you. Kindly share your details here: https://t.co/beaaDm0muc Please don't provide your order details, we consider it to be personal information. ^SY",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 4,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specificity and provides a generic next step. It is safe but could be more relevant and concise."
+      }
+    },
+    {
+      "tweet_id": 344609,
+      "customer_message": "Did you know? Amazon India fools people by making them pay Prime Membership fees but rarely delivers products within 4 days? #amazonsucks",
+      "response": "I understand your frustration with the delivery times. Please note that the availability of expedited shipping depends on the specific item and your pin code. I will pass along your feedback to our team internally. If you have a specific order you are concerned about, please share the order ID so we can look into it further.",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 2,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks specificity and directly addresses the customer's issue. It provides a reasonable next step and is safe, but could benefit from more clarity and directness."
+      }
+    },
+    {
+      "tweet_id": 1234682,
+      "customer_message": "Now I really need help from @10265 and @1015 to get my money from @115823 to my bank account. https://t.co/Ez5fUxlB9V",
+      "response": "I'm sorry to hear you're having trouble transferring your funds to your bank account. Please share the details here so our team can take a closer look: https://t.co/GIJyeYqKE0",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from a more detailed explanation or a clear next step."
+      }
+    },
+    {
+      "tweet_id": 2383252,
+      "customer_message": "@AmazonHelp I couldn't contact due to your faulty IVRS, I only mailed them as you said, Today is my second day of wearing floaters @95892 chappals, all the staff members are staring at me and laughing behind my back, I can't bear the humiliation any more, Kindly arrange urgent replacemt",
+      "response": "@95892 We are truly sorry for the distress this has caused you. Please fill in your details here: https://t.co/GIJyeYqKE0, and we will connect with you shortly to assist with your replacement request. ^MP",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The style is good but has a minor awkwardness. The response is safe but could benefit from more specific details."
+      }
+    },
+    {
+      "tweet_id": 1509330,
+      "customer_message": "@AmazonHelp Any timelines? Can I expect 5 Kannada movies in this month",
+      "response": "We currently do not have a tentative date for when specific Kannada titles will be added. Regional content is an integral part of our library, so please stay tuned as we continue to expand our selection. You can also check our latest updates here: https://t.co/FYM9PIZOR8",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete next step or a clear timeline for the addition of Kannada movies. The style is clear and concise, but the response could benefit from more specific information about the expected timeline or a clear next step."
+      }
+    },
+    {
+      "tweet_id": 1489145,
+      "customer_message": "@AmazonHelp am having a problem on order, payment declined, checked cards OK.\nWhere do I go from here?",
+      "response": "Thanks for reaching out. Here's how to resolve a declined payment: https://t.co/fyR5vLfMQW",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is mostly grounded, provides a correct concrete resolution, directly addresses the customer's request, is safe, and has good style. However, it lacks a personal touch and does not acknowledge the customer's specific issue."
+      }
+    },
+    {
+      "tweet_id": 140074,
+      "customer_message": "@AmazonHelp No.  My whole family have Echos, but only a few appear in my contacts.  And only a few of them see me.  So exactly what contact info should they have stored about me to see me in their Echo contacts?",
+      "response": "I understand the frustration. To ensure your family members appear in each other's Echo contacts, please have them save your phone number in their phone contacts using the exact same format it was entered when you set up your Alexa device. Let us know if that helps resolve the issue!",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the specific context of the customer's issue and the fact that the issue is not resolved by simply saving the phone number in the same format. The response is safe and clear, but could be improved with more context and a more concrete next step."
+      }
+    },
+    {
+      "tweet_id": 490408,
+      "customer_message": "@AmazonHelp Hola tendÃ­a que entregarse hoy. Correos express lo tiene en su delegaciÃ³n de aquÃ­ desde las 7:58 pero no estÃ¡ en reparto y no contestan. Me temo que no llegara hoy . El nÃºmero de pedido es 6340024__credit_card__",
+      "response": "Hola, lamentamos los inconvenientes. ¿Has podido contactar con Correos Express?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks specific details about the issue and does not provide a clear next step. It is safe and clear in style, but could benefit from more information and a more actionable response."
+      }
+    },
+    {
+      "tweet_id": 1007054,
+      "customer_message": "@AmazonHelp @116928 ninguno de los dos pedidos ha llegado... De nada ha valido q comprase con tiempo #nohappybrithday ð¤¦ââï¸ð https://t.co/6wgl3N4f2k",
+      "response": "Entiendo tu frustración. Para poder ayudarte mejor, ¿los pedidos que estás esperando son vendidos y enviados por Amazon o por un vendedor externo en nuestro sitio web?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it could benefit from a more concrete resolution. The tone is clear and professional, making it suitable for customer support."
+      }
+    },
+    {
+      "tweet_id": 284009,
+      "customer_message": "@AmazonHelp @115821 No card left, no phone call to advise they were here. Reception manned 100% of the time!",
+      "response": "@115821 I'm sorry to hear the delivery was left without a card or notification, especially with reception staff present. Please reach out to us here so we can escalate this further: https://t.co/JzP7hlA23B ^BH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it lacks a clear next step and doesn't directly address the customer's issue. It's safe and clear in style, but could benefit from more actionable guidance."
+      }
+    },
+    {
+      "tweet_id": 1090501,
+      "customer_message": "@115830 pre-ordered \"Dirty Kids: Chasing Freedom with America's Nomads\" released a month ago, still out of stock &amp; no sign of coming â¹ï¸ð«",
+      "response": "I'm sorry to hear your pre-order is still out of stock. Could you please share the delivery date that was shown during checkout and confirmed via email?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant and safe, but could benefit from a more detailed explanation."
+      }
+    },
+    {
+      "tweet_id": 2938291,
+      "customer_message": "@AmazonHelp Thank you! I guess its too late now as I see my order has already been dispatched :( Per track details, it would reach me by 8 pm. Feeling bad about it..",
+      "response": "@Customer I’m sorry to hear the order has already been dispatched. Since it is on its way, please keep an eye on the tracking details for the estimated arrival by 8 pm. If you have any further questions once it arrives, feel free to reach out.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from a more detailed explanation of the estimated arrival time."
+      }
+    },
+    {
+      "tweet_id": 1507284,
+      "customer_message": "@AmazonHelp Sir kya kare aap log koi option hi nhi chodte. Diwali 2017 k liye order tha, 2018 me deilver karenge??",
+      "response": "@Customer Sorry to hear about the delay with your Diwali order. Have we missed the delivery date of your order? ^HA",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step but misses a minor part of the resolution. The response is relevant to the issue but not directly addressing the customer's problem. The tone is good, but the language is somewhat generic and repetitive."
+      }
+    },
+    {
+      "tweet_id": 789730,
+      "customer_message": "@AmazonHelp again i am saying, NO EMAIL RECEIVED, surely i am talking to a shirker.\npathetic service and customer team.\n#amazonDontCare",
+      "response": "@Customer We are sorry for the frustration. Please share your details here again so we can look into it: https://t.co/GIJyeYqKE0. ^NR",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The response is safe and clear, but could be improved with more specific details."
+      }
+    },
+    {
+      "tweet_id": 140082,
+      "customer_message": "@AmazonHelp Yeah I'm just going to cancel my order and never use Amazon again. Sick of dealing with my orders never coming on time and your site lied about the ship date to get me to purchase it. Thanks for letting me waste money on prime.",
+      "response": "@Customer I'm really sorry to hear about the frustration with your order and Prime membership. We'd like to look into this with you. Please reach us by phone using the link KH provided. ^HS",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 2,
+        "relevance": 1,
+        "safety": 5,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks specific details about the customer's issue and provides a generic next step. It is safe but does not meaningfully address the customer's problem."
+      }
+    },
+    {
+      "tweet_id": 1346546,
+      "customer_message": "@AmazonHelp I'll contact you on chat, thanks",
+      "response": "You're welcome! Please let us know if you need any further assistance. ^BH",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 472429,
+      "customer_message": "@AmazonHelp @115850 plz announce #lgq6appquiz and #AmazonRechargesQuiz first, then conduct #SuperValueDayQuiz simply conducting contest without announcing the winners is really bad.",
+      "response": "@115850 I understand your frustration regarding the lack of announcements for the #lgq6appquiz, #AmazonRechargesQuiz, and #SuperValueDayQuiz. Our teams are actively working on finalizing the results, and the winners will be listed soon. Please stay tuned to our website for further updates. ^SD",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, with a clear and concise explanation of the issue and the expected resolution. However, it lacks a direct reference to the specific historical examples, which could have strengthened the grounding. The response is safe, relevant, and well-written, but could benefit from a more nuanced understanding of the customer's frustration and the historical context."
+      }
+    },
+    {
+      "tweet_id": 2897612,
+      "customer_message": "@AmazonHelp Hello, y a-t-il possibilitÃ© de dÃ©dommagement lorsqu'une commande prime a du retard ?",
+      "response": "Bonjour, je suis désolé d'apprendre que votre commande Prime est en retard. Pourriez-vous nous indiquer le numéro de commande concerné ainsi que les informations de suivi actuelles ? Cela nous permettra de vérifier la situation plus précisément.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "La réponse est bien fondée sur le message du client et les exemples historiques, mais manque de spécificité et de connaissance de la politique d'Amazon. La demande d'informations est utile, mais pourrait être plus précise."
+      }
+    },
+    {
+      "tweet_id": 377483,
+      "customer_message": "@AmazonHelp Had a query with the return label. What do I do if I don't have access to a printer?",
+      "response": "Hi there! If you don't have access to a printer, you can often request a printed label directly from a carrier during the return process. If that option isn't available, please reach out to us via phone or chat so we can explore other options for you: https://t.co/hApLpMlfHN",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, provides a useful next step, directly addresses the customer's request, and is safe and well-written. However, it could benefit from a more concise and natural tone."
+      }
+    },
+    {
+      "tweet_id": 2385514,
+      "customer_message": "Golmaal again movie coming to Amazon Prime when ? @128308 @119625 @115850 @93143 @93143 #GolmaalAgain",
+      "response": "@128308 We haven't made any announcement on it yet. Kindly stay tuned to Amazon Prime Video. ^YP",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is directly relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 1546047,
+      "customer_message": "I got my @121284 3 days back.. And I see few skills are not available bcas of geo restrictions. Like Broadlink remote control which was one of the things i planned to setup first.. When ll these skills be enabled for India?",
+      "response": "Thanks for reaching out. We currently do not have specific information on when the Broadlink remote control skill or other geo-restricted skills will be enabled for India. I’ll be sure to share your feedback with the right team internally. Please stay tuned for further updates.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific information on when the Broadlink remote control skill will be enabled for India. The response provides a useful next step and is safe, but could benefit from more concrete details."
+      }
+    },
+    {
+      "tweet_id": 1392967,
+      "customer_message": "Dear @115850 what do i have to do to get my order?? Only getting text that they tried to deliver nuthing else! the hell is wrong guys ??",
+      "response": "@115850 I'm sorry for the frustration! Please report this issue to our support team here: https://t.co/rS49hgaADF, and we'll get this sorted for you. ^VH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a clear resolution or next step. It provides a safe and relevant response, but could benefit from more concrete guidance."
+      }
+    },
+    {
+      "tweet_id": 2838520,
+      "customer_message": "@789972 @115833 No, it's the location, says \"the weather in Littleport is...\" Nothing that connects me back to Littleport on my account",
+      "response": "@789972 Sorry to hear you're having trouble with your account settings. Please use this link to connect with our support team for further assistance: https://t.co/hApLpMlfHN ^WM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful link to connect with support, but misses an opportunity to directly address the customer's issue with their account settings."
+      }
+    },
+    {
+      "tweet_id": 449967,
+      "customer_message": "Okay @AmazonHelp I'm confused. How have I ended up with two different Amazon accounts for one email address? Different address books, payment methods and wishlists.",
+      "response": "@Customer I’m sorry for the confusion. Since you have two accounts linked to the same email, please reach out to us here so we can send you a request to close the account you are not using: https://t.co/hApLpMlfHN. ^SY",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it lacks a personal touch and a clear explanation of the next steps. The safety of the response is excellent, but the resolution correctness is only good because it provides a useful link. The relevance is mostly relevant, but it misses the customer's confusion and frustration. The style is clear and concise, but it could be improved with a more empathetic tone."
+      }
+    },
+    {
+      "tweet_id": 1223596,
+      "customer_message": "@115830 hi this order still hasn't arrived can you help please,  supplier says you're on charge of delivery ð https://t.co/patAW5l1fO",
+      "response": "@115830 I'm so sorry to hear your order hasn't arrived yet! To help us look into this, please share the actual tracking details here: https://t.co/aaDyEz1VgE ^RO",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The response is safe and has good style, but could be improved with more concrete details."
+      }
+    },
+    {
+      "tweet_id": 2487028,
+      "customer_message": "@122924 @116316 Der klassische Hermes SpaÃ wie immerâ¦ Prime lohnt sich ja total &gt;_&gt; https://t.co/zdYAMQxQvr",
+      "response": "@122924 @116316 Wenn bei einer Lieferung nicht alles so läuft wie es sollte, melde dies bitte im Kundenservice: https://t.co/5RHhEVutwe ^BL",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is mostly grounded, providing a correct concrete resolution and directly addressing the customer's issue. The language is clear, concise, and professional, making it suitable for customer support."
+      }
+    },
+    {
+      "tweet_id": 442878,
+      "customer_message": "@AmazonHelp You are handling tweeter.. check everything yourself ban the seller it will spoil your business and customer expectations from AMAZON. Refund my Amazon pay balance.",
+      "response": "@Customer We are sorry to hear about your experience. We cannot access your account or process refunds via Twitter. Please log in to your Amazon account and request a call back here: https://t.co/rS49hgaADF ^AR",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 2,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step but misses an important part of the resolution. The response is safe and clear, but could benefit from more progress in addressing the customer's issue."
+      }
+    },
+    {
+      "tweet_id": 581148,
+      "customer_message": "@AmazonHelp Thx for link which says 'not shipped'. \nScreen shot from the email. https://t.co/f2W87jLg5d",
+      "response": "Thanks for sharing that. Could you please check if the estimated delivery date on your order page has passed yet? If it has, let us know so we can take a closer look! ^JZ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses a minor part of the resolution by not explicitly asking the customer to check the order page. The response is relevant, safe, and has good style, but could be improved with a more concrete next step."
+      }
+    },
+    {
+      "tweet_id": 1216232,
+      "customer_message": "So I didnât know that random Uber drivers deliver for amazon now",
+      "response": "I'm sorry for the confusion! Yes, Amazon does partner with third-party delivery services like Uber to help get your packages to you. Are you currently having any issues with a recent delivery?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the customer's issue. It provides a useful next step but misses a minor part of the resolution. The response is relevant to the issue but could be more concise. The tone is professional, and the response is safe."
+      }
+    },
+    {
+      "tweet_id": 63159,
+      "customer_message": "So mad at @115821 they sent the wrong item.  I got tattoo ink instead of cross stitch supplies!!! I need it today &amp;now I have to wait week",
+      "response": "I'm so sorry you received the wrong item! I understand how frustrating that is, especially when you need it right away. To help us look into this and get it sorted out, please contact our support team directly here: https://t.co/JzP7hlA23B ^LB",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete resolution or next step. It is relevant to the customer's issue and safe, but could benefit from more specific guidance or a clear plan for resolving the problem."
+      }
+    },
+    {
+      "tweet_id": 2141995,
+      "customer_message": "@AmazonHelp âbeing deliveredâ. Iâve canceled the order  via customer service.   Where does this wasted food go? Donate? Trash? Big concern.",
+      "response": "Hi there, I’m sorry to hear about the confusion with your order status. Since you’ve already canceled the order via customer service, please check your email for a confirmation of the cancellation and any refund details. If you haven’t received that confirmation, please let us know so we can look into it further. We appreciate your concern regarding the food waste.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution or actionable next step. It is relevant to the customer's concern but does not directly address the issue of food waste. The response is safe and has good style, but could benefit from more specific guidance."
+      }
+    },
+    {
+      "tweet_id": 1631323,
+      "customer_message": "@AmazonHelp Er... well it tells me to contact Amazon customer service which I thought I was doing. Not nearby, with neighbour or in neighbour's' gardens",
+      "response": "@Customer We're sorry for the runaround! Since we can't access your account details here, please call or chat with our team directly for further assistance: https://t.co/hApLpMlfHN ^RL",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it misses a minor part of the resolution by not directly addressing the customer's issue of not being able to access their account details. The response is safe, clear, and concise, but could benefit from a more direct and actionable next step."
+      }
+    },
+    {
+      "tweet_id": 1668372,
+      "customer_message": "ãã£Amazonçµç±ã§ã¯ãã­ã¼è©°ãåãããéããã¦ããã®ã ãããã\nãã£ãªãã§ï¼ãªã«ãããå¿å½ãããå¨ããªã:(Â´â¦Ïâ¦ï½):ï¾ï¾ï¾ï¾ï¾ï¾",
+      "response": "お客様、ご心配をおかけしております。Amazonを名乗る不審なメールやSMSを受信された場合は、リンク先へのアクセスや個人情報の入力を行わないようご注意ください。当サイトからのメールかどうかの識別方法については、以下のヘルプページをご参照ください。\nhttps://t.co/xWXio7AP2Z",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it lacks a clear resolution and some minor assumptions. The safety of the response is good, and the style is clear and concise."
+      }
+    },
+    {
+      "tweet_id": 2811380,
+      "customer_message": "@AmazonHelp Iâm going to wait and see if Iâm charged tomorrow too, then thatâll be Â£196 for an order thatâs not even been dispatched. Terrible service",
+      "response": "I'm sorry to hear about the frustration with your order status and potential charges. When you place an order, an authorisation is sent to your bank for the validity of your card: https://t.co/WGDHT0M2yQ\nLet us know if this helps! ^JP",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 403520,
+      "customer_message": "@AmazonHelp Um yea.. those prices",
+      "response": "Hi there, I'm sorry to hear you have concerns about the prices. Could you please share a link to the specific item or order you are referring to? This will help me look into the details for you. ^TI",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but lacks a concrete resolution or actionable next step. It is safe and clear in style, but could benefit from more meaningful progress."
+      }
+    },
+    {
+      "tweet_id": 1373666,
+      "customer_message": "Gee itâs been 18 hours that I could have been playing Mario odyssey but @115821 pre orders are a joke apparently ððððððððððð",
+      "response": "I'm sorry your Mario Odyssey hasn't arrived yet! To help us look into this, could you please check the current order status here: https://t.co/PyACxvY8Qo?",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but not directly addressing the customer's actual request. The style is good but with a minor awkwardness."
+      }
+    },
+    {
+      "tweet_id": 2772320,
+      "customer_message": "Canât thank @AmazonHelp enough for solving my problem with a few deliveries. Thank you for the compensating gift voucher alsoðð¼",
+      "response": "So glad to hear the issue is resolved! We're happy the gift voucher helped make up for the inconvenience. Thanks for your patience.",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 294894,
+      "customer_message": "@AmazonHelp 3 reps have promised a refund since Sept 20. Now I have been promised the cost difference in 3-5 business days. Next Friday is the last day.",
+      "response": "@Customer So sorry for the frustration with the delayed refund! When you spoke with the rep about the cost difference, did they provide any specific details or next steps? We'd like to help in any way we can! ^BL",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses a minor part of the resolution by not directly addressing the customer's request for specific details about the cost difference. The response is safe, clear, and concise, but could be improved with more relevant information."
+      }
+    },
+    {
+      "tweet_id": 812116,
+      "customer_message": "@AmazonHelp I did. They asked for a chance to get it delivered by 2morrow by given past experience with ur company, I am not hopeful at all",
+      "response": "I understand your frustration with the delivery timeline. Please check the current status of your order here: https://t.co/Y5jpI9gRhE. If the details are unclear or you need further assistance, you can reach out to us directly at https://t.co/JzP7hlA23B and we'll be happy to review it for you. ^JF",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step and is relevant to the issue, but misses a minor part of the resolution. The response is safe and has good style."
+      }
+    },
+    {
+      "tweet_id": 982915,
+      "customer_message": "#Amazon prime video down again !!!",
+      "response": "We apologize for the inconvenience. We have flagged this issue internally and are working on resolving it as quickly as possible. Thank you for your patience.",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, directly addresses the customer's issue, is safe, and has excellent style. The language is clear and concise, and the tone is professional and appreciative of the customer's patience."
+      }
+    },
+    {
+      "tweet_id": 49910,
+      "customer_message": "@AmazonHelp What should i do with this link , i want my cashback, really insane by @1107",
+      "response": "@1107 I'm sorry to hear about the confusion. Could you please let us know which cashback you're referring to? ^SY",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It is relevant and safe, but could benefit from a more actionable next step."
+      }
+    },
+    {
+      "tweet_id": 2609941,
+      "customer_message": "@115850 Why was my preorder for  #ArcanumUnbounded canceled without giving any explanation? Why was my #Oathbringer preorder canceled without explanation? \nArcanumUnbounded was at 330 Rs on your diwali sale. I want the book at that price again. Thanks. https://t.co/BDGsEdQ37d",
+      "response": "@115850 I'm sorry about the order cancellation. Please call us here: https://t.co/vlvfJr4nN9 & we'll help you.",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 2,
+        "relevance": 2,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a generic next step without addressing the customer's specific request for a price match. The response is safe and clear, but could benefit from more relevant and actionable information."
+      }
+    },
+    {
+      "tweet_id": 1078433,
+      "customer_message": "um, @115821 please machine decision an algorithm that delivers my 5yr old's package before the very end of the day. Thx! ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð±ð",
+      "response": "I'm sorry your order has yet to arrive. Who's the carrier set to deliver it: https://t.co/q4LAMZ3tbE? ^GG",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 2,
+        "relevance": 1,
+        "safety": 5,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks specific details about the package and the customer's request. It provides a generic next step but misses addressing the customer's concern about the package being late and the impact on their 5-year-old child. The response is safe and clear, but could benefit from more relevant and actionable information."
+      }
+    },
+    {
+      "tweet_id": 1369439,
+      "customer_message": "@AmazonHelp @130687 Claro, me dicen que estÃ¡ en el almacÃ©n, que no ha salido hoy en reparto. Y tan panchos.",
+      "response": "@130687 Lamento la espera. Te sugiero contactar nuevamente con nuestro SAC para verificar con detalle tu caso, ya que por este medio no contamos con acceso a tu cuenta. Puedes hacerlo por medio del siguiente enlace: https://t.co/yUdBaXIHo2 ^VL",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 4,
+        "style": 4,
+        "overall": 4,
+        "reason": "La respuesta es mostly grounded, pero tiene una minor falta de originalidad y no ofrece una solución innovadora. La respuesta es útil, pero podría mejorar en términos de estilo y relevancia."
+      }
+    },
+    {
+      "tweet_id": 73435,
+      "customer_message": "Bought a suit from @115830 with Santas face on it for my work Christmas do, but it's way too big for me. Won't be able to exchange it in time either since it'll take 5-7 business days and the social is next Friday. Damn...",
+      "response": "@115830 I'm so sorry the suit didn't work out for your Christmas do! Since you're looking to return it, was the item fulfilled by Amazon or another seller? You can check that here: https://t.co/Y5jpI9gRhE ^MJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the issue of the suit being too big and the inability to exchange it in time. The response provides a useful next step, but it could be more relevant and actionable."
+      }
+    },
+    {
+      "tweet_id": 2473512,
+      "customer_message": "Ordered the new Samsung galaxy 8 from @115830. The phone is fine but you need to be careful with the packaging. Massive hole in the box it arrived in. @116324 https://t.co/4zDjjCd0vp",
+      "response": "@115830 Thanks for letting us know about the damaged packaging. I'm sorry to hear the box arrived in that condition. Since the phone itself is fine, please keep the packaging for now in case we need to inspect it. Let us know if you notice any issues with the device.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but it could benefit from a more detailed explanation of the next steps to resolve the issue."
+      }
+    },
+    {
+      "tweet_id": 1070093,
+      "customer_message": "@AmazonHelp It says âdelivered in mailboxâ for all three books.  NOT in mailbox.  Very urgent that I get these books",
+      "response": "@Customer That’s odd! Let's take a look into this further in real-time. When you have a free moment, please reach out to us here: https://t.co/JzP7hlA23B",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 2,
+        "relevance": 1,
+        "safety": 5,
+        "style": 5,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It addresses the customer's issue but only provides a generic next step. The response is safe and clear, but could benefit from a more actionable next step."
+      }
+    },
+    {
+      "tweet_id": 1522564,
+      "customer_message": "@AmazonHelp See images of suspicious files and program sent after contacting https://t.co/6luaQYg6lU.  Was linked to a google drive account for files. https://t.co/nOx6WUUbk3",
+      "response": "@Customer Hi! I'm sorry to hear you received suspicious files. Please do not open them. You can find tips on determining if the communication is legitimate here: https://t.co/gFOzDZaPYE ^AB",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 2,
+        "relevance": 2,
+        "safety": 5,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks specific details about the suspicious files and does not provide a concrete resolution. It also repeats a generic tip without addressing the customer's concern about the files. The response is safe and clear, but could be improved with more relevant and actionable information."
+      }
+    },
+    {
+      "tweet_id": 1528663,
+      "customer_message": "@AmazonHelp Nope, just \"Sorry to tell you there may be a delay in delivering your order. Please allow an additional day or two for the parcel to arrive\"",
+      "response": "I'm sorry to hear about the delay. To review your options, please reach out here: https://t.co/JzP7hlA23B",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear next step. It provides a useful link but misses addressing the customer's concern about not being informed of the delay. The style is good but could be improved with more attention to the customer's specific issue."
+      }
+    },
+    {
+      "tweet_id": 1213327,
+      "customer_message": "@AmazonHelp Yea amazon prime itâs been a week since my order was placed ððð",
+      "response": "Hello! I’m sorry to hear your order is taking longer than expected. Could you please check your tracking status here to see the current update? https://t.co/aaDyEz1VgE",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the opportunity to acknowledge the customer's specific issue and provides a limited next step. The response is safe and clear, but could benefit from a more personalized approach."
+      }
+    },
+    {
+      "tweet_id": 1378692,
+      "customer_message": "Hallo @AmazonHelp , gibts Neuigkeiten zur HDR10 UnterstÃ¼tzung von Amazon? Ab \"Sommer\" sollten es Videos geben ... https://t.co/HSFCNERboS",
+      "response": "@Customer Hallo, leider können wir hier keine konkreten Zeitpläne oder Ankündigungen zu neuen Funktionen wie HDR10 bestätigen. Bitte bleib auf dem Laufenden über die offiziellen Amazon-Kanäle für die neuesten Updates. Gruß ^MI",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks concrete resolution and is relevant to the customer's question. It is safe and has good style, but could benefit from more specific information about HDR10 support."
+      }
+    },
+    {
+      "tweet_id": 606164,
+      "customer_message": "ãªããKindleãã¦ã³ã­ã¼ãã§ããªããªã£ã",
+      "response": "@customer お困りですね。もう少し詳しく教えていただけますか？エラーメッセージなどは表示されていますか？ ^SM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message, but it makes a minor unsupported assumption about the customer's intent. The response provides a reasonable next step but misses a minor part of the resolution. The tone is clear and professional, but the response could benefit from more specific details about the issue."
+      }
+    },
+    {
+      "tweet_id": 2465371,
+      "customer_message": "@AmazonHelp : I was guaranteed cashback of Rs 500 when I bought from Amazon. Till now I haven't received cash back. pathetic service",
+      "response": "I'm sorry to hear about the pending cashback. Kindly share your details here: https://t.co/beaaDlIL5C and we'll check. ^GK",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from more specific details or a clearer explanation of the next steps."
+      }
+    },
+    {
+      "tweet_id": 1279203,
+      "customer_message": "By far, I spend my time on @115821 in the âComputers &amp; Technologyâ book section.  Gotta be error that linkâs gone from sidebar. #Fail",
+      "response": "I'm sorry to hear the link is missing from the sidebar! Could you please send us the direct link to the \"Computers & Technology\" section or the specific page you were trying to visit? This will help us look into the issue for you.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it could benefit from a more concrete resolution. The tone is professional and safe, but the request for a direct link could be clarified further."
+      }
+    },
+    {
+      "tweet_id": 311039,
+      "customer_message": "@AmazonHelp 3rd party, and they are simply holding shipping until 10-9-17. Inexcusable",
+      "response": "@Customer I’m sorry to hear about the delay with your third-party order. Could you please share the estimated delivery date currently showing on your order? https://t.co/Y5jpI9gRhE ^TH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and retrieved evidence, but it misses a minor part of the resolution by not addressing the carrier information. The response is safe, clear, and concise, but could be improved by providing a more comprehensive solution."
+      }
+    },
+    {
+      "tweet_id": 798765,
+      "customer_message": "@AmazonHelp I don't know what you can do or not. I have not received my refund. What you will have to pay as per terms. You are not checking it.",
+      "response": "@Customer Hi, I'm really sorry to hear that. Have you received correspondence regarding this? ^AT",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete resolution or next step. It is relevant and safe, but could benefit from a more actionable next step."
+      }
+    },
+    {
+      "tweet_id": 1733135,
+      "customer_message": "@115830 - having issues logging in. Have reset my password, but account still saying itâs incorrect. HELP!!",
+      "response": "@115830 I'm sorry for the trouble! Please contact us here: https://t.co/zYVX1Qi29G so we can look into this for you.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details and next steps. It provides a useful contact link but misses an opportunity to address the customer's issue directly. The response is safe and clear, but could benefit from more actionable advice."
+      }
+    },
+    {
+      "tweet_id": 2954528,
+      "customer_message": "@AmazonHelp just received a Christmas gift book like this! Can I get a replacement? https://t.co/SEVkT4AwI9",
+      "response": "@Customer I'm sorry to hear your gift arrived in that condition. You can check your replacement options here: https://t.co/BjuXE6veDS ^PK",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant and safe, but could benefit from a more concise and professional tone."
+      }
+    },
+    {
+      "tweet_id": 1452397,
+      "customer_message": "Hey @115821 or @AmazonHelp  - What's up with the website?  It won't open properly in either Firefox or Chrome - lots of text w/funky layout",
+      "response": "@115821 We'd like to take a closer look into this with you. Please contact us via phone here: https://t.co/hApLpMlfHN ^LS",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the issue and provides a generic next step. It is safe and clear in style, but could benefit from more informative and actionable guidance."
+      }
+    },
+    {
+      "tweet_id": 582652,
+      "customer_message": "2nd @115830 parcel that has \"been delivered\" but certainly not to me ð getting a little pathetic.",
+      "response": "I'm sorry to hear you're dealing with this again. Have you reported this to our support team here: https://t.co/cXVcgYscjZ ?",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 2,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses addressing the customer's actual request or problem. The response is safe and has good style, but could benefit from more meaningful progress."
+      }
+    },
+    {
+      "tweet_id": 398785,
+      "customer_message": "Et dire que j'allais me le prendre Ã  Leclerc... \"The walking dead\" NON reÃ§u aujourd'hui comme prÃ©vu. @120533 Je suis dÃ©goutÃ©!",
+      "response": "@120533 Bonjour, je suis désolé d'apprendre que votre commande n'a pas été livrée comme prévu. Pourriez-vous nous indiquer le transporteur qui s'occupe de la livraison de votre colis ? ^ME",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "La réponse est bien fondée sur le message du client et les exemples historiques, mais manque de progression et de résolution concrète. La question sur le transporteur est pertinente, mais la réponse est un peu générique."
+      }
+    },
+    {
+      "tweet_id": 639645,
+      "customer_message": "Um novo amor - Artbook de Games fodas, ou seja, mais uma lista de coisas que eu fico namorando na @117086 â¥",
+      "response": "Olá! Que bom que você curtiu o artbook. 😊 No momento, não temos uma previsão para a disponibilidade da versão digital, mas assim que estiver disponível, ela irá aparecer na página do produto. ❤🎮 ^DA",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 2,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "A resposta está bem estruturada, mas não aborda a questão da disponibilidade da versão digital do artbook de forma clara. Além disso, a resposta é muito curta e não fornece informações adicionais. A resposta é segura e tem um bom estilo, mas poderia ser mais relevante e detalhada."
+      }
+    },
+    {
+      "tweet_id": 57468,
+      "customer_message": "@AmazonHelp Another day, another bent vinyl from @115830. Do you have any quality control before sending out damaged products? https://t.co/ya9NAHI827",
+      "response": "@Customer I'm so sorry to hear you've received another damaged vinyl. Please reach out to us directly here: https://t.co/JzP7hlA23B so we can look into your options together. ^AH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a clear resolution and provides limited progress. It is relevant to the customer's issue and safe, but could benefit from a more concrete next step."
+      }
+    },
+    {
+      "tweet_id": 2773091,
+      "customer_message": "First time disappointed with @115821. Email sent to vendor! ð¡Figures itâs something that I needed.",
+      "response": "I'm sorry to hear about your disappointing experience! We'd like to help. Without providing personal or account information, can you tell us what's going on? ^SY",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but lacks a concrete resolution and provides unnecessary safety precautions. The tone is good, but the language is somewhat generic and could be improved."
+      }
+    },
+    {
+      "tweet_id": 1746063,
+      "customer_message": "@AmazonHelp Can you please tell me why Order # 112-2989971-7948245 hasn't been marked as returned and refunded? It was delivered last week.",
+      "response": "@Customer I'm sorry to hear about the delay with your return. We don't have access to order details via Twitter, but you can reach out here: https://t.co/JzP7hlA23B and our team will be happy to look into it for you. ^TK",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but could benefit from more specific details. The tone is clear and professional, but the language is somewhat generic."
+      }
+    },
+    {
+      "tweet_id": 432327,
+      "customer_message": "@AmazonHelp No llegÃ³, segÃºn vosotros @80 lo ha perdido dos veces. Pedido cancelado. Nunca sabrÃ© quien de los dos. Seur o Amazon, es el incompetente",
+      "response": "Lamentamos los inconvenientes con la entrega y la confusión sobre la responsabilidad. Para poder revisar tu caso específico y ayudarte con el pedido cancelado, te recomendamos ponerte en contacto con nuestro Soporte al Cliente para recibir una atención especializada: https://t.co/2jHMKv27eI",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "La respuesta está bien fundamentada en el mensaje del cliente y la evidencia histórica, pero no proporciona una solución concreta y no aborda la responsabilidad de Amazon en el problema. La respuesta es clara y segura, pero podría ser más específica y directa."
+      }
+    },
+    {
+      "tweet_id": 1743707,
+      "customer_message": "That feeling when @115830 ruins your collectors edition @117331 Project Scorpio console with in-transit damage ð¤¬ https://t.co/ghNCP22aCQ",
+      "response": "I'm so sorry to hear about the damage to your collector's edition console. Since we don't have access to your account details here, please reach out to us directly at https://t.co/JzP7hlA23B so we can look into this issue in more detail.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the customer's issue and safe, but could benefit from a more detailed explanation."
+      }
+    },
+    {
+      "tweet_id": 2186252,
+      "customer_message": "It kinda looks like whoever delivered my package took this picture mid throw @115821  Â¯\\_(ã)_/Â¯ https://t.co/xBzhe8swax",
+      "response": "Oh no! I'm so sorry to hear that, that sounds incredibly frustrating. We'd like to look into this further for you. When you get a moment, could you please provide some additional information here: https://t.co/ZRd2GcT89N Thanks! ^SW",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the customer's frustration and annoyance. It provides a useful next step, but the tone is somewhat generic and lacks empathy."
+      }
+    },
+    {
+      "tweet_id": 1715300,
+      "customer_message": "@AmazonHelp Yes I am preordered Xbox one x Over 3 months ago and took time off of work to make sure Iâd be home when delivered.",
+      "response": "Hi there. I'm sorry to hear you've been waiting for your Xbox One X. We don't have access to your specific order details through Twitter, but could you please check your order confirmation email and let us know the delivery date that was originally provided? ^CN",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It asks for information without making meaningful progress, similar to the historical example. The response is safe and clear, but could benefit from a more actionable next step."
+      }
+    },
+    {
+      "tweet_id": 318574,
+      "customer_message": "@AmazonHelp Already reported to your cc, no knowledge about cashback or process , seems unethical practice about cashback. No mention in invoice. Fishy.",
+      "response": "@Customer We understand your concern. To help us investigate the cashback status, please share the link to the specific cashback offer you are referring to. Please avoid sharing any personal or order details here, as this page is public. ^ZH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it could benefit from more specific details about the cashback process. The resolution correctness is reasonable, but it could be improved by providing a more concrete next step. The response is relevant to the customer's issue and safe, but it could be more concise and natural in style."
+      }
+    },
+    {
+      "tweet_id": 1866958,
+      "customer_message": "@AmazonHelp Any exchange program on echo devices?",
+      "response": "Hello, I don't have any current announcements regarding an exchange program for Echo devices. Please stay tuned for future updates. ^MK",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 2,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks specific information about the exchange program. It provides a generic next step without addressing the customer's request for a concrete resolution. The response is safe and clear, but could benefit from more relevant and actionable information."
+      }
+    },
+    {
+      "tweet_id": 2251935,
+      "customer_message": "#AmazonInMarathi\nAll Indian language Available on your app\nWhat is the difficulty of adding Marathi language to your App?\n@115850 https://t.co/fCt1eLbNYg",
+      "response": "Thank you for your suggestion. I’ll be sure to pass along your feedback to the concerned team regarding adding Marathi language support to the app.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete resolution or actionable next step. It is relevant to the customer's request and safe, but could benefit from more clarity and detail."
+      }
+    },
+    {
+      "tweet_id": 393074,
+      "customer_message": "@AmazonHelp (3/3) is the tracking information for that one.",
+      "response": "Thanks for the update. Please contact us via phone or chat so we can discuss options with you: https://t.co/JzP7hlA23B",
+      "judgment": {
+        "grounding": 1,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 1,
+        "style": 1,
+        "overall": 1,
+        "reason": "The response lacks grounding, resolution correctness, relevance, safety, and style. It only provides a generic and unsafe instruction without addressing the customer's actual request or problem."
+      }
+    },
+    {
+      "tweet_id": 440434,
+      "customer_message": "@115821 Where do I report disgusting, malicious delivery guys?",
+      "response": "@115821 We are so sorry to hear about that experience. Please check this out https://t.co/zcC9gY3WTg\nPlease keep us updated. ^LL",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 4,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step but misses a minor part of the resolution. The response is relevant to the issue but could be improved with more specific details."
+      }
+    },
+    {
+      "tweet_id": 1051898,
+      "customer_message": "@AmazonHelp It's been very stressful 4 me and i had mentioned clearly to customer care that if issue ain't resolved 2day then i am gonna file n FIR.",
+      "response": "@Customer We’re sorry to hear about the stress this has caused. Since we don’t have access to your Amazon account over Twitter, please share your details here: https://t.co/beaaDm0muc and we’ll contact you soon. ^SU",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 2,
+        "style": 2,
+        "overall": 2,
+        "reason": "The response is not grounded in the customer's message, as it assumes the customer has an Amazon account and doesn't address the customer's stress. The response also asks for sensitive information and is not relevant to the customer's issue."
+      }
+    },
+    {
+      "tweet_id": 2032971,
+      "customer_message": "@AmazonHelp is it normal on kindle oasis (9th gen) to see the light bleeding out the corner? Might be hard to see in the photo but it's on the top left corner. https://t.co/aVJ5ywAcEN",
+      "response": "@Customer Sorry to hear about the light bleed on your Kindle Oasis. This isn't typical behavior, so we'd like to have a member of our team look into this with you. Please reach out to us here: https://t.co/6f9T7pbTKL ^NS",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the issue. It provides a reasonable next step but misses a minor part of the resolution. The response is relevant to the issue but not directly addressing the customer's request. The tone is good, but the language could be more concise and natural."
+      }
+    },
+    {
+      "tweet_id": 348231,
+      "customer_message": "@115850 Unable to topup pay balance. Sent mail to cs, called. Still not working.",
+      "response": "Sorry to hear you're having trouble topping up your Amazon Pay balance, especially after reaching out via email and phone. Please connect with us here for further assistance: https://t.co/R3EfhzgU8B. ^PS",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a clear resolution and uses a generic phrase. The response is relevant and safe, but could benefit from a more personalized approach."
+      }
+    },
+    {
+      "tweet_id": 1479711,
+      "customer_message": "@AmazonHelp I placed an order on Monday and it hasnât been dispatched yet?",
+      "response": "@Customer I'm sorry to hear your order hasn't been dispatched yet. To help us look into this, could you please confirm the delivery estimate you were given at checkout? You can also check your current order status here: https://t.co/aaDyEz1VgE? ^ST",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but misses a minor part of the resolution. It provides a useful next step but does not directly address the customer's actual request or problem. The response is safe and clear, but could be improved with more specific details."
+      }
+    },
+    {
+      "tweet_id": 2977345,
+      "customer_message": "@115833 I canât get routines to work ð¢ They run if I do that through the app but canât get any phrases to work. Good morning etc. Help!!",
+      "response": "Hi there! Sorry to hear your routines aren't responding to phrases. Please try the troubleshooting steps on this page to help get them working: https://t.co/RYKnKIKMzF ^JJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks specificity and provides limited progress. It is safe and clear, but could benefit from more actionable next steps."
+      }
+    },
+    {
+      "tweet_id": 1224555,
+      "customer_message": "@AmazonHelp @115851 Rep. who helped over the phone w/order issue deserves a bonus. That's customer srvc I've come to expect from @115821!",
+      "response": "@115851 That’s great to hear! We’re glad our representative was able to help resolve your order issue. Thanks for the positive feedback! ^AB",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 2,
+        "relevance": 2,
+        "safety": 5,
+        "style": 5,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution or meaningful progress. It's relevant to the customer's positive feedback but doesn't address the issue itself. The response is safe and has good style, but it could benefit from a more substantial resolution or acknowledgment of the customer's concerns."
+      }
+    },
+    {
+      "tweet_id": 417021,
+      "customer_message": "@AmazonHelp hey when do I recieve my cash back?? I have made payment through Citibank credit card and order is delivered.",
+      "response": "I'm sorry to hear you haven't received your cashback yet. Please connect with our support team here for more info on your cashback: https://t.co/vlvfJr4nN9",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 2,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from a more detailed explanation of the cashback process."
+      }
+    },
+    {
+      "tweet_id": 2805952,
+      "customer_message": "@119625 I found only two Kannada movies in Amazon prime video, is in this way you will serve Kannadiga customers? Kannada is one of the oldest classical language, your way of respecting it is ignominious.",
+      "response": "@119625 We understand your frustration. Regional languages are an integral part of our content in India, and we are constantly working to expand our library. Please keep checking our website for new updates as we continue to add more Kannada titles. ^PR",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks specificity and concrete next steps. It is safe and clear in style, but could benefit from more detailed information about the expansion of Kannada titles."
+      }
+    },
+    {
+      "tweet_id": 2728954,
+      "customer_message": "Bought a new phone. @115821 decided this wasn't like me and have cancelled my order. *facepalm*",
+      "response": "I'm sorry to hear about the confusion with your order cancellation. To help you resolve this, please reach out to us here: https://t.co/vlvfJr4nN9 we'd like to help. ^SG",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the issue and provides a generic next step. It is safe and clear in style, but could benefit from more actionable information."
+      }
+    },
+    {
+      "tweet_id": 1446392,
+      "customer_message": "@AmazonHelp What would you offer as compensation to a non-prime case? the same? if yes, so what's the point of paying prime membership fee??!",
+      "response": "I understand your frustration regarding the compensation for a non-Prime case. Our team has sent you an email with the details, so please kindly check your inbox for the next steps.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about compensation for a non-Prime case. It provides a useful next step but misses an important part of the resolution. The response is relevant to the customer's issue but could be improved with more clarity. The tone is good, but the language is somewhat generic."
+      }
+    },
+    {
+      "tweet_id": 839390,
+      "customer_message": "@AmazonHelp I have still not received my delivery. I do not know whom to approach. My email id is __email__",
+      "response": "Sorry to hear your delivery hasn't arrived yet. Please share your details through the secure link above so we can look into this for you.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and retrieved evidence, but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from more specific details."
+      }
+    },
+    {
+      "tweet_id": 605073,
+      "customer_message": "If you could stop sending me fantastic deals @115830 that would help my bank balance greatly!! https://t.co/tdyLYjXANo",
+      "response": "Haha, we're glad you're enjoying the deals! If you'd like to stop receiving these promotional emails, you can manage your communication preferences by clicking the \"Unsubscribe\" link at the bottom of any email we send you. ^MH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 2,
+        "relevance": 2,
+        "safety": 5,
+        "style": 5,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step (managing communication preferences) but misses addressing the customer's actual request to stop receiving deals. The response is safe and well-written."
+      }
+    },
+    {
+      "tweet_id": 293359,
+      "customer_message": "@AmazonHelp I don't want to replace I want a refund",
+      "response": "@Customer I'm sorry for the trouble. We don't have access to accounts via Twitter. Please call us: https://t.co/JzP7hlA23B so we can help sort this out.",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 2,
+        "style": 2,
+        "overall": 2,
+        "reason": "The response is not grounded in the customer's message, and it provides an incorrect resolution by suggesting a call to a phone number without verifying the customer's account type. The response is also not relevant to the customer's request for a refund and contains a minor safety concern."
+      }
+    },
+    {
+      "tweet_id": 590035,
+      "customer_message": "Gracias a la entrega tardÃ­a de @116875 âPrimeâ a las 08:00 p.m, no he podido jugar #XenobladeChronicles2 :( \nMi plan era pegarle todo el viernes y psss puro pito",
+      "response": "@116875 ¡Hola! Lamentamos mucho la demora en tu entrega. Para poder ayudarte mejor, ¿podrías indicarnos si el producto es vendido directamente por Amazon o por un vendedor externo? ^PC",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and historical evidence, but it misses a minor part of the resolution by asking for information that could be provided by the agent. The response is safe and clear, but could be improved by providing a more concrete next step."
+      }
+    },
+    {
+      "tweet_id": 1380274,
+      "customer_message": "@AmazonHelp already contacted CS.. no resolution!",
+      "response": "I'm sorry to hear you haven't received a resolution yet. Please share your details here: https://t.co/VNUITkunAc so we can look into it for you. ^HR",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It is relevant and safe, but could benefit from a more detailed next step."
+      }
+    },
+    {
+      "tweet_id": 2703110,
+      "customer_message": "I think the @115821 Customer Service Reps that I spoke with today deserve a shout out. \nSo: \nThank you Kris and Austin for the wonderful service, I really appreciate it.",
+      "response": "Thank you for taking the time to share your feedback! We are so glad to hear that Kris and Austin provided you with wonderful service. We will be sure to pass along your kind words to them. Have a great rest of your day!",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 1388434,
+      "customer_message": "@AmazonHelp Shared the info many times &amp; Know #Amazon will again reply vaguely. I have posted here to let the world know of your indifferent attitude.",
+      "response": "@Customer We sincerely apologize for the frustration caused by the lack of a clear response. To ensure we can assist you with the specific product information you need, could you please share the details of your concern here? We are ready to help. ^SU",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It is relevant and safe, but could benefit from a more concrete next step."
+      }
+    },
+    {
+      "tweet_id": 1264450,
+      "customer_message": "@115850 filled replacement Order 408-5054187-6504320 talked to your customer care more than 3 times. https://t.co/1afVVTvLFb",
+      "response": "@115850 I'm sorry to hear you've had to reach out multiple times regarding your replacement order. To help us look into this further, please share your details here: https://t.co/GIJyeYqKE0.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The style is good but has a minor awkwardness."
+      }
+    },
+    {
+      "tweet_id": 1232137,
+      "customer_message": "Um. @AmazonHelp... I am missing a can??? The plastic is still on and I don't even understand how this happened https://t.co/23kAvs7HOV",
+      "response": "@Customer I'm so sorry to hear about the missing item! You can look into return options here: https://t.co/Gqpy7I5XIk",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear explanation of the issue and provides limited progress. It is safe and relevant but could benefit from a more detailed resolution."
+      }
+    },
+    {
+      "tweet_id": 199877,
+      "customer_message": "@AmazonHelp how can I lodge a complaint about the Amazon Prime discount for preordered games changing from 20% to 10%?",
+      "response": "I understand your concern. We still offer discounts on eligible physical game pre-orders. For further details on Prime benefits: https://t.co/80y2YnlQGJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it lacks a concrete resolution or next step. It is relevant to the issue and safe, but could benefit from a more detailed explanation or additional next steps."
+      }
+    },
+    {
+      "tweet_id": 1280594,
+      "customer_message": "@115850 what is use of prime, My order late for 2 days any explanation on this ??; __email__",
+      "response": "@115850 I'm sorry for the delay with your order. Did we miss the delivery date shown in your order confirmation email? ^KH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a clear next step or concrete resolution. It is safe and relevant, but could benefit from more detail and progress."
+      }
+    },
+    {
+      "tweet_id": 2755709,
+      "customer_message": ".@115821 Is this an email #SCAM ? https://t.co/ZjYl9VxtMx",
+      "response": "Thanks for flagging this. Please do not click any links or reply to the email. You can verify if it’s legitimate by checking our official email verification page here: http:https://t.co/ccUoiqjMrW. If you’re unsure, feel free to forward the email to us for review.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but misses a minor part of the resolution. It provides a useful next step but does not directly address the customer's request to verify if the email is from a scam. The response is safe and clear, but could be improved with more specific guidance on how to verify the email's legitimacy."
+      }
+    },
+    {
+      "tweet_id": 683736,
+      "customer_message": "@AmazonHelp This is the one, but the price on the listing is less than what Iâm being charged, the listing price seems correct when I bought, because I compared to HMV and they were Â£25 too https://t.co/uIBpvjfCwv",
+      "response": "@Customer Thank you for the details. To investigate the price discrepancy, please contact our support team here: https://t.co/TdDksLo6Mf. We'll get this checked. ^HD",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The response is safe and has good style, but could benefit from a more detailed explanation."
+      }
+    },
+    {
+      "tweet_id": 2500760,
+      "customer_message": "@115830 you sent me a promotional code but itâs not working once at my basket",
+      "response": "@115830 I'm sorry to hear the promotional code isn't working in your basket! Could you please let us know a bit more about the specific promotion you're trying to use? Please avoid sharing any sensitive information. ^JJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from a more detailed explanation of the next steps to resolve the issue."
+      }
+    },
+    {
+      "tweet_id": 1701181,
+      "customer_message": "For the â¤ï¸of all that is good, @116618, please fix your TV app. Scrolling through a large library is a terrible experience!",
+      "response": "@116618 I'm sorry to hear you're having trouble with the TV app! Have you had a chance to phone us for some live troubleshooting? You can reach us here: https://t.co/hApLpMlfHN. Please let us know if that helps! ^LB",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete resolution. It is relevant and safe, but could benefit from a more detailed explanation of the troubleshooting process."
+      }
+    },
+    {
+      "tweet_id": 38815,
+      "customer_message": "@AmazonHelp contact me 9897327895",
+      "response": "@9897327895 Please click here: https://t.co/kXbcNUXBb7 after selecting the appropriate issue, click on 'call me' option and a call will be scheduled. 1/3 ^SH",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, directly addresses the customer's request, is safe, and has a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 524277,
+      "customer_message": "@AmazonHelp where is the result for AmazonRechargesQuiz ???",
+      "response": "I understand you are looking for the AmazonRechargeQuiz results. We are working with our team to release them soon, so please stay tuned.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specificity and provides a generic next step. It is safe and clear in style, but could benefit from more detail and a more actionable next step."
+      }
+    },
+    {
+      "tweet_id": 1678589,
+      "customer_message": "@119625 please integrate Google home cast feature. It's too late already!",
+      "response": "@119625 We do not currently support Google Chromecast casting on Prime Video. You can watch your favorite movies and TV shows using the Fire TV Stick: https://t.co/QUwOnU4jNV However, I’ll certainly share your feedback with the relevant team internally. ^EM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete next step or resolution. It provides a safe and relevant answer, but could benefit from a more actionable follow-up. The style is clear and concise, but could be improved with a more empathetic tone."
+      }
+    },
+    {
+      "tweet_id": 2915835,
+      "customer_message": "Iâve been calling @115821 all day! And I never got my package. I had one day shipping and Iâm so frustrated...it was supposed to be here yesterday but now it wonât be here until next week ð.",
+      "response": "@115821 I'm so sorry to hear about the delay and the frustration with the phone support! To help us look into this, could you please let us know which carrier was assigned to your delivery? You can find this information under your order details here: https://t.co/Y5jpI9gRhE ^CH",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it misses the customer's frustration and the fact that they've been calling all day. The response provides a useful next step, but it's not directly addressing the customer's actual request or problem. The response is safe and clear, but it could be more empathetic and understanding of the customer's situation."
+      }
+    },
+    {
+      "tweet_id": 644092,
+      "customer_message": "@AmazonHelp And I don't see why I should have to be kept waiting for refunds for problems caused by Amazon's lack of proper quality packaging, etc.",
+      "response": "I’m sorry to hear about the packaging issues and the delay in your refund. Please reply to the email sent to you by our support team so we can help resolve this for you. ^PJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The response is safe and has good style, but could benefit from more specific details."
+      }
+    },
+    {
+      "tweet_id": 2435220,
+      "customer_message": "@AmazonHelp Did all that. I noticed that FSgo clears up when it goes to commercials.  Why do all of the apps do this? Are apps not up to date for this?",
+      "response": "@Customer I'm sorry to hear you're still experiencing these issues. Since the problem persists across multiple apps, please reach out to us here for further assistance: https://t.co/hApLpMlfHN ^HC",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from more specific details or a clearer explanation of the issue."
+      }
+    },
+    {
+      "tweet_id": 229813,
+      "customer_message": "@AmazonHelp No, none. Whatâs the point in paying for prime when you donât receive your items the next day as stated?",
+      "response": "I'm sorry for the frustration with your delivery times. To help us look into this, could you please confirm if the delivery date provided in your order confirmation email was missed? ^KM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step but misses a minor part of the resolution. The response is safe and clear, but could benefit from a more direct address of the customer's issue."
+      }
+    },
+    {
+      "tweet_id": 590817,
+      "customer_message": "@AmazonHelp #AmazonPrime.. you'll get your #package, it just might not be on time and could be #smashed.",
+      "response": "Sorry to hear your package arrived damaged. Please share your details here: https://t.co/beaaDm0muc and we'll have this sorted. ^GK",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specificity about the package's condition and doesn't directly address the customer's concern about the delay. The response is safe and clear, but could benefit from more detailed information and a more direct approach."
+      }
+    },
+    {
+      "tweet_id": 580581,
+      "customer_message": "@115850 received servify insurance policy which i bought along with @132994  @132995 @139570  but still fone is missing..lol",
+      "response": "I'm sorry to hear that your phone is missing. Please fill out this form to report the issue: https://t.co/beaaDm0muc. ^SI",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step but misses addressing the customer's frustration with the return policy. The response is safe and clear, but could benefit from a more personalized approach."
+      }
+    },
+    {
+      "tweet_id": 989620,
+      "customer_message": "@115850 Fire stick is constantly getting restarted with message Optimizing system storage and application, what to do?",
+      "response": "I'm sorry to hear your Fire Stick is constantly restarting. Please try the troubleshooting steps listed here: https://t.co/tPv3EAUP7H. If the issue persists, you can report it to our support team here: https://t.co/rS49hgaADF for further assistance.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specificity and provides limited progress. It is safe and relevant but could benefit from more detailed troubleshooting steps."
+      }
+    },
+    {
+      "tweet_id": 502481,
+      "customer_message": "@AmazonHelp hi, I have prime membership but can only listen to certain songs on the amazon music app? Does the prime membership not include prime music or?",
+      "response": "Hi there, Prime Music is included with your Prime membership, but it is separate from Amazon Music Unlimited. You can learn more about the differences here: https://t.co/oMmDl0SC7l and https://t.co/SQCOLItUmV. If you are still having trouble accessing the songs, try logging out and back into the app to ensure you are using the correct account. ^JJ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but it could benefit from a more concise explanation of the Prime Music and Amazon Music Unlimited difference. The response provides a useful next step (logging out and back into the app) but misses a minor part of the resolution (clearly stating that Prime Music is included with Prime membership). The response is relevant, safe, and clear in style."
+      }
+    },
+    {
+      "tweet_id": 1615542,
+      "customer_message": "@115850 kindly take it seriously and help me in this matter because some wrong has happened and your team is not aware of it. Waiting!!",
+      "response": "I'm sorry to hear about the trouble you're experiencing. To help us investigate this further, please fill in this form: https://t.co/GIJyeYqKE0 and we'll look into it for you. ^AB",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a clear next step and fails to address the customer's emotional tone. It provides a safe response but could benefit from a more personalized approach."
+      }
+    },
+    {
+      "tweet_id": 2525446,
+      "customer_message": "@AmazonHelp Iâve already talked to to Customer service 3 times I just want to voice my displeasure on a public forum",
+      "response": "@Customer I understand your frustration. To ensure we can address your concerns properly, please share your details here: https://t.co/JzP7hlA23B? ^MC",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 2,
+        "relevance": 2,
+        "safety": 5,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a safe link but does not meaningfully address the customer's frustration or provide a concrete next step. The style is somewhat generic and repetitive."
+      }
+    },
+    {
+      "tweet_id": 1614877,
+      "customer_message": "@115850 @AmazonHelp my recharge failed due to Ur technical issue...and evn the money is not refunded...",
+      "response": "@115850 Sorry to hear about the issue with your recharge and refund. Kindly connect with our support team here: https://t.co/TdDksLo6Mf. We'll look into this for you. Please don't provide your order details, as we consider it to be personal information. Our Twitter page is visible to the public. ^PS",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 4,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but misses a minor part of the resolution. It provides a useful next step but does not directly address the customer's request. The response is safe but has a minor concern about not providing order details. The style is good but has a noticeable generic tone."
+      }
+    },
+    {
+      "tweet_id": 306597,
+      "customer_message": "@AmazonHelp Already informed the team. But haven't received my refund",
+      "response": "@Customer We're sorry to hear your refund hasn't arrived yet. Please check your email for a message from us with further details and instructions on how to proceed. If you don't see it, let us know so we can assist you further.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant and safe, but could benefit from more concrete details."
+      }
+    },
+    {
+      "tweet_id": 359778,
+      "customer_message": "@115850 I didn't Recieved my cashback yet, give me my cashback asap,i m extremely upset with your pathetic service (__email__)",
+      "response": "@115850 I'm sorry to hear about the delay with your cashback. Please share your details here: https://t.co/GIJyeYqKE0 and I'll get back to you. ^HN",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specificity and originality. It provides a useful next step but misses an important part of the resolution. The response is safe and clear, but could benefit from more personalized details."
+      }
+    },
+    {
+      "tweet_id": 988110,
+      "customer_message": "@115850 is the third class company which yet not refunded my payback balance to my account",
+      "response": "@115850 I'm sorry to hear about the delay with your refund. To help us look into this, please share your details here: https://t.co/GIJyeYqKE0. We'll reach out to you. ^VN",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from more specific details or a clearer explanation of the next steps."
+      }
+    },
+    {
+      "tweet_id": 2507270,
+      "customer_message": "@AmazonHelp helpppp meeee ya people never sent me my sleeping bag and it says it did and Iï¸ need it for tomorrow ð­ð­",
+      "response": "@Customer I'm so sorry to hear your sleeping bag hasn't arrived, especially since you need it for tomorrow! Please contact our support team via the link provided in your DM so we can look into this for you. ^BS",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the customer's previous interactions with Amazon's support team. The response provides a useful next step, but misses a minor part of the resolution. The tone is clear and concise, but could be improved with more specific language."
+      }
+    },
+    {
+      "tweet_id": 1160647,
+      "customer_message": "@115830 Hi got an email about a refund but itâs a diff card now than the one I paid on as itâs a new card, will that make a difference?",
+      "response": "@115830 Sorry for the confusion. Please contact us here: https://t.co/vlvfJr4nN9 and we'll be glad to help you. ^SI",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 5,
+        "style": 5,
+        "overall": 2,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a generic link without addressing the customer's specific issue of a different card being used for the refund. The response is safe and clear in style, but a more meaningful next step is needed to resolve the customer's problem."
+      }
+    },
+    {
+      "tweet_id": 347943,
+      "customer_message": "@AmazonHelp Yes I know tht...want to know will I get valid warranty if purchased frm othr e-commerce site?",
+      "response": "@Customer The warranty is typically provided by the manufacturer and starts from the date of purchase mentioned in the invoice. You can claim it directly with the manufacturer or their service center, regardless of where you bought the item.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a direct connection to the customer's request. It provides a reasonable next step but misses an important part of the resolution. The response is safe and clear, but could benefit from a more direct address to the customer's issue."
+      }
+    },
+    {
+      "tweet_id": 323766,
+      "customer_message": "@115850 Im not able to add money to AmazonPay thr DebitCard. Im being taken to same page after filling the info.#AmazonGreatIndianFestival https://t.co/nDJn8OGBmn",
+      "response": "@115850 I'm sorry to hear about the trouble adding money to Amazon Pay. Please contact our support team here: https://t.co/rS49hgaADF and we’ll be glad to help you.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear explanation of the issue and provides limited progress. It is safe and relevant, but could benefit from a more detailed resolution or next steps."
+      }
+    },
+    {
+      "tweet_id": 2098728,
+      "customer_message": "@AmazonHelp what's the point of prime shipping if my package won't arrive on time? I'll have to wait between now &amp; Saturday? Why is that?",
+      "response": "I'm sorry for the delay. To help us look into this, could you please share the order number here?",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 2,
+        "relevance": 2,
+        "safety": 5,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is related to the issue but misses an important part of what the customer asked. The response is safe and clear, but somewhat generic and repetitive."
+      }
+    },
+    {
+      "tweet_id": 2179029,
+      "customer_message": "@AmazonHelp Amazon yes, and I have emailed, phoned, filed online complaints but yet no one can tell me when I'm going to get my refund.",
+      "response": "I’m sorry to hear you’ve been waiting so long without a clear answer. Refunds are typically processed once the returning package reaches a specific status, such as being received at a facility. Please check your order details for the latest return status to see if it has been scanned in. If it has, the refund should be initiated shortly.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but could be improved with more specific details. The tone is good, but the language is somewhat generic."
+      }
+    },
+    {
+      "tweet_id": 1559838,
+      "customer_message": "@AmazonHelp yes your customer won't give me a compensation for an item that the price decreased overnight.",
+      "response": "I’m sorry to hear about the frustration with the price drop. If the item hasn’t shipped yet, you can cancel the order and reorder it at the lower price. If it has already shipped, you have the option to return it and reorder the lower-priced item if you wish.",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 2583023,
+      "customer_message": "@AmazonHelp No info there about sms marketing. Is this SMS actually from Amazon (see screenshot) https://t.co/BxlBZqfO7B",
+      "response": "@Customer Thanks for flagging this. Based on the sender details, this does not appear to be an official Amazon SMS. Please do not provide any personal information or click on links in the message. You can verify legitimate offers directly on your account at https://www.amazon.com.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from a more direct and actionable resolution."
+      }
+    },
+    {
+      "tweet_id": 444257,
+      "customer_message": "@AmazonHelp They why use the word guaranteed? And why charge extra for prime membership? Isnt it misleading on ur part? @115850 @115821 #ScamAlert",
+      "response": "@115850 We understand your frustration. \"Guaranteed\" delivery refers to the estimated transit time once an item ships, but some items may be out of stock or unavailable to ship immediately. We don't have direct access to view your Amazon account over Twitter. Please drop your details over the secure link so we can investigate further. ^CB",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 4,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response mostly grounds the issue but introduces unnecessary information about Amazon's account access and secure link, which is not relevant to the customer's concern. The response also provides a somewhat generic explanation of guaranteed delivery and lacks a clear next step."
+      }
+    },
+    {
+      "tweet_id": 1359071,
+      "customer_message": "@AmazonHelp The reason I ask is because I took advantage of a discounted pre-order price. I'm curious if I can use the discounted price for digital.",
+      "response": "@Customer Hey there. Based on similar cases, discounts like the Prime member discount are typically only applied to physical games, so the digital pre-order may not qualify for that specific price. I recommend checking your order details to confirm the final price, or reaching out to our digital content support team for verification. ^KP",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but misses a minor part of the resolution. It provides a useful next step and is safe, but could benefit from more direct confirmation of the customer's issue."
+      }
+    },
+    {
+      "tweet_id": 2896017,
+      "customer_message": "@115850 How come the price fluctuating so much? https://t.co/RqIMt95cC3",
+      "response": "@115850 Pricing and offers are determined by the sellers. You can find more details about how prices work on Amazon here: https://t.co/yQb39uNRsX",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message and retrieved evidence, but it misses a minor part of the resolution by not directly addressing the customer's concern about price fluctuations within an hour. The response is safe, clear, and concise, but could benefit from a more detailed explanation of the price fluctuation issue."
+      }
+    },
+    {
+      "tweet_id": 939607,
+      "customer_message": "Amazonã§è²·ã£ããã¤åæã«ã­ã£ã³ã»ã«ããããã¨èª°ãããï¼",
+      "response": "ご不便をおかけしております。デジタルコンテンツのキャンセルは、購入後一定期間内であればお客様ご自身で手続きが可能です。お手数ですが、アカウントの「注文履歴」から該当の商品を選択し、キャンセルの手続きをお試しください。なお、ダウンロード済みや利用開始済みの場合はキャンセルできない場合がございます。詳細は、カスタマーサービスへのお問い合わせもご検討ください。",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but contains some minor unsupported assumptions. The resolution correctness is reasonable but mostly asks for information. The response is relevant to the issue but misses an important part of what the customer asked. The safety of the response is good, but the style could be improved with a bit more concision and professionalism."
+      }
+    },
+    {
+      "tweet_id": 1601855,
+      "customer_message": "Amazon Is slower than a snail #freddyfiles is late @115821 do something pleaseee https://t.co/kkSHaIdc6W",
+      "response": "@115821 We can't gain access to your account details via Twitter. Please connect with us using this link here: https://t.co/00q4Sqj9zL and we'll have this issue checked. ^KA",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 2,
+        "style": 2,
+        "overall": 2,
+        "reason": "The response is not grounded in the customer message or historical evidence, and it provides an incorrect resolution. The response also makes an unsafe assumption about the customer's account details and requests sensitive information."
+      }
+    },
+    {
+      "tweet_id": 485195,
+      "customer_message": "@AmazonHelp So you're saying we need to sift through broken glass, sort it, buy packaging, and package it separately before returning it to you? Seems a little unreasonable.",
+      "response": "I completely understand your frustration with the broken glass. To resolve this quickly and safely, please reach out to us in real time via this link: https://t.co/Y5jpI9gRhE ^JE",
+      "judgment": {
+        "grounding": 2,
+        "resolution_correctness": 2,
+        "relevance": 1,
+        "safety": 5,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a safe link to contact Amazon but misses the opportunity to address the customer's specific issue with the broken glass. The style is somewhat generic and could be improved."
+      }
+    },
+    {
+      "tweet_id": 2208540,
+      "customer_message": "MY COPY OF THE BOOK OF DUST IS STILL NOT HERE WHO DO I CALL @115830",
+      "response": "@115830 Sorry to hear your Book of Dust hasn't arrived yet! To help track it down, could you let us know who the carrier was for that order? You can also check the status here: https://t.co/Y5jpI9gRhE",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The response is safe and has good style, but could be improved with more concrete progress."
+      }
+    },
+    {
+      "tweet_id": 1145916,
+      "customer_message": "@AmazonHelp Iâm just letting you know this is a virus, I donât have a prime subscription",
+      "response": "@Customer I'm sorry to hear about the trouble you're experiencing. Since you mentioned you do not have a Prime subscription, please let us know if you need assistance with your account or if there is a specific issue we can help you resolve. We are here to help!",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It is relevant to the customer's issue and safe, but could benefit from a more direct and actionable next step."
+      }
+    },
+    {
+      "tweet_id": 1706245,
+      "customer_message": "@AmazonHelp I was going to buy some books this afternoon and didnât.  If you donât fix the app, I will get them from someone else.",
+      "response": "I’m sorry to hear about the trouble with the app. To get this resolved so you can complete your purchase, please reach out to our support team here: https://t.co/2t6DQoUmNZ",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step, but misses a minor part of the resolution. The response is safe and clear, but could benefit from more specific guidance."
+      }
+    },
+    {
+      "tweet_id": 2776327,
+      "customer_message": "@115823 please how can I get in touch with amazon pay support team?",
+      "response": "@115823 Could you let us know the specific issue you've faced with Amazon Pay? We'd like to help. ^VM",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded in the customer message, but lacks a concrete resolution. It is relevant to the customer's issue and safe, but could benefit from a more detailed next step."
+      }
+    },
+    {
+      "tweet_id": 63860,
+      "customer_message": "@AmazonHelp It can't be more than the total billing amt which has been finalised while placing the order right? https://t.co/p0nNRIEgmr",
+      "response": "@Customer You're correct, the final charge should not exceed the total billing amount confirmed at the time of order placement. To help us review your specific transaction details, please send us your account information directly using this link: https://t.co/0zzYsRGek3 ^JR",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 4,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but has a minor unsupported assumption. It provides a useful next step but misses a minor part of the resolution. The response is relevant but has a noticeable omission. The style is good but has a minor awkwardness. The overall response is useful with minor improvements."
+      }
+    },
+    {
+      "tweet_id": 2192402,
+      "customer_message": "@AmazonHelp I haven't received such an email, as of yet.",
+      "response": "That's odd. Could you please check your spam or junk folder to see if the email ended up there? If you still can't find it, please let us know so we can assist you further.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from more specific guidance or a clearer explanation of the issue."
+      }
+    },
+    {
+      "tweet_id": 1144989,
+      "customer_message": "@115821 guys you need a better system. Having huge trouble getting a refund. Used debit card. Can someone call me?  (818)516-5052",
+      "response": "Hi there. I’m sorry to hear you’re having trouble with your refund. We can be reached at 0800 279 7234.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks specific details about the refund process. It provides a useful next step but misses a minor part of the resolution. The response is relevant to the customer's issue and safe, but could benefit from more clarity and concision."
+      }
+    },
+    {
+      "tweet_id": 1207584,
+      "customer_message": "@AmazonHelp This is a joke now.I just had an email from __email__ AGAIN, with the SAME INVOICE I already have. Not the one I'm missing!",
+      "response": "@Customer I’m sorry to hear you’re receiving duplicate invoices instead of the missing one. Please contact our support team here: https://t.co/vlvfJr4nN9 so we can assist you further. Please don’t provide your order details as we consider them to be personal information. Our Twitter page is visible to public. ^BS",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 3,
+        "style": 3,
+        "overall": 3,
+        "reason": "The response is mostly grounded but has some minor unsupported assumptions and lacks a clear, concrete resolution. It is relevant to the issue but misses an important part of what the customer asked. The response is safe but has a noticeable concern about not providing order details, which could be improved."
+      }
+    },
+    {
+      "tweet_id": 1755259,
+      "customer_message": "#WhatTheHell is this @119356? Has #AmazonIndia #Login page changed? Why we not #Informed beforehand? Is this a #Phishing attempt? #Silly https://t.co/BWoR7JYDSW",
+      "response": "Hi, thanks for reaching out. We understand your concern. Please do not enter any personal information on that page. You can find more information on how to identify and report phishing attempts here: https://t.co/szbmOSyVzs.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 4,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a direct reference to the customer's specific issue. The resolution correctness is good, but the relevance is slightly lower due to the minor omission. The safety and style are excellent, but the overall score is slightly lower due to the minor issues."
+      }
+    },
+    {
+      "tweet_id": 2344024,
+      "customer_message": "@AmazonHelp Thanks",
+      "response": "You're welcome! Let us know if there's anything else we can help with.",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is directly relevant, safe, and written in a clear and professional style."
+      }
+    },
+    {
+      "tweet_id": 43725,
+      "customer_message": "Thanks to Amazon's new, experimental, delivery-gig system, we just had yet another package chucked into our yard, left out in the open next to a city sidewalk. A city sidewalk, you dolts!!! Driver sped away. @115821 Prime members since 1995.",
+      "response": "I'm so sorry to hear about the frustration with your delivery. We'd like to look into this for you. Please share the details of the order here: https://t.co/yJXzZcTrmZ Thanks!",
+      "judgment": {
+        "grounding": 3,
+        "resolution_correctness": 2,
+        "relevance": 2,
+        "safety": 5,
+        "style": 4,
+        "overall": 3,
+        "reason": "The response is mostly grounded but lacks specific details about the issue and provides a generic next step. It is safe and clear in style, but could benefit from more actionable information."
+      }
+    },
+    {
+      "tweet_id": 836501,
+      "customer_message": "@115830 Hey guys! I can't seem to DM you, and it's a slightly sensitive issue - can someone DM me so I can reply to it? Thanks!",
+      "response": "@115830 Thanks for reaching out! I've included a link below so you can DM us directly. ^LA https://t.co/1XyLaGkcaN",
+      "judgment": {
+        "grounding": 5,
+        "resolution_correctness": 5,
+        "relevance": 5,
+        "safety": 5,
+        "style": 5,
+        "overall": 5,
+        "reason": "The response is well-grounded, provides a correct resolution, is directly relevant, safe, and clear in its style. It mirrors the structure and tone of similar historical responses that have successfully resolved similar issues."
+      }
+    },
+    {
+      "tweet_id": 224250,
+      "customer_message": "@115850 You sent me this broken gamepad and still didnt take it back ! https://t.co/2uCNtLKo5L",
+      "response": "@115850 Apologies for the experience. Please reach us from here: https://t.co/rS49hgaADF we'll look into this and assist you. ^SV",
+      "judgment": {
+        "grounding": 1,
+        "resolution_correctness": 1,
+        "relevance": 1,
+        "safety": 1,
+        "style": 1,
+        "overall": 1,
+        "reason": "The response lacks grounding, resolution correctness, relevance, safety, and style. It only apologizes and provides a generic link without addressing the customer's issue or providing a concrete resolution."
+      }
+    },
+    {
+      "tweet_id": 1307640,
+      "customer_message": "Another pathetic experience from Amazon india.not received my amazon pay cashback since 2 weeks @115851 @115850",
+      "response": "I’m sorry to hear about the delay with your Amazon Pay cashback. To help us investigate this further, please share your details here: https://t.co/GIJyeYqKE0 and we’ll get in touch with you.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step, but misses a minor part of the resolution. The response is relevant to the issue but misses an important part of what the customer asked. The response is safe and clear, but could be improved with more specific details."
+      }
+    },
+    {
+      "tweet_id": 2314000,
+      "customer_message": "@AmazonHelp I placed the order on the 16th. I forget what the delivery date was but it is now saying 20-23",
+      "response": "Sorry about that. We update the delivery date if there is any certainty of delay, to avoid a bad customer experience. Request you to wait till the revised estimates.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a concrete resolution. It provides a useful next step and is safe, but could benefit from more specific information about the revised estimates."
+      }
+    },
+    {
+      "tweet_id": 493450,
+      "customer_message": "@AmazonHelp I'm not doubting the genuineness of your contests. You are multi billion dollars company and that takes a good amount of trust to build such a business. I was only looking for a link where we can see the winners. thanks for sending the link. Appreciate it",
+      "response": "Thank you for your understanding and support! We are glad the link was helpful. Please stay tuned to our website for future contest announcements and results. Have a great day!",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 3,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded, but lacks a concrete resolution or next step. It is relevant to the customer's request, safe, and has good style, but could benefit from a more actionable next step."
+      }
+    },
+    {
+      "tweet_id": 2894526,
+      "customer_message": "@AmazonHelp Yess I can sign into https://t.co/7qU3nv784c fine using the same credentials. Itâs just the Alexa app Iâm having trouble with. Been on this loop for months and I havenât even set up my echo dot yet",
+      "response": "@Customer I’m sorry to hear you’ve been stuck in this loop for so long. Since you can sign in elsewhere, let’s try live troubleshooting to get your Echo Dot set up. Please reach us via phone here: https://t.co/JzP7hlA23B ^AB",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 4,
+        "overall": 4,
+        "reason": "The response is mostly grounded but lacks a clear resolution. It provides a useful next step but misses a minor part of the resolution. The response is relevant to the issue but not directly addressing the customer's problem. The tone is good, but the response could be more concise."
+      }
+    },
+    {
+      "tweet_id": 181171,
+      "customer_message": "@AmazonHelp You can simply repay me on my Amazon wallet so that I can buy another cellphone. Looking forward for your cooperation.",
+      "response": "I understand you would like a refund to your Amazon wallet to purchase another cellphone. However, as per our policy, we do not accept remorse returns for mobile phones. We only offer a 10-day replacement policy for damaged devices. I’m unable to process a refund in this case.",
+      "judgment": {
+        "grounding": 4,
+        "resolution_correctness": 3,
+        "relevance": 4,
+        "safety": 5,
+        "style": 5,
+        "overall": 4,
+        "reason": "The response is mostly grounded but misses a minor part of the resolution. It provides a useful next step but does not clearly address the customer's request for a refund. The response is safe and clear, but could be improved with a more direct and actionable next step."
+      }
+    }
+  ]
+}
