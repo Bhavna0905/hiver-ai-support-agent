@@ -3,7 +3,9 @@ from pathlib import Path
 import joblib
 import numpy as np
 import pandas as pd
+from scipy.sparse import hstack, csr_matrix
 from sentence_transformers import SentenceTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.linear_model import LogisticRegression
 
 
@@ -30,10 +32,7 @@ def build_balanced_training_data(df):
 
         parts.append(group)
 
-    balanced = pd.concat(
-        parts,
-        ignore_index=True,
-    )
+    balanced = pd.concat(parts, ignore_index=True)
 
     return balanced.sample(
         frac=1.0,
@@ -58,19 +57,19 @@ def main():
     print("\nClass distribution:")
     print(df["intent"].value_counts())
 
-    print(
-        f"\nLoading embedding model: "
-        f"{EMBEDDING_MODEL}"
-    )
-
-    encoder = SentenceTransformer(
-        EMBEDDING_MODEL
-    )
-
     texts = df["text"].astype(str).tolist()
     labels = df["intent"].tolist()
 
-    print("\nCreating embeddings...")
+    # ---------------------------------------------------------
+    # 1. Semantic features
+    # ---------------------------------------------------------
+    print(
+        f"\nLoading embedding model: {EMBEDDING_MODEL}"
+    )
+
+    encoder = SentenceTransformer(EMBEDDING_MODEL)
+
+    print("\nCreating MiniLM embeddings...")
 
     embeddings = encoder.encode(
         texts,
@@ -88,6 +87,44 @@ def main():
         f"Embedding matrix: {embeddings.shape}"
     )
 
+    # ---------------------------------------------------------
+    # 2. Lexical features
+    # ---------------------------------------------------------
+    print("\nCreating TF-IDF features...")
+
+    tfidf = TfidfVectorizer(
+        ngram_range=(1, 2),
+        min_df=2,
+        max_features=30_000,
+        sublinear_tf=True,
+    )
+
+    tfidf_features = tfidf.fit_transform(texts)
+
+    print(
+        f"TF-IDF matrix: {tfidf_features.shape}"
+    )
+
+    # ---------------------------------------------------------
+    # 3. Combine semantic + lexical features
+    # ---------------------------------------------------------
+    print("\nCombining MiniLM + TF-IDF features...")
+
+    combined_features = hstack(
+        [
+            csr_matrix(embeddings),
+            tfidf_features,
+        ],
+        format="csr",
+    )
+
+    print(
+        f"Combined feature matrix: {combined_features.shape}"
+    )
+
+    # ---------------------------------------------------------
+    # 4. Train classifier
+    # ---------------------------------------------------------
     print("\nTraining Logistic Regression...")
 
     classifier = LogisticRegression(
@@ -97,13 +134,15 @@ def main():
     )
 
     classifier.fit(
-        embeddings,
+        combined_features,
         labels,
     )
 
     artifact = {
         "encoder_name": EMBEDDING_MODEL,
         "classifier": classifier,
+        "tfidf_vectorizer": tfidf,
+        "feature_type": "minilm_tfidf_hybrid",
     }
 
     joblib.dump(

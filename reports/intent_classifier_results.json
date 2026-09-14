@@ -1,21 +1,7 @@
 {
   "dataset": {
     "golden_examples": 200,
-    "trained_intents": [
-      "delivery_problem",
-      "order_management",
-      "returns_refunds",
-      "product_issue",
-      "payment_billing",
-      "amazon_pay",
-      "account_access",
-      "prime_membership",
-      "digital_content",
-      "product_information",
-      "technical_issue",
-      "support_followup"
-    ],
-    "all_intents": [
+    "intents": [
       "delivery_problem",
       "order_management",
       "returns_refunds",
@@ -31,220 +17,242 @@
       "other"
     ]
   },
+  "model": {
+    "embedding_model": "all-MiniLM-L6-v2",
+    "feature_type": "minilm_tfidf_hybrid",
+    "feature_dimensions": 30384
+  },
   "overall": {
-    "accuracy": 0.455,
-    "macro_f1": 0.4350373910671135
+    "accuracy": 0.55,
+    "macro_f1": 0.5404696210255018,
+    "weighted_f1": 0.536034944462481
   },
-  "supported_intents_only": {
-    "examples": 190,
-    "accuracy": 0.4789473684210526,
-    "macro_f1": 0.4761820949866388
-  },
-  "other_analysis": {
-    "gold_other_examples": 10,
-    "predictions_for_other_examples": {
-      "digital_content": 9,
-      "product_information": 1
+  "confidence_analysis": {
+    "correct_mean_confidence": 0.6931510150663073,
+    "incorrect_mean_confidence": 0.5410892809100717,
+    "correct_mean_margin": 0.5916819485825509,
+    "incorrect_mean_margin": 0.385272203818443,
+    "buckets": {
+      "<0.50": {
+        "examples": 75,
+        "accuracy": 0.4533333333333333,
+        "mean_confidence": 0.3396803819763791
+      },
+      "0.50-0.70": {
+        "examples": 39,
+        "accuracy": 0.4358974358974359,
+        "mean_confidence": 0.5905834206494495
+      },
+      "0.70-0.85": {
+        "examples": 29,
+        "accuracy": 0.5172413793103449,
+        "mean_confidence": 0.7788087137388697
+      },
+      ">=0.85": {
+        "examples": 57,
+        "accuracy": 0.7719298245614035,
+        "mean_confidence": 0.9447440734599309
+      }
     }
   },
   "per_intent": {
     "delivery_problem": {
-      "precision": 0.6818181818181818,
-      "recall": 0.5172413793103449,
-      "f1-score": 0.5882352941176471,
-      "support": 29.0
+      "precision": 0.68,
+      "recall": 0.4594594594594595,
+      "f1-score": 0.5483870967741935,
+      "support": 37.0
     },
     "order_management": {
-      "precision": 0.5,
-      "recall": 0.16666666666666666,
-      "f1-score": 0.25,
-      "support": 24.0
+      "precision": 1.0,
+      "recall": 0.1111111111111111,
+      "f1-score": 0.2,
+      "support": 18.0
     },
     "returns_refunds": {
-      "precision": 0.8571428571428571,
-      "recall": 0.631578947368421,
-      "f1-score": 0.7272727272727273,
+      "precision": 0.7894736842105263,
+      "recall": 0.7894736842105263,
+      "f1-score": 0.7894736842105263,
       "support": 19.0
     },
     "product_issue": {
-      "precision": 0.4,
-      "recall": 0.5,
-      "f1-score": 0.4444444444444444,
-      "support": 12.0
+      "precision": 0.47368421052631576,
+      "recall": 0.6428571428571429,
+      "f1-score": 0.5454545454545454,
+      "support": 14.0
     },
     "payment_billing": {
-      "precision": 0.8888888888888888,
-      "recall": 0.5333333333333333,
+      "precision": 0.7,
+      "recall": 0.6363636363636364,
       "f1-score": 0.6666666666666666,
-      "support": 15.0
+      "support": 11.0
     },
     "amazon_pay": {
-      "precision": 0.5,
-      "recall": 0.5555555555555556,
-      "f1-score": 0.5263157894736842,
-      "support": 9.0
+      "precision": 0.5555555555555556,
+      "recall": 0.8333333333333334,
+      "f1-score": 0.6666666666666666,
+      "support": 12.0
     },
     "account_access": {
-      "precision": 1.0,
-      "recall": 0.26666666666666666,
-      "f1-score": 0.42105263157894735,
+      "precision": 0.7777777777777778,
+      "recall": 0.4666666666666667,
+      "f1-score": 0.5833333333333334,
       "support": 15.0
     },
     "prime_membership": {
-      "precision": 0.625,
-      "recall": 0.6666666666666666,
-      "f1-score": 0.6451612903225806,
-      "support": 15.0
+      "precision": 0.5294117647058824,
+      "recall": 0.6428571428571429,
+      "f1-score": 0.5806451612903226,
+      "support": 14.0
     },
     "digital_content": {
-      "precision": 0.19402985074626866,
-      "recall": 0.8666666666666667,
-      "f1-score": 0.3170731707317073,
-      "support": 15.0
+      "precision": 0.3055555555555556,
+      "recall": 0.9166666666666666,
+      "f1-score": 0.4583333333333333,
+      "support": 12.0
     },
     "product_information": {
-      "precision": 0.3333333333333333,
-      "recall": 0.3333333333333333,
-      "f1-score": 0.3333333333333333,
+      "precision": 0.5833333333333334,
+      "recall": 0.7777777777777778,
+      "f1-score": 0.6666666666666666,
       "support": 9.0
     },
     "technical_issue": {
-      "precision": 0.5,
-      "recall": 0.11764705882352941,
-      "f1-score": 0.19047619047619047,
-      "support": 17.0
+      "precision": 0.6666666666666666,
+      "recall": 0.3076923076923077,
+      "f1-score": 0.42105263157894735,
+      "support": 13.0
     },
     "support_followup": {
-      "precision": 0.4090909090909091,
-      "recall": 0.8181818181818182,
-      "f1-score": 0.5454545454545454,
-      "support": 11.0
-    },
-    "other": {
-      "precision": 0.0,
-      "recall": 0.0,
-      "f1-score": 0.0,
+      "precision": 0.3684210526315789,
+      "recall": 0.7,
+      "f1-score": 0.4827586206896552,
       "support": 10.0
     },
-    "accuracy": 0.455,
+    "other": {
+      "precision": 0.625,
+      "recall": 0.3125,
+      "f1-score": 0.4166666666666667,
+      "support": 16.0
+    },
+    "accuracy": 0.55,
     "macro avg": {
-      "precision": 0.5299464631554183,
-      "recall": 0.45950293019792326,
-      "f1-score": 0.4350373910671135,
+      "precision": 0.6196061231510147,
+      "recall": 0.5843660714612132,
+      "f1-score": 0.5404696210255018,
       "support": 200.0
     },
     "weighted avg": {
-      "precision": 0.5698861132648446,
-      "recall": 0.455,
-      "f1-score": 0.44967291206891924,
+      "precision": 0.6475211042311662,
+      "recall": 0.55,
+      "f1-score": 0.536034944462481,
       "support": 200.0
     }
   },
   "confusion_matrix": {
     "delivery_problem": {
-      "delivery_problem": 15,
+      "delivery_problem": 17,
+      "order_management": 0,
+      "returns_refunds": 1,
+      "product_issue": 4,
+      "payment_billing": 1,
+      "amazon_pay": 1,
+      "account_access": 1,
+      "prime_membership": 4,
+      "digital_content": 3,
+      "product_information": 2,
+      "technical_issue": 0,
+      "support_followup": 3,
+      "other": 0
+    },
+    "order_management": {
+      "delivery_problem": 2,
       "order_management": 2,
-      "returns_refunds": 0,
-      "product_issue": 1,
+      "returns_refunds": 1,
+      "product_issue": 3,
       "payment_billing": 0,
       "amazon_pay": 0,
       "account_access": 0,
       "prime_membership": 3,
-      "digital_content": 7,
+      "digital_content": 4,
+      "product_information": 1,
+      "technical_issue": 0,
+      "support_followup": 2,
+      "other": 0
+    },
+    "returns_refunds": {
+      "delivery_problem": 2,
+      "order_management": 0,
+      "returns_refunds": 15,
+      "product_issue": 1,
+      "payment_billing": 0,
+      "amazon_pay": 0,
+      "account_access": 0,
+      "prime_membership": 0,
+      "digital_content": 0,
       "product_information": 0,
       "technical_issue": 0,
       "support_followup": 1,
       "other": 0
     },
-    "order_management": {
-      "delivery_problem": 2,
-      "order_management": 4,
-      "returns_refunds": 1,
-      "product_issue": 2,
-      "payment_billing": 0,
-      "amazon_pay": 0,
-      "account_access": 0,
-      "prime_membership": 2,
-      "digital_content": 7,
-      "product_information": 3,
-      "technical_issue": 0,
-      "support_followup": 3,
-      "other": 0
-    },
-    "returns_refunds": {
-      "delivery_problem": 1,
-      "order_management": 1,
-      "returns_refunds": 12,
-      "product_issue": 1,
-      "payment_billing": 1,
-      "amazon_pay": 1,
-      "account_access": 0,
-      "prime_membership": 0,
-      "digital_content": 1,
-      "product_information": 0,
-      "technical_issue": 1,
-      "support_followup": 0,
-      "other": 0
-    },
     "product_issue": {
       "delivery_problem": 2,
       "order_management": 0,
-      "returns_refunds": 0,
-      "product_issue": 6,
+      "returns_refunds": 1,
+      "product_issue": 9,
       "payment_billing": 0,
-      "amazon_pay": 1,
+      "amazon_pay": 0,
       "account_access": 0,
       "prime_membership": 0,
-      "digital_content": 2,
+      "digital_content": 1,
       "product_information": 0,
       "technical_issue": 0,
       "support_followup": 1,
       "other": 0
     },
     "payment_billing": {
-      "delivery_problem": 1,
+      "delivery_problem": 0,
       "order_management": 0,
-      "returns_refunds": 0,
+      "returns_refunds": 1,
       "product_issue": 0,
-      "payment_billing": 8,
+      "payment_billing": 7,
       "amazon_pay": 2,
       "account_access": 0,
       "prime_membership": 0,
-      "digital_content": 2,
+      "digital_content": 0,
       "product_information": 1,
       "technical_issue": 0,
-      "support_followup": 1,
+      "support_followup": 0,
       "other": 0
     },
     "amazon_pay": {
       "delivery_problem": 0,
       "order_management": 0,
-      "returns_refunds": 1,
+      "returns_refunds": 0,
       "product_issue": 0,
       "payment_billing": 0,
-      "amazon_pay": 5,
+      "amazon_pay": 10,
       "account_access": 0,
       "prime_membership": 0,
-      "digital_content": 2,
+      "digital_content": 0,
       "product_information": 0,
-      "technical_issue": 0,
+      "technical_issue": 1,
       "support_followup": 1,
       "other": 0
     },
     "account_access": {
-      "delivery_problem": 1,
-      "order_management": 1,
+      "delivery_problem": 2,
+      "order_management": 0,
       "returns_refunds": 0,
       "product_issue": 1,
-      "payment_billing": 0,
-      "amazon_pay": 1,
-      "account_access": 4,
+      "payment_billing": 1,
+      "amazon_pay": 0,
+      "account_access": 7,
       "prime_membership": 1,
-      "digital_content": 4,
+      "digital_content": 0,
       "product_information": 0,
       "technical_issue": 0,
       "support_followup": 2,
-      "other": 0
+      "other": 1
     },
     "prime_membership": {
       "delivery_problem": 0,
@@ -254,7 +262,7 @@
       "payment_billing": 0,
       "amazon_pay": 0,
       "account_access": 0,
-      "prime_membership": 10,
+      "prime_membership": 9,
       "digital_content": 5,
       "product_information": 0,
       "technical_issue": 0,
@@ -270,40 +278,40 @@
       "amazon_pay": 0,
       "account_access": 0,
       "prime_membership": 0,
-      "digital_content": 13,
+      "digital_content": 11,
       "product_information": 0,
-      "technical_issue": 1,
-      "support_followup": 1,
-      "other": 0
+      "technical_issue": 0,
+      "support_followup": 0,
+      "other": 1
     },
     "product_information": {
       "delivery_problem": 0,
       "order_management": 0,
       "returns_refunds": 0,
-      "product_issue": 3,
+      "product_issue": 0,
       "payment_billing": 0,
       "amazon_pay": 0,
       "account_access": 0,
       "prime_membership": 0,
-      "digital_content": 2,
-      "product_information": 3,
-      "technical_issue": 0,
-      "support_followup": 1,
+      "digital_content": 1,
+      "product_information": 7,
+      "technical_issue": 1,
+      "support_followup": 0,
       "other": 0
     },
     "technical_issue": {
       "delivery_problem": 0,
       "order_management": 0,
       "returns_refunds": 0,
-      "product_issue": 1,
+      "product_issue": 0,
       "payment_billing": 0,
-      "amazon_pay": 0,
-      "account_access": 0,
+      "amazon_pay": 1,
+      "account_access": 1,
       "prime_membership": 0,
-      "digital_content": 11,
-      "product_information": 1,
-      "technical_issue": 2,
-      "support_followup": 2,
+      "digital_content": 6,
+      "product_information": 0,
+      "technical_issue": 4,
+      "support_followup": 1,
       "other": 0
     },
     "support_followup": {
@@ -312,29 +320,29 @@
       "returns_refunds": 0,
       "product_issue": 0,
       "payment_billing": 0,
-      "amazon_pay": 0,
+      "amazon_pay": 2,
       "account_access": 0,
       "prime_membership": 0,
-      "digital_content": 2,
+      "digital_content": 0,
       "product_information": 0,
       "technical_issue": 0,
-      "support_followup": 9,
-      "other": 0
+      "support_followup": 7,
+      "other": 1
     },
     "other": {
       "delivery_problem": 0,
       "order_management": 0,
       "returns_refunds": 0,
-      "product_issue": 0,
-      "payment_billing": 0,
-      "amazon_pay": 0,
+      "product_issue": 1,
+      "payment_billing": 1,
+      "amazon_pay": 2,
       "account_access": 0,
       "prime_membership": 0,
-      "digital_content": 9,
+      "digital_content": 5,
       "product_information": 1,
       "technical_issue": 0,
-      "support_followup": 0,
-      "other": 0
+      "support_followup": 1,
+      "other": 5
     }
   }
 }

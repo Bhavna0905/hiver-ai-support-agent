@@ -1,6 +1,12 @@
-from pathlib import Path
+﻿from pathlib import Path
+import json
 
+import joblib
+import numpy as np
 import pandas as pd
+from scipy.sparse import hstack, csr_matrix
+from sentence_transformers import SentenceTransformer
+
 from sklearn.metrics import (
     accuracy_score,
     classification_report,
@@ -8,20 +14,13 @@ from sklearn.metrics import (
     f1_score,
 )
 
-from src.intent.classifier import IntentClassifier
 
+ROOT = Path(__file__).resolve().parents[2]
 
-GOLDEN_FILE = Path(
-    "data/golden/golden_dataset.csv"
-)
-
-MODEL_FILE = Path(
-    "data/processed/intent_classifier.joblib"
-)
-
-RESULTS_FILE = Path(
-    "reports/intent_classifier_results.json"
-)
+GOLDEN_FILE = ROOT / "data" / "golden" / "golden_dataset.csv"
+MODEL_FILE = ROOT / "data" / "processed" / "intent_classifier_minilm.joblib"
+RESULTS_FILE = ROOT / "reports" / "intent_classifier_results.json"
+PREDICTION_FILE = ROOT / "data" / "processed" / "intent_classifier_predictions.csv"
 
 INTENTS = [
     "delivery_problem",
@@ -39,97 +38,118 @@ INTENTS = [
     "other",
 ]
 
+BATCH_SIZE = 64
+
 
 def main():
-    if not GOLDEN_FILE.exists():
-        raise FileNotFoundError(
-            f"Golden dataset not found: {GOLDEN_FILE}"
-        )
-
-    if not MODEL_FILE.exists():
-        raise FileNotFoundError(
-            f"Classifier model not found: {MODEL_FILE}"
-        )
 
     print("Loading golden dataset...")
 
-    df = pd.read_csv(
-        GOLDEN_FILE
-    ).fillna("")
-
-    required_columns = [
-        "customer_message",
-        "gold_intent",
-    ]
-
-    missing = [
-        column
-        for column in required_columns
-        if column not in df.columns
-    ]
-
-    if missing:
-        raise ValueError(
-            "Missing required columns: "
-            + ", ".join(missing)
-        )
+    df = pd.read_csv(GOLDEN_FILE).fillna("")
 
     df = df[
-        df["customer_message"]
-        .astype(str)
-        .str.strip()
-        .ne("")
-        & df["gold_intent"]
-        .astype(str)
-        .str.strip()
-        .ne("")
+        df["customer_message"].astype(str).str.strip().ne("")
+        & df["gold_intent"].astype(str).str.strip().ne("")
     ].copy()
 
-    print(
-        f"Golden examples: {len(df)}"
+    print(f"Golden examples: {len(df)}")
+
+    print("\nLoading hybrid classifier...")
+
+    artifact = joblib.load(MODEL_FILE)
+
+    encoder_name = artifact["encoder_name"]
+    classifier = artifact["classifier"]
+    tfidf = artifact["tfidf_vectorizer"]
+
+    print(f"Embedding model: {encoder_name}")
+    print(f"Feature type: {artifact['feature_type']}")
+
+    messages = df["customer_message"].astype(str).tolist()
+    y_true = df["gold_intent"].astype(str).tolist()
+
+    print("\nLoading Sentence Transformer...")
+
+    encoder = SentenceTransformer(encoder_name)
+
+    print("\nGenerating MiniLM embeddings...")
+
+    embeddings = encoder.encode(
+        messages,
+        batch_size=BATCH_SIZE,
+        show_progress_bar=True,
+        normalize_embeddings=True,
     )
 
-    print("\nLoading trained classifier...")
+    embeddings = np.asarray(embeddings, dtype=np.float32)
 
-    classifier = IntentClassifier.load(
-        MODEL_FILE
+    print(f"MiniLM features: {embeddings.shape}")
+
+    print("\nGenerating TF-IDF features...")
+
+    tfidf_features = tfidf.transform(messages)
+
+    print(f"TF-IDF features: {tfidf_features.shape}")
+
+    print("\nCombining features...")
+
+    combined_features = hstack(
+        [
+            csr_matrix(embeddings),
+            tfidf_features,
+        ],
+        format="csr",
     )
 
-    messages = (
-        df["customer_message"]
-        .astype(str)
-        .tolist()
+    print(f"Combined features: {combined_features.shape}")
+
+    print("\nGenerating predictions and probabilities...")
+
+    probabilities = classifier.predict_proba(
+        combined_features
     )
 
-    y_true = (
-        df["gold_intent"]
-        .astype(str)
-        .tolist()
-    )
+    class_names = classifier.classes_
 
-    print("Generating predictions...")
+    top_indices = np.argsort(
+        probabilities,
+        axis=1
+    )[:, ::-1]
 
-    y_pred = classifier.predict(
-        messages
-    )
+    y_pred = class_names[top_indices[:, 0]]
 
-    y_pred = [
-        str(prediction)
-        for prediction in y_pred
+    confidence = probabilities[
+        np.arange(len(probabilities)),
+        top_indices[:, 0],
     ]
 
+    second_confidence = probabilities[
+        np.arange(len(probabilities)),
+        top_indices[:, 1],
+    ]
+
+    second_intent = class_names[
+        top_indices[:, 1]
+    ]
+
+    margin = confidence - second_confidence
+
     df["predicted_intent"] = y_pred
+    df["prediction_confidence"] = confidence
+    df["second_intent"] = second_intent
+    df["second_confidence"] = second_confidence
+    df["confidence_margin"] = margin
 
     # ---------------------------------------------------------
-    # Overall metrics
+    # Metrics
     # ---------------------------------------------------------
 
-    overall_accuracy = accuracy_score(
+    accuracy = accuracy_score(
         y_true,
         y_pred,
     )
 
-    overall_macro_f1 = f1_score(
+    macro_f1 = f1_score(
         y_true,
         y_pred,
         labels=INTENTS,
@@ -137,76 +157,13 @@ def main():
         zero_division=0,
     )
 
-    # ---------------------------------------------------------
-    # Supported-class metrics
-    #
-    # "other" was not available in the weakly-labelled
-    # training data, so the classifier cannot intentionally
-    # learn that class.
-    # ---------------------------------------------------------
-
-    supported_intents = [
-        intent
-        for intent in INTENTS
-        if intent != "other"
-    ]
-
-    supported_mask = [
-        gold in supported_intents
-        for gold in y_true
-    ]
-
-    supported_df = df[
-        supported_mask
-    ].copy()
-
-    supported_y_true = (
-        supported_df["gold_intent"]
-        .tolist()
-    )
-
-    supported_y_pred = (
-        supported_df["predicted_intent"]
-        .tolist()
-    )
-
-    supported_accuracy = accuracy_score(
-        supported_y_true,
-        supported_y_pred,
-    )
-
-    supported_macro_f1 = f1_score(
-        supported_y_true,
-        supported_y_pred,
-        labels=supported_intents,
-        average="macro",
+    weighted_f1 = f1_score(
+        y_true,
+        y_pred,
+        labels=INTENTS,
+        average="weighted",
         zero_division=0,
     )
-
-    # ---------------------------------------------------------
-    # "other" analysis
-    # ---------------------------------------------------------
-
-    other_mask = (
-        df["gold_intent"] == "other"
-    )
-
-    other_count = int(
-        other_mask.sum()
-    )
-
-    other_predictions = (
-        df.loc[
-            other_mask,
-            "predicted_intent",
-        ]
-        .value_counts()
-        .to_dict()
-    )
-
-    # ---------------------------------------------------------
-    # Per-intent report
-    # ---------------------------------------------------------
 
     report = classification_report(
         y_true,
@@ -216,10 +173,6 @@ def main():
         zero_division=0,
     )
 
-    # ---------------------------------------------------------
-    # Confusion matrix
-    # ---------------------------------------------------------
-
     matrix = confusion_matrix(
         y_true,
         y_pred,
@@ -228,75 +181,119 @@ def main():
 
     confusion = {
         actual: {
-            predicted: int(
-                matrix[i][j]
-            )
+            predicted: int(matrix[i][j])
             for j, predicted in enumerate(INTENTS)
         }
         for i, actual in enumerate(INTENTS)
     }
 
     # ---------------------------------------------------------
-    # Save predictions
+    # Correct vs incorrect confidence
     # ---------------------------------------------------------
 
-    prediction_file = Path(
-        "data/processed/"
-        "intent_classifier_predictions.csv"
+    correct = df["gold_intent"] == df["predicted_intent"]
+
+    correct_confidence = float(
+        df.loc[correct, "prediction_confidence"].mean()
     )
 
-    prediction_file.parent.mkdir(
+    incorrect_confidence = float(
+        df.loc[~correct, "prediction_confidence"].mean()
+    )
+
+    correct_margin = float(
+        df.loc[correct, "confidence_margin"].mean()
+    )
+
+    incorrect_margin = float(
+        df.loc[~correct, "confidence_margin"].mean()
+    )
+
+    # ---------------------------------------------------------
+    # Confidence buckets
+    # ---------------------------------------------------------
+
+    bins = [0.0, 0.50, 0.70, 0.85, 1.01]
+    labels = [
+        "<0.50",
+        "0.50-0.70",
+        "0.70-0.85",
+        ">=0.85",
+    ]
+
+    df["confidence_bucket"] = pd.cut(
+        df["prediction_confidence"],
+        bins=bins,
+        labels=labels,
+        right=False,
+    )
+
+    bucket_results = {}
+
+    for bucket in labels:
+
+        subset = df[
+            df["confidence_bucket"] == bucket
+        ]
+
+        if len(subset) == 0:
+            continue
+
+        bucket_results[bucket] = {
+            "examples": int(len(subset)),
+            "accuracy": float(
+                (
+                    subset["gold_intent"]
+                    == subset["predicted_intent"]
+                ).mean()
+            ),
+            "mean_confidence": float(
+                subset["prediction_confidence"].mean()
+            ),
+        }
+
+    # ---------------------------------------------------------
+    # Save
+    # ---------------------------------------------------------
+
+    PREDICTION_FILE.parent.mkdir(
         parents=True,
         exist_ok=True,
     )
 
     df.to_csv(
-        prediction_file,
+        PREDICTION_FILE,
         index=False,
+        encoding="utf-8",
     )
-
-    # ---------------------------------------------------------
-    # Save metrics
-    # ---------------------------------------------------------
 
     results = {
         "dataset": {
             "golden_examples": len(df),
-            "trained_intents": supported_intents,
-            "all_intents": INTENTS,
+            "intents": INTENTS,
+        },
+        "model": {
+            "embedding_model": encoder_name,
+            "feature_type": artifact["feature_type"],
+            "feature_dimensions": int(
+                combined_features.shape[1]
+            ),
         },
         "overall": {
-            "accuracy": float(
-                overall_accuracy
-            ),
-            "macro_f1": float(
-                overall_macro_f1
-            ),
+            "accuracy": float(accuracy),
+            "macro_f1": float(macro_f1),
+            "weighted_f1": float(weighted_f1),
         },
-        "supported_intents_only": {
-            "examples": len(
-                supported_df
-            ),
-            "accuracy": float(
-                supported_accuracy
-            ),
-            "macro_f1": float(
-                supported_macro_f1
-            ),
-        },
-        "other_analysis": {
-            "gold_other_examples": other_count,
-            "predictions_for_other_examples": {
-                key: int(value)
-                for key, value
-                in other_predictions.items()
-            },
+        "confidence_analysis": {
+            "correct_mean_confidence": correct_confidence,
+            "incorrect_mean_confidence": incorrect_confidence,
+            "correct_mean_margin": correct_margin,
+            "incorrect_mean_margin": incorrect_margin,
+            "buckets": bucket_results,
         },
         "per_intent": report,
         "confusion_matrix": confusion,
     }
-
-    import json
 
     RESULTS_FILE.parent.mkdir(
         parents=True,
@@ -306,105 +303,65 @@ def main():
     with RESULTS_FILE.open(
         "w",
         encoding="utf-8",
-    ) as file:
+    ) as f:
         json.dump(
             results,
-            file,
+            f,
             indent=2,
         )
 
     # ---------------------------------------------------------
-    # Print results
+    # Print
     # ---------------------------------------------------------
 
     print("\n" + "=" * 70)
-    print("Intent Classifier Evaluation")
+    print("HYBRID CLASSIFIER + CONFIDENCE ANALYSIS")
     print("=" * 70)
 
+    print(f"\nAccuracy:    {accuracy:.4f}")
+    print(f"Macro-F1:    {macro_f1:.4f}")
+    print(f"Weighted-F1: {weighted_f1:.4f}")
+
+    print("\nConfidence comparison:")
+
     print(
-        f"\nOverall accuracy: "
-        f"{overall_accuracy:.4f}"
+        f"  Correct predictions:   "
+        f"{correct_confidence:.3f}"
     )
 
     print(
-        f"Overall macro-F1: "
-        f"{overall_macro_f1:.4f}"
+        f"  Incorrect predictions: "
+        f"{incorrect_confidence:.3f}"
+    )
+
+    print("\nMargin comparison:")
+
+    print(
+        f"  Correct predictions:   "
+        f"{correct_margin:.3f}"
     )
 
     print(
-        "\nSupported intents only "
-        "(excluding other):"
+        f"  Incorrect predictions: "
+        f"{incorrect_margin:.3f}"
     )
 
-    print(
-        f"  Examples: "
-        f"{len(supported_df)}"
-    )
+    print("\nConfidence buckets:")
 
-    print(
-        f"  Accuracy: "
-        f"{supported_accuracy:.4f}"
-    )
-
-    print(
-        f"  Macro-F1: "
-        f"{supported_macro_f1:.4f}"
-    )
-
-    print(
-        "\n'other' examples:"
-    )
-
-    print(
-        f"  Gold examples: "
-        f"{other_count}"
-    )
-
-    print(
-        "  Model predictions:"
-    )
-
-    for intent, count in sorted(
-        other_predictions.items(),
-        key=lambda item: -item[1],
-    ):
-        print(
-            f"    {intent}: {count}"
-        )
-
-    print(
-        "\nPer-intent results:"
-    )
-
-    for intent in INTENTS:
-        if intent not in report:
-            continue
-
-        metrics = report[intent]
+    for bucket, values in bucket_results.items():
 
         print(
-            f"  {intent:22s} "
-            f"precision={metrics['precision']:.3f} "
-            f"recall={metrics['recall']:.3f} "
-            f"f1={metrics['f1-score']:.3f} "
-            f"support={int(metrics['support'])}"
+            f"  {bucket:10s} "
+            f"n={values['examples']:3d} "
+            f"accuracy={values['accuracy']:.3f} "
+            f"mean_conf={values['mean_confidence']:.3f}"
         )
 
-    print(
-        "\nSaved predictions to:"
-    )
+    print("\nSaved predictions:")
+    print(PREDICTION_FILE)
 
-    print(
-        f"  {prediction_file}"
-    )
-
-    print(
-        "\nSaved results to:"
-    )
-
-    print(
-        f"  {RESULTS_FILE}"
-    )
+    print("\nSaved results:")
+    print(RESULTS_FILE)
 
 
 if __name__ == "__main__":
